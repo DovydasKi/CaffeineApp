@@ -9,21 +9,13 @@
 import UIKit
 
 class SplashScreenViewController: UIViewController {
-
-    fileprivate func centerBoltImage(_ imageView: UIImageView) {
-        imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
-        imageView.frame.origin.x = view.bounds.midX - imageView.bounds.midX
-        imageView.frame.origin.y = view.bounds.midX - imageView.bounds.midX
-    }
     
-    fileprivate func setCaffeineLabel(_ caffeineLabel: UILabel) {
+    fileprivate func setCaffeineLabel(_ caffeineLabel: UILabel, text: String) {
         caffeineLabel.frame = CGRect(x: 220, y: 220, width: 100, height: 80)
-        caffeineLabel.font = UIFont(name: "Rubik-Bold", size: 88)
+        caffeineLabel.font = UIFont(name: "Rubik-Bold", size: 68)
         caffeineLabel.textColor = .white
-        
         caffeineLabel.translatesAutoresizingMaskIntoConstraints = false
-        caffeineLabel.text = "Caffeine"
-        
+        caffeineLabel.text = text
         caffeineLabel.textAlignment = .center
     }
     
@@ -32,10 +24,28 @@ class SplashScreenViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             caffeineLabel.topAnchor.constraint(equalTo: margineGuide.topAnchor, constant: 480),
-            caffeineLabel.leadingAnchor.constraint(equalTo: margineGuide.leadingAnchor),
+            caffeineLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            caffeineLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
             caffeineLabel.heightAnchor.constraint(equalToConstant: 80),
             caffeineLabel.trailingAnchor.constraint(equalTo: margineGuide.trailingAnchor)
         ])
+    }
+    
+    fileprivate func setBoltImageConstraints(_ imageView: UIImageView) {
+        NSLayoutConstraint.activate([
+            imageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 58),
+            imageView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -500),
+            imageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 84),
+            imageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -84)
+            
+        ])
+    }
+    
+    fileprivate func setBoltImageFrame(_ imageView: UIImageView) {
+        imageView.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
     }
     
     override func viewDidLoad() {
@@ -45,30 +55,14 @@ class SplashScreenViewController: UIViewController {
         let image = UIImage(named: "bolt.png")
         let imageView = UIImageView(image: image!)
         let caffeineLabel = UILabel()
-    
-        centerBoltImage(imageView)
-        view.addSubview(imageView)
         
-    
-        setCaffeineLabel(caffeineLabel)
-        view.addSubview(caffeineLabel)
+        self.setBoltImageFrame(imageView)
         
-        setCaffeineLabelConstraints(caffeineLabel)
+        self.view.addSubview(imageView)
+        self.setBoltImageConstraints(imageView)
         
-       
-
-        // Do any additional setup after loading the view.
+        self.setCaffeineLabel(caffeineLabel, text: "Caffeine")
+        self.view.addSubview(caffeineLabel)
+        self.setCaffeineLabelConstraints(caffeineLabel)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
