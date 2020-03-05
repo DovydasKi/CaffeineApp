@@ -40,6 +40,7 @@ extension SplashScreenViewController {
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        
         return label
     }
 
