@@ -11,7 +11,7 @@ import UIKit
 class SplashScreenViewController: UIViewController {
 	
 	private lazy var caffeineLabel: UILabel = self.initCaffeineLabel()
-	private lazy var iconImage: UIImageView = self.initCaffeineIcon()
+	private lazy var caffeineLogo: UIImageView = self.initCaffeineLogo()
 	
 	fileprivate func setCaffeineLabelConstraints(_ caffeineLabel: UILabel) {
 		let margineGuide = view.layoutMarginsGuide
@@ -39,8 +39,9 @@ class SplashScreenViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.view.backgroundColor = UIColor(named: "orangeMain")
+        navigationController?.navigationBar.isHidden = true
 		
-		let image = self.iconImage
+		let image = self.caffeineLogo
 		self.view.addSubview(image)
 		self.setBoltImageConstraints(image)
 		
@@ -67,7 +68,7 @@ extension SplashScreenViewController {
 		return label
 	}
 	
-	private func initCaffeineIcon() -> UIImageView {
+	private func initCaffeineLogo() -> UIImageView {
 		let image = UIImage(named: "bolt.png")
 		let imageView = UIImageView(image: image!)
 		imageView.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
