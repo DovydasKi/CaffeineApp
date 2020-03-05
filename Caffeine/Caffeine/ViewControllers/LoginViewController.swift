@@ -50,7 +50,6 @@ class LoginViewController: UIViewController {
         self.activateLoginButtonConstraints()
 
         UITextField.connectFields(fields: [self.emailField, self.passwordField])
-
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -66,17 +65,14 @@ extension LoginViewController {
 
     @objc private func turnOnHomeScreen() {
         if loginViewModel.checkForInvalidInut(self.emailField) == true {
-            print("I was inside: bad input")
             self.showAlertButtonTapped(self.loginButton)
             self.emailField.text = ""
             self.passwordField.text = ""
         }
         else {
-            print("I was inside: good input")
-            //navigate to next screen
+            //TODO: navigate to next screen
         }
     }
-
 }
 
 //MARK: UXTextField extension
@@ -105,7 +101,6 @@ extension LoginViewController {
 
 //MARK: UI elements extension
 extension LoginViewController {
-
     private func initLoginTitleView() -> UILabel {
         let label = UILabel()
         label.text = "Prisijungimas"
@@ -113,7 +108,6 @@ extension LoginViewController {
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-
         return label
     }
 
@@ -155,7 +149,6 @@ extension LoginViewController {
         bottomBorder.leftAnchor.constraint(equalTo: textField.leftAnchor).isActive = true
         bottomBorder.rightAnchor.constraint(equalTo: textField.rightAnchor).isActive = true
         bottomBorder.heightAnchor.constraint(equalToConstant: 2).isActive = true
-
         return textField
     }
 
@@ -167,7 +160,6 @@ extension LoginViewController {
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-
         return label
     }
 
@@ -178,7 +170,6 @@ extension LoginViewController {
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-
         return label
     }
 
@@ -194,8 +185,7 @@ extension LoginViewController {
         button.setTitle("Prisijungti", for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: 32)
-        button.addTarget(self, action: #selector(turnOnHomeScreen), for: .touchUpInside)
-
+        button.addTarget(self, action: #selector(self.turnOnHomeScreen), for: .touchUpInside)
         return button
     }
 
@@ -204,7 +194,6 @@ extension LoginViewController {
         imageView.image = #imageLiteral(resourceName: "bolt")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-
         return imageView
     }
 
@@ -216,7 +205,6 @@ extension LoginViewController {
         imageView.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(backToMainScreen))
         imageView.addGestureRecognizer(tapRecognizer)
-
         return imageView
     }
 }

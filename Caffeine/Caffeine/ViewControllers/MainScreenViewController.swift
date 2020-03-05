@@ -52,7 +52,6 @@ extension MainScreenViewController {
         imageView.frame = CGRect(x: 0, y: 0, width: 97, height: 80)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        
         return imageView
     }
 
@@ -63,7 +62,6 @@ extension MainScreenViewController {
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        
         return label
     }
 
@@ -79,7 +77,6 @@ extension MainScreenViewController {
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: 32)
         button.addTarget(self, action: #selector(turnOnLoginScreen), for: .touchUpInside)
-        
         return button
     }
 
@@ -94,7 +91,6 @@ extension MainScreenViewController {
         button.setTitle(title, for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: 32)
-        
         return button
     }
 }
