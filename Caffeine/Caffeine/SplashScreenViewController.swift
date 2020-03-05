@@ -51,7 +51,7 @@ class SplashScreenViewController: UIViewController {
 		
 		let viewController = MainScreenViewController()
 		DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-			self.navigationController?.present(viewController, animated: true, completion: nil)
+			self.navigationController?.setViewControllers([viewController], animated: true)
 		}
 	}
 }

@@ -16,6 +16,7 @@
 		A671E964240D4FC200DF2577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A671E963240D4FC200DF2577 /* Assets.xcassets */; };
 		A671E967240D4FC200DF2577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A671E965240D4FC200DF2577 /* LaunchScreen.storyboard */; };
 		A671E972240D4FC200DF2577 /* CaffeineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A671E971240D4FC200DF2577 /* CaffeineTests.swift */; };
+		A675BECF2410037C00F44E8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675BECE2410037C00F44E8E /* LoginViewController.swift */; };
 		A6F91104240F847C00B85B27 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F910FA240F847C00B85B27 /* Rubik-MediumItalic.ttf */; };
 		A6F91105240F847C00B85B27 /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F910FB240F847C00B85B27 /* Rubik-BlackItalic.ttf */; };
 		A6F91106240F847C00B85B27 /* Rubik-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F910FC240F847C00B85B27 /* Rubik-LightItalic.ttf */; };
@@ -52,6 +53,7 @@
 		A671E96D240D4FC200DF2577 /* CaffeineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaffeineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A671E971240D4FC200DF2577 /* CaffeineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaffeineTests.swift; sourceTree = "<group>"; };
 		A671E973240D4FC200DF2577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A675BECE2410037C00F44E8E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A6F910FA240F847C00B85B27 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-MediumItalic.ttf"; path = "../../../Downloads/Rubik/Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
 		A6F910FB240F847C00B85B27 /* Rubik-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-BlackItalic.ttf"; path = "../../../Downloads/Rubik/Rubik-BlackItalic.ttf"; sourceTree = "<group>"; };
 		A6F910FC240F847C00B85B27 /* Rubik-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-LightItalic.ttf"; path = "../../../Downloads/Rubik/Rubik-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				A671E965240D4FC200DF2577 /* LaunchScreen.storyboard */,
 				A671E968240D4FC200DF2577 /* Info.plist */,
 				058E4B48240D638700D4C20A /* SplashScreenViewController.swift */,
+				A675BECE2410037C00F44E8E /* LoginViewController.swift */,
 			);
 			path = Caffeine;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A675BECF2410037C00F44E8E /* LoginViewController.swift in Sources */,
 				A656F3DC240FD84D0038AA7B /* MainScreenViewController.swift in Sources */,
 				A671E95F240D4FBF00DF2577 /* ViewController.swift in Sources */,
 				A671E95B240D4FBF00DF2577 /* AppDelegate.swift in Sources */,
