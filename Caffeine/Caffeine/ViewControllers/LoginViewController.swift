@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class LoginViewController: UIViewController {
+
     lazy var loginTitle: UILabel = self.initLoginTitleView()
     lazy var emailField: UITextField = self.initLoginTextField()
     lazy var passwordField: UITextField = self.initPasswordTextField()
@@ -18,6 +19,7 @@ class LoginViewController: UIViewController {
     lazy var loginButton: UIButton = self.initloginButton()
     lazy var icon: UIImageView = self.initIcon()
     lazy var arrowBackView: UIImageView = self.initArrowBackView()
+    var loginViewModel = LoginViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,15 +48,54 @@ class LoginViewController: UIViewController {
 
         self.view.addSubview(self.loginButton)
         self.activateLoginButtonConstraints()
+
+        UITextField.connectFields(fields: [self.emailField, self.passwordField])
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
+//MARK: Button actions
 extension LoginViewController {
     @objc private func backToMainScreen() {
-        //        self.dismiss(animated: true) // kodel sitas neveikia
-        //        navigationController?.popViewController(animated: true) // sitas irgi
         let newVC = MainScreenViewController()
         self.navigationController?.setViewControllers([newVC], animated: true)
+    }
+
+    @objc private func turnOnHomeScreen() {
+        if loginViewModel.checkForInvalidInut(self.emailField) == true {
+            self.showAlertButtonTapped(self.loginButton)
+            self.emailField.text = ""
+            self.passwordField.text = ""
+        }
+        else {
+            //TODO: navigate to next screen
+        }
+    }
+}
+
+//MARK: UXTextField extension
+extension UITextField {
+    class func connectFields(fields: [UITextField]) -> Void {
+        guard let last = fields.last else {
+            return
+        }
+        for i in 0 ..< fields.count - 1 {
+            fields[i].returnKeyType = .next
+            fields[i].addTarget(fields[i + 1], action: #selector(UIResponder.becomeFirstResponder), for: .editingDidEndOnExit)
+        }
+        last.returnKeyType = .done
+        last.addTarget(last, action: #selector(UIResponder.resignFirstResponder), for: .editingDidEndOnExit)
+    }
+}
+
+//MARK: Checking for valid input
+extension LoginViewController {
+    private func showAlertButtonTapped(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Klaida!", message: "Neteisingas El.paštas arba slaptažodis", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -108,7 +149,6 @@ extension LoginViewController {
         bottomBorder.leftAnchor.constraint(equalTo: textField.leftAnchor).isActive = true
         bottomBorder.rightAnchor.constraint(equalTo: textField.rightAnchor).isActive = true
         bottomBorder.heightAnchor.constraint(equalToConstant: 2).isActive = true
-
         return textField
     }
 
@@ -145,6 +185,7 @@ extension LoginViewController {
         button.setTitle("Prisijungti", for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: 32)
+        button.addTarget(self, action: #selector(self.turnOnHomeScreen), for: .touchUpInside)
         return button
     }
 
