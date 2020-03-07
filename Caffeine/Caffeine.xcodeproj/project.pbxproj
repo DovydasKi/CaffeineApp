@@ -17,6 +17,7 @@
 		051D301424103F73002AF790 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F91118240F84C900B85B27 /* Rubik-Medium.ttf */; };
 		051D301524103F73002AF790 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F91112240F84C900B85B27 /* Rubik-MediumItalic.ttf */; };
 		051D301624103F73002AF790 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F9110F240F84C800B85B27 /* Rubik-Regular.ttf */; };
+		057023652413E8B90018A710 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023642413E8B90018A710 /* RegisterViewController.swift */; };
 		058E4B49240D638700D4C20A /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058E4B48240D638700D4C20A /* SplashScreenViewController.swift */; };
 		05C08F61241196EE004F2BFA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C08F60241196EE004F2BFA /* LoginViewModel.swift */; };
 		A656F3DC240FD84D0038AA7B /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656F3DB240FD84D0038AA7B /* MainScreenViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		057023642413E8B90018A710 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		058E4B48240D638700D4C20A /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		05C08F60241196EE004F2BFA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A656F3DB240FD84D0038AA7B /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				A656F3DB240FD84D0038AA7B /* MainScreenViewController.swift */,
 				058E4B48240D638700D4C20A /* SplashScreenViewController.swift */,
 				A66FDD612411310300CFC5FB /* LoginViewController.swift */,
+				057023642413E8B90018A710 /* RegisterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				A66FDD622411310300CFC5FB /* LoginViewController.swift in Sources */,
 				A656F3DC240FD84D0038AA7B /* MainScreenViewController.swift in Sources */,
 				A671E95F240D4FBF00DF2577 /* ViewController.swift in Sources */,
+				057023652413E8B90018A710 /* RegisterViewController.swift in Sources */,
 				A671E95B240D4FBF00DF2577 /* AppDelegate.swift in Sources */,
 				058E4B49240D638700D4C20A /* SplashScreenViewController.swift in Sources */,
 				A671E95D240D4FBF00DF2577 /* SceneDelegate.swift in Sources */,

@@ -62,6 +62,10 @@ extension LoginViewController {
         let newVC = MainScreenViewController()
         self.navigationController?.setViewControllers([newVC], animated: true)
     }
+    @objc private func turnOnRegisterScreen() {
+        let newVC = RegisterScreenController()
+        self.navigationController?.setViewControllers([newVC], animated: true)
+    }
 
     @objc private func turnOnHomeScreen() {
         if loginViewModel.checkForInvalidInut(self.emailField) == true {
@@ -160,6 +164,10 @@ extension LoginViewController {
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(turnOnRegisterScreen))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tap)
         return label
     }
 
