@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     lazy var icon: UIImageView = self.initIcon()
     lazy var arrowBackView: UIImageView = self.initArrowBackView()
     var loginViewModel = LoginViewModel()
+    var textFieldConnectFields = TextFieldConnectFields()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +50,9 @@ class LoginViewController: UIViewController {
         self.view.addSubview(self.loginButton)
         self.activateLoginButtonConstraints()
 
-        UITextField.connectFields(fields: [self.emailField, self.passwordField])
+        self.textFieldConnectFields.connectFields(fields: [self.emailField, self.passwordField])
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -76,21 +78,6 @@ extension LoginViewController {
         else {
             //TODO: navigate to next screen
         }
-    }
-}
-
-//MARK: UXTextField extension
-extension UITextField {
-    class func connectFields(fields: [UITextField]) -> Void {
-        guard let last = fields.last else {
-            return
-        }
-        for i in 0 ..< fields.count - 1 {
-            fields[i].returnKeyType = .next
-            fields[i].addTarget(fields[i + 1], action: #selector(UIResponder.becomeFirstResponder), for: .editingDidEndOnExit)
-        }
-        last.returnKeyType = .done
-        last.addTarget(last, action: #selector(UIResponder.resignFirstResponder), for: .editingDidEndOnExit)
     }
 }
 

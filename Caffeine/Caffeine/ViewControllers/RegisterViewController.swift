@@ -21,6 +21,8 @@ class RegisterScreenController: UIViewController {
     lazy var passwordRequirementCheckMark: UIImageView = self.initPasswordRequirementCheckMarkLabelView()
     lazy var createAccoutButton: UIButton = self.initCreateAccoutButton()
     lazy var disclaimer: UILabel = self.initDisclaimerLabelView()
+    var registerViewModel = RegisterViewModel()
+    var textFieldConnectFields = TextFieldConnectFields()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +44,11 @@ class RegisterScreenController: UIViewController {
         self.view.addSubview(self.userNameField)
         self.activateUserNameFieldConstraints()
 
-
         self.view.addSubview(self.emailField)
         self.activateEmailFieldConstraints()
 
         self.view.addSubview(self.passwordField)
         self.activatePasswordFieldConstraints()
-
 
         self.view.addSubview(self.passwordRequirement)
         self.activatePasswordRequirementConstraints()
@@ -61,9 +61,20 @@ class RegisterScreenController: UIViewController {
 
         self.view.addSubview(self.disclaimer)
         self.activateDisclaimerConstraints()
+
+        self.textFieldConnectFields.connectFields(fields: [self.fullNameField, self.userNameField, self.emailField, self.passwordField])
+        self.passwordField.addTarget(self, action: #selector(self.checkForInvalidInut(_:)), for: UIControl.Event.editingChanged)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
+//MARK: Button actions
 extension RegisterScreenController {
     @objc private func backToMainScreen() {
         let newVC = MainScreenViewController()
@@ -71,11 +82,37 @@ extension RegisterScreenController {
     }
 }
 
+
+//MARK: Checking for valid input
+extension RegisterScreenController {
+    @objc private func checkForInvalidInut(_ passwordInput: UITextField) {
+        self.registerViewModel.checkForValidPassword(passwordInput, self.passwordRequirementCheckMark)
+    }
+}
+
+//TODO: Extect to seperate controller?
+//MARK: Dynamic view
+extension RegisterScreenController {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height - 84
+            }
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+}
+
 //MARK: UI elements extension
 extension RegisterScreenController {
+
     private func initArrowBackView() -> UIImageView {
         let imageView = UIImageView()
-        imageView.image =  #imageLiteral(resourceName: "arrowBack")
+        imageView.image = #imageLiteral(resourceName: "arrowBack")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.frame = CGRect(x: 44, y: 50, width: 34, height: 55)
         imageView.isUserInteractionEnabled = true
@@ -86,7 +123,7 @@ extension RegisterScreenController {
 
     private func initIcon() -> UIImageView {
         let imageView = UIImageView()
-        imageView.image =  #imageLiteral(resourceName: "bolt")
+        imageView.image = #imageLiteral(resourceName: "bolt")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         return imageView
@@ -170,6 +207,7 @@ extension RegisterScreenController {
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.init(name: "Rubik-Black", size: 24.0)
+
 
         let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         bottomBorder.backgroundColor = UIColor.white
