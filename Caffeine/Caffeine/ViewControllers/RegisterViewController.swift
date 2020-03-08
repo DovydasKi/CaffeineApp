@@ -23,7 +23,7 @@ class RegisterScreenController: UIViewController {
     lazy var disclaimer: UILabel = self.initDisclaimerLabelView()
     var registerViewModel = RegisterViewModel()
     var textFieldConnectFields = TextFieldConnectFields()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -80,13 +80,23 @@ extension RegisterScreenController {
         let newVC = MainScreenViewController()
         self.navigationController?.setViewControllers([newVC], animated: true)
     }
+    @objc private func turnOnSecondRegisterScreen() {
+        if self.registerViewModel.checkForAllValidFields(self.fullNameField, self.userNameField, self.emailField, self.passwordField) == true {
+            //TODO: navigate to next screen
+            print("success")
+        }
+    }
 }
-
 
 //MARK: Checking for valid input
 extension RegisterScreenController {
     @objc private func checkForInvalidInut(_ passwordInput: UITextField) {
         self.registerViewModel.checkForValidPassword(passwordInput, self.passwordRequirementCheckMark)
+    }
+    private func showAlertButtonTapped(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Klaida!", message: "Neteisingas El.paštas", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -251,6 +261,7 @@ extension RegisterScreenController {
         button.setTitle("Sukurti paskyrą", for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: 32)
+        button.addTarget(self, action: #selector(self.turnOnSecondRegisterScreen), for: .touchUpInside)
         return button
     }
 
