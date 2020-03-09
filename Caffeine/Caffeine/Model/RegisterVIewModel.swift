@@ -28,11 +28,11 @@ class RegisterViewModel {
         var emailIsValid = false
         var passwordIsValid = false
 
-        if !self.inputValidation.checkForValidStringLenght(input: fullNameField, lenght: 5) || !self.inputValidation.checkForValidStringRegularExpression(input: fullNameField, re: ".*[^A-Za-z0-9\\s].*") {
+        if !self.inputValidation.checkForValidStringLenght(input: fullNameField, lenght: 5) || !self.inputValidation.checkForValidStringRegularExpression(input: fullNameField, regularExpression: ".*[^A-Za-z0-9\\s].*") {
             self.inputValidation.shakeIfInvalid(textField: fullNameField)
         }
         else { fullNameIsValid = true }
-        if !self.inputValidation.checkForValidStringLenght(input: userNameField, lenght: 5) || !self.inputValidation.checkForValidStringRegularExpression(input: userNameField, re: ".*[^A-Za-z0-9].*") {
+        if !self.inputValidation.checkForValidStringLenght(input: userNameField, lenght: 5) || !self.inputValidation.checkForValidStringRegularExpression(input: userNameField, regularExpression: ".*[^A-Za-z0-9].*") {
             self.inputValidation.shakeIfInvalid(textField: userNameField)
         }
         else { userNameIsValid = true }

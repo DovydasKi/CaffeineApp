@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+//MARK: ability to change UITextField by pressing "next" button
 class TextFieldConnectFields {
     public func connectFields(fields: [UITextField]) -> Void {
         guard let last = fields.last else {

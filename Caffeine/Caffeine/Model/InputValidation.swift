@@ -17,11 +17,11 @@ class InputValidation {
         }
         return isValid
     }
-    public func checkForValidStringRegularExpression(input: UITextField, re: String) -> Bool {
 
+    public func checkForValidStringRegularExpression(input: UITextField, regularExpression: String) -> Bool {
         guard let text = input.text else { return true }
-        
-        if text.range(of: re, options: .regularExpression) != nil {
+
+        if text.range(of: regularExpression, options: .regularExpression) != nil {
             return false
         }
         else {
@@ -31,6 +31,7 @@ class InputValidation {
 
     public func checkForValidStringLenght(input: UITextField, lenght: Int) -> Bool {
         guard let text = input.text else { return true }
+        
         if text.count < lenght {
             return false
         }

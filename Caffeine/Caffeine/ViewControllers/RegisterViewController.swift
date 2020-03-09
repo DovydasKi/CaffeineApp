@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RegisterScreenController: UIViewController {
+class RegisterScreenViewController: UIViewController {
     lazy var arrowBackView: UIImageView = self.initArrowBackView()
     lazy var icon: UIImageView = self.initIcon()
     lazy var signUpTitle: UILabel = self.initSignUpTitleView()
@@ -21,8 +21,8 @@ class RegisterScreenController: UIViewController {
     lazy var passwordRequirementCheckMark: UIImageView = self.initPasswordRequirementCheckMarkLabelView()
     lazy var createAccoutButton: UIButton = self.initCreateAccoutButton()
     lazy var disclaimer: UILabel = self.initDisclaimerLabelView()
-    var registerViewModel = RegisterViewModel()
-    var textFieldConnectFields = TextFieldConnectFields()
+    private var registerViewModel = RegisterViewModel()
+    private var textFieldConnectFields = TextFieldConnectFields()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class RegisterScreenController: UIViewController {
 }
 
 //MARK: Button actions
-extension RegisterScreenController {
+extension RegisterScreenViewController {
     @objc private func backToMainScreen() {
         let newVC = MainScreenViewController()
         self.navigationController?.setViewControllers([newVC], animated: true)
@@ -88,7 +88,7 @@ extension RegisterScreenController {
 }
 
 //MARK: Checking for valid input
-extension RegisterScreenController {
+extension RegisterScreenViewController {
     @objc private func checkForInvalidInut(_ passwordInput: UITextField) {
         self.registerViewModel.checkForValidPassword(passwordInput: passwordInput, passwordRequirementCheckMark: self.passwordRequirementCheckMark)
     }
@@ -101,7 +101,7 @@ extension RegisterScreenController {
 
 //TODO: Extect to seperate controller?
 //MARK: Dynamic view
-extension RegisterScreenController {
+extension RegisterScreenViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -117,7 +117,7 @@ extension RegisterScreenController {
 }
 
 //MARK: UI elements extension
-extension RegisterScreenController {
+extension RegisterScreenViewController {
 
     private func initArrowBackView() -> UIImageView {
         let imageView = UIImageView()
@@ -277,7 +277,7 @@ extension RegisterScreenController {
 }
 
 //MARK: Constraints extension
-extension RegisterScreenController {
+extension RegisterScreenViewController {
     private func activateArrowBackConstraints() {
         NSLayoutConstraint.activate([
             self.arrowBackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),

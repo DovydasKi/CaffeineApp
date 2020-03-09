@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class LoginViewController: UIViewController {
-
     lazy var loginTitle: UILabel = self.initLoginTitleView()
     lazy var emailField: UITextField = self.initLoginTextField()
     lazy var passwordField: UITextField = self.initPasswordTextField()
@@ -20,9 +19,9 @@ class LoginViewController: UIViewController {
     lazy var icon: UIImageView = self.initIcon()
     lazy var arrowBackView: UIImageView = self.initArrowBackView()
     lazy var wrongInputPromt: UILabel = self.wrongInputPromtLabelView()
-    lazy var timerForPromt: Timer = self.initTimerForPromt()
-    var loginViewModel = LoginViewModel()
-    var textFieldConnectFields = TextFieldConnectFields()
+    lazy private var timerForPromt: Timer = self.initTimerForPromt()
+    private var loginViewModel = LoginViewModel()
+    private var textFieldConnectFields = TextFieldConnectFields()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +66,7 @@ extension LoginViewController {
         self.navigationController?.setViewControllers([newVC], animated: true)
     }
     @objc private func turnOnRegisterScreen() {
-        let newVC = RegisterScreenController()
+        let newVC = RegisterScreenViewController()
         self.navigationController?.setViewControllers([newVC], animated: true)
     }
 

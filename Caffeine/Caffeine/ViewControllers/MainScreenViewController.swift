@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class MainScreenViewController: UIViewController {
-
     private lazy var caffeineLabel: UILabel = self.initCaffeineLabel("Caffeine")
     private lazy var caffeineLogo: UIImageView = self.initCaffeineLogo()
     private lazy var loginButton: UIButton = self.initLoginInButton("Prisijungti")
@@ -42,7 +41,7 @@ extension MainScreenViewController {
     }
     
     @objc private func turnOnRegisterScreen() {
-        let newVC = RegisterScreenController()
+        let newVC = RegisterScreenViewController()
         self.navigationController?.setViewControllers([newVC], animated: true)
     }
 }
