@@ -18,6 +18,10 @@ class LoginViewController: UIViewController {
     lazy var loginButton: UIButton = self.initloginButton()
     lazy var icon: UIImageView = self.initIcon()
     lazy var arrowBackView: UIImageView = self.initArrowBackView()
+    lazy var wrongInputPromt: UILabel = self.wrongInputPromtLabelView()
+    lazy private var timerForPromt: Timer = self.initTimerForPromt()
+    private var loginViewModel = LoginViewModel()
+    private var textFieldConnectFields = TextFieldConnectFields()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,15 +50,45 @@ class LoginViewController: UIViewController {
 
         self.view.addSubview(self.loginButton)
         self.activateLoginButtonConstraints()
+
+        self.textFieldConnectFields.connectFields(fields: [self.emailField, self.passwordField])
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+}
+
+//MARK: Button actions
+extension LoginViewController {
+    @objc private func backToMainScreen() {
+        let newVC = MainScreenViewController()
+        self.navigationController?.setViewControllers([newVC], animated: true)
+    }
+    @objc private func turnOnRegisterScreen() {
+        let newVC = RegisterScreenViewController()
+        self.navigationController?.setViewControllers([newVC], animated: true)
+    }
+
+    @objc private func turnOnHomeScreen() {
+        self.wrongInputPromt.removeFromSuperview()
+        self.timerForPromt.invalidate()
+
+        if self.loginViewModel.checkForAllValidFields(emailField: self.emailField, passwordField: self.passwordField) == true {
+            //TODO: navigate to next screen
+            print("Yay")
+        }
+        else {
+            self.view.addSubview(self.wrongInputPromt)
+            self.activateWrongInputPromtLabelViewConstraints()
+            self.timerForPromt = initTimerForPromt()
+        }
     }
 }
 
 extension LoginViewController {
-    @objc private func backToMainScreen() {
-        //        self.dismiss(animated: true) // kodel sitas neveikia
-        //        navigationController?.popViewController(animated: true) // sitas irgi
-        let newVC = MainScreenViewController()
-        self.navigationController?.setViewControllers([newVC], animated: true)
+    @objc private func dismissInvalidInputPromt() {
+        self.wrongInputPromt.removeFromSuperview()
     }
 }
 
@@ -87,7 +121,6 @@ extension LoginViewController {
         bottomBorder.leftAnchor.constraint(equalTo: textField.leftAnchor).isActive = true
         bottomBorder.rightAnchor.constraint(equalTo: textField.rightAnchor).isActive = true
         bottomBorder.heightAnchor.constraint(equalToConstant: 2).isActive = true
-
         return textField
     }
 
@@ -108,7 +141,6 @@ extension LoginViewController {
         bottomBorder.leftAnchor.constraint(equalTo: textField.leftAnchor).isActive = true
         bottomBorder.rightAnchor.constraint(equalTo: textField.rightAnchor).isActive = true
         bottomBorder.heightAnchor.constraint(equalToConstant: 2).isActive = true
-
         return textField
     }
 
@@ -120,6 +152,10 @@ extension LoginViewController {
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(turnOnRegisterScreen))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tap)
         return label
     }
 
@@ -145,6 +181,7 @@ extension LoginViewController {
         button.setTitle("Prisijungti", for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: 32)
+        button.addTarget(self, action: #selector(self.turnOnHomeScreen), for: .touchUpInside)
         return button
     }
 
@@ -154,6 +191,28 @@ extension LoginViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         return imageView
+    }
+
+    private func wrongInputPromtLabelView() -> UILabel {
+        let label = UILabel()
+        label.text = "Neteisingas El.paštas arba slaptažodis"
+        label.font = UIFont(name: "Rubik-Medium", size: 14)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        return label
+    }
+
+    private func initTimerForPromt() -> Timer {
+        var timer = Timer()
+
+        timer = Timer.scheduledTimer(
+            timeInterval: TimeInterval(3.0),
+            target: self,
+            selector: #selector(dismissInvalidInputPromt),
+            userInfo: nil,
+            repeats: true)
+        return timer
     }
 
     private func initArrowBackView() -> UIImageView {
@@ -226,5 +285,12 @@ extension LoginViewController {
             self.passwordField.topAnchor.constraint(equalTo: self.emailField.bottomAnchor, constant: 50.0),
             self.passwordField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
             self.passwordField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
+    }
+
+    private func activateWrongInputPromtLabelViewConstraints() {
+        NSLayoutConstraint.activate([
+            self.wrongInputPromt.topAnchor.constraint(equalTo: self.loginButton.bottomAnchor, constant: 32.0),
+            self.wrongInputPromt.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
+            self.wrongInputPromt.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
     }
 }

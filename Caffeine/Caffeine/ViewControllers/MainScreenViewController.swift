@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class MainScreenViewController: UIViewController {
-
     private lazy var caffeineLabel: UILabel = self.initCaffeineLabel("Caffeine")
     private lazy var caffeineLogo: UIImageView = self.initCaffeineLogo()
     private lazy var loginButton: UIButton = self.initLoginInButton("Prisijungti")
@@ -38,6 +37,11 @@ class MainScreenViewController: UIViewController {
 extension MainScreenViewController {
     @objc private func turnOnLoginScreen() {
         let newVC = LoginViewController()
+        self.navigationController?.setViewControllers([newVC], animated: true)
+    }
+    
+    @objc private func turnOnRegisterScreen() {
+        let newVC = RegisterScreenViewController()
         self.navigationController?.setViewControllers([newVC], animated: true)
     }
 }
@@ -91,6 +95,7 @@ extension MainScreenViewController {
         button.setTitle(title, for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: 32)
+        button.addTarget(self, action: #selector(turnOnRegisterScreen), for: .touchUpInside)
         return button
     }
 }

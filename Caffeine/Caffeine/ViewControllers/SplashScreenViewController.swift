@@ -9,7 +9,6 @@
 import UIKit
 
 class SplashScreenViewController: UIViewController {
-
     private lazy var caffeineLabel: UILabel = self.initCaffeineLabel("Caffeine")
     private lazy var caffeineLogo: UIImageView = self.initCaffeineLogo()
 
@@ -49,7 +48,6 @@ extension SplashScreenViewController {
         imageView.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-
         return imageView
     }
 }
