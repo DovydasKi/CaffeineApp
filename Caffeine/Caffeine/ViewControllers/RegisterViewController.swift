@@ -134,7 +134,8 @@ extension RegisterScreenViewController {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "bolt")
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
         return imageView
     }
 
@@ -155,7 +156,7 @@ extension RegisterScreenViewController {
         textField.textColor = .white
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.font = UIFont.init(name: "Rubik-Black", size: 24.0)
+        textField.font = UIFont.init(name: "Rubik-Black", size: UIView.margin(of: [18, 20, 24]))
 
         let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         bottomBorder.backgroundColor = UIColor.white
@@ -175,7 +176,7 @@ extension RegisterScreenViewController {
         textField.textColor = .white
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.font = UIFont.init(name: "Rubik-Black", size: 24.0)
+        textField.font = UIFont.init(name: "Rubik-Black", size: UIView.margin(of: [18, 20, 24]))
 
         let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         bottomBorder.backgroundColor = UIColor.white
@@ -195,7 +196,7 @@ extension RegisterScreenViewController {
         textField.textColor = .white
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.font = UIFont.init(name: "Rubik-Black", size: 24.0)
+        textField.font = UIFont.init(name: "Rubik-Black", size: UIView.margin(of: [18, 20, 24]))
 
         let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         bottomBorder.backgroundColor = UIColor.white
@@ -215,7 +216,7 @@ extension RegisterScreenViewController {
         textField.textColor = .white
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.font = UIFont.init(name: "Rubik-Black", size: 24.0)
+        textField.font = UIFont.init(name: "Rubik-Black", size: UIView.margin(of: [18, 20, 24]))
 
 
         let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -232,18 +233,20 @@ extension RegisterScreenViewController {
     private func initPasswordRequirementLabelView() -> UILabel {
         let label = UILabel()
         label.text = "5 simboliai slaptažodyje"
-        label.font = UIFont(name: "Rubik-Medium", size: 14)
+        label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [10, 12, 14]))
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.preferredMaxLayoutWidth = 162
         return label
     }
 
     private func initPasswordRequirementCheckMarkLabelView() -> UIImageView {
         let checkMark = UIImageView()
         checkMark.backgroundColor = UIColor.white
-        checkMark.frame = CGRect(x: 97, y: 651, width: 18, height: 18)
+        checkMark.frame = CGRect(x: 0, y: 0, width: 18, height: 18)
         checkMark.layer.cornerRadius = checkMark.frame.size.width / 2
+        checkMark.translatesAutoresizingMaskIntoConstraints = false
         checkMark.clipsToBounds = true
         return checkMark
     }
@@ -259,7 +262,7 @@ extension RegisterScreenViewController {
         button.backgroundColor = .white
         button.setTitle("Sukurti paskyrą", for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
-        button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: 32)
+        button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [24, 28, 32]))
         button.addTarget(self, action: #selector(self.turnOnSecondRegisterScreen), for: .touchUpInside)
         return button
     }
@@ -268,7 +271,7 @@ extension RegisterScreenViewController {
         let label = UILabel()
         label.text = "Sukurdami paskyrą sutinkate su mūsų paslaugų tiekimo ir privatumo politika"
         label.numberOfLines = 2
-        label.font = UIFont(name: "Rubik-Medium", size: 12)
+        label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [9, 10, 12]))
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -281,83 +284,88 @@ extension RegisterScreenViewController {
     private func activateArrowBackConstraints() {
         NSLayoutConstraint.activate([
             self.arrowBackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            self.arrowBackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0)])
+            self.arrowBackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0),
+            self.arrowBackView.heightAnchor.constraint(equalToConstant: 32)
+        ])
     }
 
     private func activateIconConstraints() {
         NSLayoutConstraint.activate([
+            self.icon.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             self.icon.topAnchor.constraint(equalTo: self.arrowBackView.bottomAnchor, constant: 20),
-            self.icon.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -180),
-            self.icon.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 180),
-            self.icon.heightAnchor.constraint(equalToConstant: 90)])
+            self.icon.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [42.0, 63.0, 84.0])),
+            self.icon.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -UIView.margin(of: [42.0, 63.0, 84.0])),
+           self.icon.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [146.5, 146.5, 146.5]))
+        ])
     }
 
     private func activateSignUpTitleConstraints() {
         NSLayoutConstraint.activate([
-            self.signUpTitle.topAnchor.constraint(equalTo: self.icon.bottomAnchor, constant: 20),
+            self.signUpTitle.topAnchor.constraint(equalTo: self.icon.bottomAnchor, constant: UIView.margin(of: [5, 10, 20])),
             self.signUpTitle.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            self.signUpTitle.heightAnchor.constraint(equalToConstant: 47),
+            self.signUpTitle.heightAnchor.constraint(equalToConstant: UIView.margin(of: [47, 47, 47])),
             self.signUpTitle.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)])
     }
 
     private func activateFullNameFieldConstraints() {
         NSLayoutConstraint.activate([
-            self.fullNameField.topAnchor.constraint(equalTo: self.signUpTitle.bottomAnchor, constant: 78.5),
+            self.fullNameField.topAnchor.constraint(equalTo: self.signUpTitle.bottomAnchor, constant: UIView.margin(of: [19.625, 39.25, 78.5])),
             self.fullNameField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
             self.fullNameField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
     }
 
     private func activateUserNameFieldConstraints() {
         NSLayoutConstraint.activate([
-            self.userNameField.topAnchor.constraint(equalTo: self.fullNameField.bottomAnchor, constant: 50),
+            self.userNameField.topAnchor.constraint(equalTo: self.fullNameField.bottomAnchor, constant: UIView.margin(of: [12.5, 25, 50])),
             self.userNameField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
             self.userNameField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
     }
 
     private func activateEmailFieldConstraints() {
         NSLayoutConstraint.activate([
-            self.emailField.topAnchor.constraint(equalTo: self.userNameField.bottomAnchor, constant: 50),
+            self.emailField.topAnchor.constraint(equalTo: self.userNameField.bottomAnchor, constant: UIView.margin(of: [12.5, 25, 50])),
             self.emailField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
             self.emailField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
     }
 
     private func activatePasswordFieldConstraints() {
         NSLayoutConstraint.activate([
-            self.passwordField.topAnchor.constraint(equalTo: self.emailField.bottomAnchor, constant: 50.0),
+            self.passwordField.topAnchor.constraint(equalTo: self.emailField.bottomAnchor, constant: UIView.margin(of: [12.5, 25, 50])),
             self.passwordField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
             self.passwordField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
     }
 
-
     private func activatePasswordRequirementConstraints() {
         NSLayoutConstraint.activate([
-            self.passwordRequirement.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 39.5),
+            self.passwordRequirement.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 32),
             self.passwordRequirement.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 137.5),
-            self.passwordRequirement.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -114.5),
+            self.passwordRequirement.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -84.5),
             self.passwordRequirement.heightAnchor.constraint(equalToConstant: 17)
             ])
     }
 
     private func activatePasswordRequirementCheckMarkConstraints() {
         NSLayoutConstraint.activate([
-            //self.passwordRequirementCheckMark.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 39.5),
-            self.passwordRequirementCheckMark.trailingAnchor.constraint(equalTo: self.passwordRequirement.trailingAnchor, constant: -22.5),
+            self.passwordRequirementCheckMark.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 32),
+            self.passwordRequirementCheckMark.trailingAnchor.constraint(equalTo: self.passwordRequirement.leadingAnchor, constant: -22.5),// cia
+            self.passwordRequirementCheckMark.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 97),
+            self.passwordRequirementCheckMark.heightAnchor.constraint(equalToConstant: 18)
             ])
     }
 
     private func activateCreateAccoutButtonConstraints() {
         NSLayoutConstraint.activate([
-            self.createAccoutButton.topAnchor.constraint(equalTo: self.passwordRequirement.bottomAnchor, constant: 32.0),
+            self.createAccoutButton.topAnchor.constraint(equalTo: self.passwordRequirement.bottomAnchor, constant: 32),
             self.createAccoutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 55.0),
             self.createAccoutButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -55.0),
-            self.createAccoutButton.heightAnchor.constraint(equalToConstant: 69.0)])
+            self.createAccoutButton.heightAnchor.constraint(equalToConstant: 69)])
     }
 
     private func activateDisclaimerConstraints() {
         NSLayoutConstraint.activate([
-            self.disclaimer.topAnchor.constraint(equalTo: self.createAccoutButton.bottomAnchor, constant: 32.0),
+            self.disclaimer.topAnchor.constraint(equalTo: self.createAccoutButton.bottomAnchor, constant: 32),
             self.disclaimer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 95.0),
             self.disclaimer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -95.0),
-            self.disclaimer.heightAnchor.constraint(equalToConstant: 69.0)])
+            self.disclaimer.heightAnchor.constraint(equalToConstant: 32)])
     }
 }
