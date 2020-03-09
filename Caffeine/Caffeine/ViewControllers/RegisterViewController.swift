@@ -23,7 +23,7 @@ class RegisterScreenController: UIViewController {
     lazy var disclaimer: UILabel = self.initDisclaimerLabelView()
     var registerViewModel = RegisterViewModel()
     var textFieldConnectFields = TextFieldConnectFields()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -81,9 +81,8 @@ extension RegisterScreenController {
         self.navigationController?.setViewControllers([newVC], animated: true)
     }
     @objc private func turnOnSecondRegisterScreen() {
-        if self.registerViewModel.checkForAllValidFields(self.fullNameField, self.userNameField, self.emailField, self.passwordField) == true {
+        if self.registerViewModel.checkForAllValidFields(fullNameField: self.fullNameField, userNameField: self.userNameField, emailField: self.emailField, passwordField: self.passwordField) == true {
             //TODO: navigate to next screen
-            print("success")
         }
     }
 }
@@ -91,7 +90,7 @@ extension RegisterScreenController {
 //MARK: Checking for valid input
 extension RegisterScreenController {
     @objc private func checkForInvalidInut(_ passwordInput: UITextField) {
-        self.registerViewModel.checkForValidPassword(passwordInput, self.passwordRequirementCheckMark)
+        self.registerViewModel.checkForValidPassword(passwordInput: passwordInput, passwordRequirementCheckMark: self.passwordRequirementCheckMark)
     }
     private func showAlertButtonTapped(_ sender: UIButton) {
         let alert = UIAlertController(title: "Klaida!", message: "Neteisingas El.paštas", preferredStyle: UIAlertController.Style.alert)

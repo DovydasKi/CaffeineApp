@@ -12,36 +12,40 @@ import UIKit
 
 class RegisterViewModel {
     var inputValidation = InputValidation()
-    
-    public func checkForValidPassword(_ passwordInput: UITextField, _ passwordRequirementCheckMark: UIImageView) {
-        if passwordInput.text!.count >= 5 {
+
+    public func checkForValidPassword(passwordInput: UITextField, passwordRequirementCheckMark: UIImageView) {
+        if inputValidation.checkForValidStringLenght(input: passwordInput, lenght: 5) {
             passwordRequirementCheckMark.backgroundColor = UIColor.green
         }
         else {
             passwordRequirementCheckMark.backgroundColor = UIColor.white
         }
     }
-    public func checkForAllValidFields(_ fullNameField: UITextField, _ userNameField: UITextField, _ emailField: UITextField, _ passwordField: UITextField) -> Bool{
-        //TODO: implement better validation
-        var allValid = 4
-        if self.inputValidation.checkForValidStringLenght(fullNameField, 5) == false || self.inputValidation.checkForValidStringRegularExpression(fullNameField, ".*[^A-Za-z0-9\\s].*") == false {
-            self.inputValidation.shakeIfInvalid(fullNameField)
-            allValid -= 1
+    public func checkForAllValidFields(fullNameField: UITextField, userNameField: UITextField, emailField: UITextField, passwordField: UITextField) -> Bool {
+
+        var fullNameIsValid = false
+        var userNameIsValid = false
+        var emailIsValid = false
+        var passwordIsValid = false
+
+        if !self.inputValidation.checkForValidStringLenght(input: fullNameField, lenght: 5) || !self.inputValidation.checkForValidStringRegularExpression(input: fullNameField, re: ".*[^A-Za-z0-9\\s].*") {
+            self.inputValidation.shakeIfInvalid(textField: fullNameField)
         }
-        if self.inputValidation.checkForValidStringLenght(userNameField, 5) == false || self.inputValidation.checkForValidStringRegularExpression(userNameField, ".*[^A-Za-z0-9].*") == false {
-            self.inputValidation.shakeIfInvalid(userNameField)
-            allValid -= 1
+        else { fullNameIsValid = true }
+        if !self.inputValidation.checkForValidStringLenght(input: userNameField, lenght: 5) || !self.inputValidation.checkForValidStringRegularExpression(input: userNameField, re: ".*[^A-Za-z0-9].*") {
+            self.inputValidation.shakeIfInvalid(textField: userNameField)
         }
-        if self.inputValidation.checkForValidEmailRegularExpression(emailField) == false {
-            self.inputValidation.shakeIfInvalid(emailField)
-            allValid -= 1
+        else { userNameIsValid = true }
+        if !self.inputValidation.checkForValidEmailRegularExpression(input: emailField) {
+            self.inputValidation.shakeIfInvalid(textField: emailField)
         }
-        if self.inputValidation.checkForValidStringLenght(passwordField, 5) == false {
+        else { emailIsValid = true }
+        if !self.inputValidation.checkForValidStringLenght(input: passwordField, lenght: 5) {
             passwordField.text = ""
-            self.inputValidation.shakeIfInvalid(passwordField)
-            allValid -= 1
+            self.inputValidation.shakeIfInvalid(textField: passwordField)
         }
-        else if allValid == 4 {
+        else { passwordIsValid = true }
+        if fullNameIsValid && userNameIsValid && emailIsValid && passwordIsValid {
             return true
         }
         return false

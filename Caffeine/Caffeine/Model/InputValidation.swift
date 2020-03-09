@@ -10,30 +10,34 @@ import Foundation
 import UIKit
 
 class InputValidation {
-    public func checkForEmptyTextField(_ input: UITextField) -> Bool {
-        if input.text!.trimmingCharacters(in: .whitespaces).isEmpty {
+
+    public func checkForValidEmailRegularExpression(input: UITextField) -> Bool {
+        guard let isValid = input.text?.isValidEmail else {
             return false
         }
-        return true
+        return isValid
     }
-    public func checkForValidEmailRegularExpression(_ input: UITextField) -> Bool {
-        return input.text!.isValidEmail
+    public func checkForValidStringRegularExpression(input: UITextField, re: String) -> Bool {
+
+        guard let text = input.text else { return true }
+        
+        if text.range(of: re, options: .regularExpression) != nil {
+            return false
+        }
+        else {
+            return true
+        }
     }
-    public func checkForValidStringRegularExpression(_ input: UITextField, _ re: String) -> Bool {
-        if input.text!.range(of: re, options: .regularExpression) != nil {
+
+    public func checkForValidStringLenght(input: UITextField, lenght: Int) -> Bool {
+        guard let text = input.text else { return true }
+        if text.count < lenght {
             return false
         }
         return true
     }
 
-    public func checkForValidStringLenght(_ input: UITextField, _ lenght: Int) -> Bool {
-        if input.text!.count < lenght {
-            return false
-        }
-        return true
-    }
-
-    public func shakeIfInvalid(_ textField: UITextField) {
+    public func shakeIfInvalid(textField: UITextField) {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.07
         animation.repeatCount = 3

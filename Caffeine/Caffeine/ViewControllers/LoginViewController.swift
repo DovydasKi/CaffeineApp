@@ -58,7 +58,6 @@ class LoginViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-
 }
 
 //MARK: Button actions
@@ -73,12 +72,10 @@ extension LoginViewController {
     }
 
     @objc private func turnOnHomeScreen() {
-        if self.wrongInputPromt != nil { // Dismiss the view from here
-            self.wrongInputPromt.removeFromSuperview()
-            self.timerForPromt.invalidate()
-        }
+        self.wrongInputPromt.removeFromSuperview()
+        self.timerForPromt.invalidate()
 
-        if self.loginViewModel.checkForAllValidFields(self.emailField, self.passwordField) == true {
+        if self.loginViewModel.checkForAllValidFields(emailField: self.emailField, passwordField: self.passwordField) == true {
             //TODO: navigate to next screen
             print("Yay")
         }
@@ -92,9 +89,7 @@ extension LoginViewController {
 
 extension LoginViewController {
     @objc private func dismissInvalidInputPromt() {
-        if self.wrongInputPromt != nil { // Dismiss the view from here
-            self.wrongInputPromt.removeFromSuperview()
-        }
+        self.wrongInputPromt.removeFromSuperview()
     }
 }
 
