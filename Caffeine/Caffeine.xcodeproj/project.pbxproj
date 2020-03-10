@@ -17,6 +17,11 @@
 		051D301424103F73002AF790 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F91118240F84C900B85B27 /* Rubik-Medium.ttf */; };
 		051D301524103F73002AF790 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F91112240F84C900B85B27 /* Rubik-MediumItalic.ttf */; };
 		051D301624103F73002AF790 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F9110F240F84C800B85B27 /* Rubik-Regular.ttf */; };
+		052B20462417B19800413048 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A671E963240D4FC200DF2577 /* Assets.xcassets */; };
+		052B20472417B2CA00413048 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053838282417AB130040FFDF /* NVActivityIndicatorView.framework */; };
+		052B20482417B2CA00413048 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 053838282417AB130040FFDF /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		052B204A24181D4700413048 /* CaffeineTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = A671E96D240D4FC200DF2577 /* CaffeineTests.xctest */; };
+		0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */; };
 		057023652413E8B90018A710 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023642413E8B90018A710 /* RegisterViewController.swift */; };
 		057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023662413F8300018A710 /* TextFieldConnectFields.swift */; };
 		057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023682413FA150018A710 /* RegisterVIewModel.swift */; };
@@ -30,7 +35,6 @@
 		A671E95D240D4FBF00DF2577 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A671E95C240D4FBF00DF2577 /* SceneDelegate.swift */; };
 		A671E95F240D4FBF00DF2577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A671E95E240D4FBF00DF2577 /* ViewController.swift */; };
 		A671E962240D4FBF00DF2577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A671E960240D4FBF00DF2577 /* Main.storyboard */; };
-		A671E964240D4FC200DF2577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A671E963240D4FC200DF2577 /* Assets.xcassets */; };
 		A671E967240D4FC200DF2577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A671E965240D4FC200DF2577 /* LaunchScreen.storyboard */; };
 		A671E972240D4FC200DF2577 /* CaffeineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A671E971240D4FC200DF2577 /* CaffeineTests.swift */; };
 		A6F4BF8B2416D18A005E55D9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */; };
@@ -47,7 +51,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		052B20492417B2CA00413048 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				052B20482417B2CA00413048 /* NVActivityIndicatorView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		053838282417AB130040FFDF /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewController.swift; sourceTree = "<group>"; };
 		057023642413E8B90018A710 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		057023662413F8300018A710 /* TextFieldConnectFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldConnectFields.swift; sourceTree = "<group>"; };
 		057023682413FA150018A710 /* RegisterVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVIewModel.swift; sourceTree = "<group>"; };
@@ -87,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052B20472417B2CA00413048 /* NVActivityIndicatorView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +128,7 @@
 				058E4B48240D638700D4C20A /* SplashScreenViewController.swift */,
 				A66FDD612411310300CFC5FB /* LoginViewController.swift */,
 				057023642413E8B90018A710 /* RegisterViewController.swift */,
+				0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */,
 				A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */,
 				A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */,
 			);
@@ -125,6 +147,7 @@
 		051D301D24104393002AF790 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				053838282417AB130040FFDF /* NVActivityIndicatorView.framework */,
 				A6F9110E240F84BB00B85B27 /* Fonts */,
 				A671E963240D4FC200DF2577 /* Assets.xcassets */,
 			);
@@ -229,6 +252,7 @@
 				A671E953240D4FBF00DF2577 /* Sources */,
 				A671E954240D4FBF00DF2577 /* Frameworks */,
 				A671E955240D4FBF00DF2577 /* Resources */,
+				052B20492417B2CA00413048 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -300,13 +324,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052B20462417B19800413048 /* Assets.xcassets in Resources */,
 				051D300E24103F73002AF790 /* Rubik-BlackItalic.ttf in Resources */,
 				051D301324103F73002AF790 /* Rubik-LightItalic.ttf in Resources */,
 				051D300F24103F73002AF790 /* Rubik-Bold.ttf in Resources */,
 				A671E967240D4FC200DF2577 /* LaunchScreen.storyboard in Resources */,
-				A671E964240D4FC200DF2577 /* Assets.xcassets in Resources */,
 				051D301224103F73002AF790 /* Rubik-Light.ttf in Resources */,
 				051D301124103F73002AF790 /* Rubik-Italic.ttf in Resources */,
+				052B204A24181D4700413048 /* CaffeineTests.xctest in Resources */,
 				051D301524103F73002AF790 /* Rubik-MediumItalic.ttf in Resources */,
 				051D300D24103F73002AF790 /* Rubik-Black.ttf in Resources */,
 				051D301024103F73002AF790 /* Rubik-BoldItalic.ttf in Resources */,
@@ -336,6 +361,7 @@
 				A671E95F240D4FBF00DF2577 /* ViewController.swift in Sources */,
 				057023652413E8B90018A710 /* RegisterViewController.swift in Sources */,
 				A6347E7524168A3100B1FC05 /* Margin.swift in Sources */,
+				0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */,
 				A671E95B240D4FBF00DF2577 /* AppDelegate.swift in Sources */,
 				057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */,
 				058E4B49240D638700D4C20A /* SplashScreenViewController.swift in Sources */,
@@ -504,6 +530,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Caffeine/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -521,6 +551,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Caffeine/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -51,8 +51,8 @@ extension MainScreenViewController {
 extension MainScreenViewController {
 
     private func initCaffeineLogo() -> UIImageView {
-        let image = UIImage(named: "bolt.png")
-        let imageView = UIImageView(image: image!)
+        let image = #imageLiteral(resourceName: "bolt")
+        let imageView = UIImageView(image: image)
         imageView.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
