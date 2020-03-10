@@ -75,8 +75,8 @@ extension LoginViewController {
         self.timerForPromt.invalidate()
 
         if self.loginViewModel.checkForAllValidFields(emailField: self.emailField, passwordField: self.passwordField) == true {
-            //TODO: navigate to next screen
-            print("Yay")
+            let homeScreenVC = HomeScreenViewController()
+            self.navigationController?.setViewControllers([homeScreenVC], animated: true)
         }
         else {
             self.view.addSubview(self.wrongInputPromt)
