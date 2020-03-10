@@ -32,7 +32,7 @@ class RegistrationConfirmationViewController: UIViewController, NVActivityIndica
         self.view.addSubview(self.activityIndicator)
         self.setActivityIndicatorConstraints(self.activityIndicator)
 
-        activityIndicator.startAnimating()
+        self.activityIndicator.startAnimating()
     }
 }
 

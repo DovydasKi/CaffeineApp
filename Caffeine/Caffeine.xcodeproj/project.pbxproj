@@ -20,6 +20,7 @@
 		052B20462417B19800413048 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A671E963240D4FC200DF2577 /* Assets.xcassets */; };
 		052B20472417B2CA00413048 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053838282417AB130040FFDF /* NVActivityIndicatorView.framework */; };
 		052B20482417B2CA00413048 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 053838282417AB130040FFDF /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		052B204A24181D4700413048 /* CaffeineTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = A671E96D240D4FC200DF2577 /* CaffeineTests.xctest */; };
 		0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */; };
 		057023652413E8B90018A710 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023642413E8B90018A710 /* RegisterViewController.swift */; };
 		057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023662413F8300018A710 /* TextFieldConnectFields.swift */; };
@@ -324,6 +325,7 @@
 				A671E967240D4FC200DF2577 /* LaunchScreen.storyboard in Resources */,
 				051D301224103F73002AF790 /* Rubik-Light.ttf in Resources */,
 				051D301124103F73002AF790 /* Rubik-Italic.ttf in Resources */,
+				052B204A24181D4700413048 /* CaffeineTests.xctest in Resources */,
 				051D301524103F73002AF790 /* Rubik-MediumItalic.ttf in Resources */,
 				051D300D24103F73002AF790 /* Rubik-Black.ttf in Resources */,
 				051D301024103F73002AF790 /* Rubik-BoldItalic.ttf in Resources */,
