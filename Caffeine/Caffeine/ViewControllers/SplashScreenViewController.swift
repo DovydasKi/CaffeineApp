@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class SplashScreenViewController: UIViewController {
     private lazy var caffeineLabel: UILabel = self.initCaffeineLabel("Caffeine")
     private lazy var caffeineLogo: UIImageView = self.initCaffeineLogo()

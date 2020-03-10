@@ -111,7 +111,7 @@ extension LoginViewController {
         textField.textColor = .white
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.font = UIFont.init(name: "Rubik-Black", size: 24.0)
+        textField.font = UIFont.init(name: "Rubik-Black", size: UIView.margin(of: [18, 20, 24]))
 
         let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         bottomBorder.backgroundColor = UIColor.white
@@ -131,7 +131,7 @@ extension LoginViewController {
         textField.textColor = .white
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.font = UIFont.init(name: "Rubik-Black", size: 24.0)
+        textField.font = UIFont.init(name: "Rubik-Black", size: UIView.margin(of: [18, 20, 24]))
 
         let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         bottomBorder.backgroundColor = UIColor.white
@@ -147,7 +147,7 @@ extension LoginViewController {
     private func dontHaveAccountTextLabelView() -> UILabel {
         let label = UILabel()
         label.text = "Neturite paskyros?\nUžsiregistruokite!"
-        label.font = UIFont(name: "Rubik-Medium", size: 18)
+        label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [14, 16, 18]))
         label.textColor = .white
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -162,7 +162,7 @@ extension LoginViewController {
     private func forgotPasswordTextLabelView() -> UILabel {
         let label = UILabel()
         label.text = "Pamiršote slaptažodį?"
-        label.font = UIFont(name: "Rubik-Medium", size: 18)
+        label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [14, 16, 18]))
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -180,7 +180,7 @@ extension LoginViewController {
         button.backgroundColor = .white
         button.setTitle("Prisijungti", for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
-        button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: 32)
+        button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [24, 28, 32]))
         button.addTarget(self, action: #selector(self.turnOnHomeScreen), for: .touchUpInside)
         return button
     }
@@ -189,14 +189,15 @@ extension LoginViewController {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "bolt")
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
         return imageView
     }
 
     private func wrongInputPromtLabelView() -> UILabel {
         let label = UILabel()
         label.text = "Neteisingas El.paštas arba slaptažodis"
-        label.font = UIFont(name: "Rubik-Medium", size: 14)
+        label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [10, 12, 14]))
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -205,7 +206,6 @@ extension LoginViewController {
 
     private func initTimerForPromt() -> Timer {
         var timer = Timer()
-
         timer = Timer.scheduledTimer(
             timeInterval: TimeInterval(3.0),
             target: self,
@@ -232,28 +232,31 @@ extension LoginViewController {
     private func activateArrowBackConstraints() {
         NSLayoutConstraint.activate([
             self.arrowBackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            self.arrowBackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0)])
+            self.arrowBackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0),
+            self.arrowBackView.heightAnchor.constraint(equalToConstant: 32)
+            ])
     }
 
     private func activateIconConstraints() {
         NSLayoutConstraint.activate([
+            self.icon.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             self.icon.topAnchor.constraint(equalTo: self.arrowBackView.bottomAnchor, constant: 20),
-            self.icon.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -180),
-            self.icon.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 180),
-            self.icon.heightAnchor.constraint(equalToConstant: 90)])
+            self.icon.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [42.0, 63.0, 84.0])),
+            self.icon.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -UIView.margin(of: [42.0, 63.0, 84.0])),
+            self.icon.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [146.5, 146.5, 146.5]))])
     }
 
     private func activateLoginTitleConstraints() {
         NSLayoutConstraint.activate([
-            self.loginTitle.topAnchor.constraint(equalTo: self.icon.bottomAnchor, constant: 42.0),
+            self.loginTitle.topAnchor.constraint(equalTo: self.icon.bottomAnchor, constant: UIView.margin(of: [5, 10, 20])),
             self.loginTitle.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            self.loginTitle.heightAnchor.constraint(equalToConstant: 47),
+            self.loginTitle.heightAnchor.constraint(equalToConstant: UIView.margin(of: [47, 47, 47])),
             self.loginTitle.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)])
     }
 
     private func activateEmailFieldConstraints() {
         NSLayoutConstraint.activate([
-            self.emailField.topAnchor.constraint(equalTo: self.loginTitle.bottomAnchor, constant: 130),
+            self.emailField.topAnchor.constraint(equalTo: self.loginTitle.bottomAnchor, constant: UIView.margin(of: [19.625, 39.25, 78.5])),
             self.emailField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
             self.emailField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
     }

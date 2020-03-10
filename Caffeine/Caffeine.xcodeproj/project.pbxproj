@@ -37,6 +37,8 @@
 		A671E962240D4FBF00DF2577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A671E960240D4FBF00DF2577 /* Main.storyboard */; };
 		A671E967240D4FC200DF2577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A671E965240D4FC200DF2577 /* LaunchScreen.storyboard */; };
 		A671E972240D4FC200DF2577 /* CaffeineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A671E971240D4FC200DF2577 /* CaffeineTests.swift */; };
+		A6F4BF8B2416D18A005E55D9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */; };
+		A6F4BF912416D74A005E55D9 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		A671E96D240D4FC200DF2577 /* CaffeineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaffeineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A671E971240D4FC200DF2577 /* CaffeineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaffeineTests.swift; sourceTree = "<group>"; };
 		A671E973240D4FC200DF2577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		A6F9110F240F84C800B85B27 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		A6F91110240F84C800B85B27 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		A6F91111240F84C800B85B27 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 				A66FDD612411310300CFC5FB /* LoginViewController.swift */,
 				057023642413E8B90018A710 /* RegisterViewController.swift */,
 				0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */,
+				A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */,
+				A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -360,8 +366,10 @@
 				057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */,
 				058E4B49240D638700D4C20A /* SplashScreenViewController.swift in Sources */,
 				057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */,
+				A6F4BF8B2416D18A005E55D9 /* TabBarViewController.swift in Sources */,
 				A671E95D240D4FBF00DF2577 /* SceneDelegate.swift in Sources */,
 				05C08F61241196EE004F2BFA /* LoginViewModel.swift in Sources */,
+				A6F4BF912416D74A005E55D9 /* HomeScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
