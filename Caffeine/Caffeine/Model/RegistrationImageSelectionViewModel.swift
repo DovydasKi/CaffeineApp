@@ -27,7 +27,6 @@ class RegistrationImageSelectionViewModel {
         return imageArray
     }
 
-
     private func setLockForSelectedImage(imageArray: inout [UIImageView: Bool], tappedImage: UIImageView) {
         for key in imageArray.keys { imageArray[key] = true }
         imageArray[tappedImage] = false
