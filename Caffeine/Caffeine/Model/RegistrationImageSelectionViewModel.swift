@@ -17,7 +17,7 @@ class RegistrationImageSelectionViewModel {
             if imageArray.contains(where: { $0.key.layer.shadowColor == UIColor.white.cgColor }) {
                 return imageArray
             }
-            setActiveShadow(imageView: tappedImage)
+            self.setActiveShadow(imageView: tappedImage)
             self.setLockForSelectedImage(imageArray: &imageArray, tappedImage: tappedImage)
         }
         else {
