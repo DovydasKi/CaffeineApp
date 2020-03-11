@@ -197,7 +197,6 @@ extension RegistrationImageSelectionViewController {
         stackView.addArrangedSubview(self.fifthProfileImage)
         stackView.addArrangedSubview(self.sixthProfileImage)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-
         return stackView
     }
 
@@ -208,9 +207,8 @@ extension RegistrationImageSelectionViewController {
         stackView.alignment = UIStackView.Alignment.center
         stackView.spacing = 16.0
         stackView.addArrangedSubview(self.profileImagesFirstRowStackView)
-        stackView.addArrangedSubview(self.initProfileImagesSecondRowStackView())
+        stackView.addArrangedSubview(self.profileImagesSecondRowStackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-
         return stackView
     }
 
@@ -220,7 +218,7 @@ extension RegistrationImageSelectionViewController {
         button.layer.cornerRadius = 34.5
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 0, height: 2)
-        button.layer.shadowRadius = 4 // blur
+        button.layer.shadowRadius = 4
         button.layer.shadowOpacity = 0.5
         button.backgroundColor = .white
         button.setTitle("Praleisti", for: .normal)

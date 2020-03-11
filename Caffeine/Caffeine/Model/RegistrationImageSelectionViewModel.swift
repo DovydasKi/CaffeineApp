@@ -34,7 +34,6 @@ class RegistrationImageSelectionViewModel {
 
     private func removeLockForSelectedImage(imageArray: inout [UIImageView: Bool], tappedImage: UIImageView) {
         for key in imageArray.keys { imageArray[key] = false }
-
     }
 
     func setShadow(imageView: UIImageView) {
