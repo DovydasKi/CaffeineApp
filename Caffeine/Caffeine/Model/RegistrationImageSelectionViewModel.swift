@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class RegistrationImageSelectionViewModel {
-
     public func chooseImage(imageArray: inout [UIImageView: Bool], tapGestureRecognizer: UITapGestureRecognizer) -> [UIImageView: Bool] {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
 
