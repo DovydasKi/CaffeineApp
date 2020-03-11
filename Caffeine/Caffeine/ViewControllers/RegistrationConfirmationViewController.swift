@@ -21,7 +21,7 @@ class RegistrationConfirmationViewController: UIViewController, NVActivityIndica
         navigationController?.navigationBar.isHidden = true
 
         self.view.addSubview(self.caffeineLogo)
-        self.setCaffeineLogoConstraints(caffeineLogo)
+        self.setCaffeineLogoConstraints(self.caffeineLogo)
 
         self.view.addSubview(self.caffeineLabel)
         self.setCaffeineLabelConstraints(self.caffeineLabel)
