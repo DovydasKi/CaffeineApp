@@ -10,27 +10,28 @@ import Foundation
 import UIKit
 
 class LoginViewController: UIViewController {
-    lazy var loginTitle: UILabel = self.initLoginTitleView()
-    lazy var emailField: UITextField = self.initLoginTextField()
-    lazy var passwordField: UITextField = self.initPasswordTextField()
-    lazy var dontHaveAccountTextLabel: UILabel = self.dontHaveAccountTextLabelView()
-    lazy var forgotPasswordTextLabel: UILabel = self.forgotPasswordTextLabelView()
-    lazy var loginButton: UIButton = self.initloginButton()
-    lazy var icon: UIImageView = self.initIcon()
-    lazy var arrowBackView: UIImageView = self.initArrowBackView()
-    lazy var wrongInputPromt: UILabel = self.wrongInputPromtLabelView()
-    lazy private var timerForPromt: Timer = self.initTimerForPromt()
+    private lazy var arrowBackView: UIImageView = self.initArrowBackView()
+    private lazy var caffeineLogo: UIImageView = self.initCaffeineLogo()
+    private lazy var loginTitle: UILabel = self.initLoginTitleView()
+    private lazy var emailField: UITextField = self.initLoginTextField()
+    private lazy var passwordField: UITextField = self.initPasswordTextField()
+    private lazy var dontHaveAccountTextLabel: UILabel = self.dontHaveAccountTextLabelView()
+    private lazy var forgotPasswordTextLabel: UILabel = self.forgotPasswordTextLabelView()
+    private lazy var loginButton: UIButton = self.initloginButton()
+    private lazy var wrongInputPromt: UILabel = self.wrongInputPromtLabelView()
+    private lazy var timerForPromt: Timer = self.initTimerForPromt()
     private var loginViewModel = LoginViewModel()
     private var textFieldConnectFields = TextFieldConnectFields()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = UIColor(named: "orangeMain")
+        navigationController?.navigationBar.isHidden = true
+        
         self.view.addSubview(self.arrowBackView)
         self.activateArrowBackConstraints()
 
-        self.view.addSubview(self.icon)
+        self.view.addSubview(self.caffeineLogo)
         self.activateIconConstraints()
 
         self.view.addSubview(self.loginTitle)
@@ -132,6 +133,8 @@ extension LoginViewController {
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.init(name: "Rubik-Black", size: UIView.margin(of: [18, 20, 24]))
+        textField.textContentType = .oneTimeCode
+        textField.isSecureTextEntry = true
 
         let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         bottomBorder.backgroundColor = UIColor.white
@@ -175,7 +178,7 @@ extension LoginViewController {
         button.layer.cornerRadius = 34.5
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 0, height: 2)
-        button.layer.shadowRadius = 4 // blur
+        button.layer.shadowRadius = 4
         button.layer.shadowOpacity = 0.5
         button.backgroundColor = .white
         button.setTitle("Prisijungti", for: .normal)
@@ -185,7 +188,7 @@ extension LoginViewController {
         return button
     }
 
-    private func initIcon() -> UIImageView {
+    private func initCaffeineLogo() -> UIImageView {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "bolt")
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -206,12 +209,7 @@ extension LoginViewController {
 
     private func initTimerForPromt() -> Timer {
         var timer = Timer()
-        timer = Timer.scheduledTimer(
-            timeInterval: TimeInterval(3.0),
-            target: self,
-            selector: #selector(dismissInvalidInputPromt),
-            userInfo: nil,
-            repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: TimeInterval(3.0), target: self, selector: #selector(dismissInvalidInputPromt), userInfo: nil, repeats: true)
         return timer
     }
 
@@ -239,16 +237,17 @@ extension LoginViewController {
 
     private func activateIconConstraints() {
         NSLayoutConstraint.activate([
-            self.icon.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            self.icon.topAnchor.constraint(equalTo: self.arrowBackView.bottomAnchor, constant: 20),
-            self.icon.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [42.0, 63.0, 84.0])),
-            self.icon.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -UIView.margin(of: [42.0, 63.0, 84.0])),
-            self.icon.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [146.5, 146.5, 146.5]))])
+            self.caffeineLogo.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            self.caffeineLogo.topAnchor.constraint(equalTo: self.arrowBackView.bottomAnchor, constant: 20),
+            self.caffeineLogo.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [42.0, 63.0, 84.0])),
+            self.caffeineLogo.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -UIView.margin(of: [42.0, 63.0, 84.0])),
+            self.caffeineLogo.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [146.5, 146.5, 146.5]))
+        ])
     }
 
     private func activateLoginTitleConstraints() {
         NSLayoutConstraint.activate([
-            self.loginTitle.topAnchor.constraint(equalTo: self.icon.bottomAnchor, constant: UIView.margin(of: [5, 10, 20])),
+            self.loginTitle.topAnchor.constraint(equalTo: self.caffeineLogo.bottomAnchor, constant: UIView.margin(of: [5, 10, 20])),
             self.loginTitle.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
             self.loginTitle.heightAnchor.constraint(equalToConstant: UIView.margin(of: [47, 47, 47])),
             self.loginTitle.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)])
@@ -258,21 +257,24 @@ extension LoginViewController {
         NSLayoutConstraint.activate([
             self.emailField.topAnchor.constraint(equalTo: self.loginTitle.bottomAnchor, constant: UIView.margin(of: [19.625, 39.25, 78.5])),
             self.emailField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
-            self.emailField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
+            self.emailField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)
+        ])
     }
 
     private func activateDontHaveAccounttextLabelConstraints() {
         NSLayoutConstraint.activate([
             self.dontHaveAccountTextLabel.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 40.0),
             self.dontHaveAccountTextLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
-            self.dontHaveAccountTextLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
+            self.dontHaveAccountTextLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)
+        ])
     }
 
     private func activateForgotPasswordConstraints() {
         NSLayoutConstraint.activate([
             self.forgotPasswordTextLabel.topAnchor.constraint(equalTo: self.dontHaveAccountTextLabel.bottomAnchor, constant: 32.0),
             self.forgotPasswordTextLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
-            self.forgotPasswordTextLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
+            self.forgotPasswordTextLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)
+        ])
     }
 
     private func activateLoginButtonConstraints() {
@@ -280,20 +282,23 @@ extension LoginViewController {
             self.loginButton.topAnchor.constraint(equalTo: self.forgotPasswordTextLabel.bottomAnchor, constant: 40.0),
             self.loginButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 55.0),
             self.loginButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -55.0),
-            self.loginButton.heightAnchor.constraint(equalToConstant: 69.0)])
+            self.loginButton.heightAnchor.constraint(equalToConstant: 69.0)
+        ])
     }
 
     private func activatePasswordFielConstraints() {
         NSLayoutConstraint.activate([
             self.passwordField.topAnchor.constraint(equalTo: self.emailField.bottomAnchor, constant: 50.0),
             self.passwordField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
-            self.passwordField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
+            self.passwordField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)
+        ])
     }
 
     private func activateWrongInputPromtLabelViewConstraints() {
         NSLayoutConstraint.activate([
             self.wrongInputPromt.topAnchor.constraint(equalTo: self.loginButton.bottomAnchor, constant: 32.0),
             self.wrongInputPromt.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
-            self.wrongInputPromt.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
+            self.wrongInputPromt.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)
+        ])
     }
 }

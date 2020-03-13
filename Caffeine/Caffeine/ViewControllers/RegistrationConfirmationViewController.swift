@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 
 class RegistrationConfirmationViewController: UIViewController, NVActivityIndicatorViewable {
     private lazy var caffeineLogo: UIImageView = self.initCaffeineLogo()
-    private lazy var caffeineLabel: UILabel = self.initCaffeineLabel("Caffeine")
+    private lazy var caffeineLabel: UILabel = self.initCaffeineLabel()
     private lazy var confirmationLabel: UILabel = self.initConfirmationLabel()
     private lazy var activityIndicator: NVActivityIndicatorView = self.initActivityIndicator()
 
@@ -31,8 +31,13 @@ class RegistrationConfirmationViewController: UIViewController, NVActivityIndica
 
         self.view.addSubview(self.activityIndicator)
         self.setActivityIndicatorConstraints(self.activityIndicator)
-
+        
         self.activityIndicator.startAnimating()
+        
+        let viewController = RegistrationImageSelectionViewController()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.navigationController?.setViewControllers([viewController], animated: true)
+        }
     }
 }
 
@@ -45,10 +50,10 @@ extension RegistrationConfirmationViewController {
         return imageView
     }
 
-    private func initCaffeineLabel(_ title: String) -> UILabel {
+    private func initCaffeineLabel() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Bold", size: 54)
-        label.text = title
+        label.text = "Caffeine"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -90,7 +95,7 @@ extension RegistrationConfirmationViewController {
             self.caffeineLogo.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.caffeineLogo.heightAnchor.constraint(equalToConstant: 90),
             self.caffeineLogo.widthAnchor.constraint(equalToConstant: 54)
-            ])
+        ])
     }
 
     private func setCaffeineLabelConstraints(_ caffeineLabel: UILabel) {
@@ -99,7 +104,7 @@ extension RegistrationConfirmationViewController {
             self.caffeineLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [14.5, 29.25, 58.5])),
             self.caffeineLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -UIView.margin(of: [14.5, 29.25, 58.5])),
             self.caffeineLabel.bottomAnchor.constraint(equalTo: self.caffeineLogo.bottomAnchor, constant: UIView.margin(of: [21, 55, 80.5]))
-            ])
+        ])
     }
 
     private func setConfirmationLabelConstraints(_ confirmationLabel: UILabel) {
@@ -108,7 +113,7 @@ extension RegistrationConfirmationViewController {
             self.confirmationLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [14.5, 29.25, 58.5])),
             self.confirmationLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -UIView.margin(of: [14.5, 29.25, 58.5])),
             self.confirmationLabel.bottomAnchor.constraint(equalTo: self.caffeineLabel.bottomAnchor, constant: UIView.margin(of: [57.75, 117.5, 215])) // cia
-            ])
+        ])
     }
 
     private func setActivityIndicatorConstraints(_ activityIndicator: NVActivityIndicatorView) {
@@ -117,6 +122,6 @@ extension RegistrationConfirmationViewController {
             self.activityIndicator.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -107),
             self.activityIndicator.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 107),
             self.activityIndicator.heightAnchor.constraint(equalToConstant: 200)
-            ])
+        ])
     }
 }

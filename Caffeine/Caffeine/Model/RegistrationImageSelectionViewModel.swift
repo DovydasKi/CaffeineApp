@@ -36,14 +36,14 @@ class RegistrationImageSelectionViewModel {
         for key in imageArray.keys { imageArray[key] = false }
     }
 
-    func setShadow(imageView: UIImageView) {
+    public func setShadow(imageView: UIImageView) {
         imageView.layer.shadowColor = UIColor.black.cgColor
         imageView.layer.shadowOffset = CGSize(width: 0, height: 2)
         imageView.layer.shadowRadius = 4
         imageView.layer.shadowOpacity = 0.5
     }
 
-    func setActiveShadow(imageView: UIImageView) {
+    public func setActiveShadow(imageView: UIImageView) {
         imageView.layer.shadowColor = UIColor.white.cgColor
         imageView.layer.shadowOffset = CGSize(width: 0, height: 0)
         imageView.layer.shadowRadius = 16

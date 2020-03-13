@@ -10,29 +10,29 @@ import Foundation
 import UIKit
 
 class RegisterScreenViewController: UIViewController {
-    lazy var arrowBackView: UIImageView = self.initArrowBackView()
-    lazy var icon: UIImageView = self.initIcon()
-    lazy var signUpTitle: UILabel = self.initSignUpTitleView()
-    lazy var fullNameField: UITextField = self.initFullNameTextField()
-    lazy var userNameField: UITextField = self.initUserNameTextField()
-    lazy var emailField: UITextField = self.initEmailTextField()
-    lazy var passwordField: UITextField = self.initPasswordTextField()
-    lazy var passwordRequirement: UILabel = self.initPasswordRequirementLabelView()
-    lazy var passwordRequirementCheckMark: UIImageView = self.initPasswordRequirementCheckMarkLabelView()
-    lazy var createAccoutButton: UIButton = self.initCreateAccoutButton()
-    lazy var disclaimer: UILabel = self.initDisclaimerLabelView()
+    private lazy var arrowBackView: UIImageView = self.initArrowBackView()
+    private lazy var caffeineLogo: UIImageView = self.initCaffeineLogo()
+    private lazy var signUpTitle: UILabel = self.initSignUpTitleView()
+    private lazy var fullNameField: UITextField = self.initFullNameTextField()
+    private lazy var userNameField: UITextField = self.initUserNameTextField()
+    private lazy var emailField: UITextField = self.initEmailTextField()
+    private lazy var passwordField: UITextField = self.initPasswordTextField()
+    private lazy var passwordRequirement: UILabel = self.initPasswordRequirementLabelView()
+    private lazy var passwordRequirementCheckMark: UIImageView = self.initPasswordRequirementCheckMarkLabelView()
+    private lazy var createAccoutButton: UIButton = self.initCreateAccoutButton()
+    private lazy var disclaimer: UILabel = self.initDisclaimerLabelView()
     private var registerViewModel = RegisterViewModel()
     private var textFieldConnectFields = TextFieldConnectFields()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = UIColor(named: "orangeMain")
-
+        navigationController?.navigationBar.isHidden = true
+        
         self.view.addSubview(self.arrowBackView)
         self.activateArrowBackConstraints()
 
-        self.view.addSubview(self.icon)
+        self.view.addSubview(self.caffeineLogo)
         self.activateIconConstraints()
 
         self.view.addSubview(self.signUpTitle)
@@ -131,7 +131,7 @@ extension RegisterScreenViewController {
         return imageView
     }
 
-    private func initIcon() -> UIImageView {
+    private func initCaffeineLogo() -> UIImageView {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "bolt")
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -218,7 +218,8 @@ extension RegisterScreenViewController {
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.init(name: "Rubik-Black", size: UIView.margin(of: [18, 20, 24]))
-
+        textField.textContentType = .oneTimeCode
+        textField.isSecureTextEntry = true
 
         let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         bottomBorder.backgroundColor = UIColor.white
@@ -292,48 +293,53 @@ extension RegisterScreenViewController {
 
     private func activateIconConstraints() {
         NSLayoutConstraint.activate([
-            self.icon.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            self.icon.topAnchor.constraint(equalTo: self.arrowBackView.bottomAnchor, constant: 20),
-            self.icon.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [42.0, 63.0, 84.0])),
-            self.icon.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -UIView.margin(of: [42.0, 63.0, 84.0])),
-           self.icon.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [146.5, 146.5, 146.5]))
+            self.caffeineLogo.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            self.caffeineLogo.topAnchor.constraint(equalTo: self.arrowBackView.bottomAnchor, constant: 20),
+            self.caffeineLogo.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [42.0, 63.0, 84.0])),
+            self.caffeineLogo.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -UIView.margin(of: [42.0, 63.0, 84.0])),
+           self.caffeineLogo.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [146.5, 146.5, 146.5]))
         ])
     }
 
     private func activateSignUpTitleConstraints() {
         NSLayoutConstraint.activate([
-            self.signUpTitle.topAnchor.constraint(equalTo: self.icon.bottomAnchor, constant: UIView.margin(of: [5, 10, 20])),
+            self.signUpTitle.topAnchor.constraint(equalTo: self.caffeineLogo.bottomAnchor, constant: UIView.margin(of: [5, 10, 20])),
             self.signUpTitle.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
             self.signUpTitle.heightAnchor.constraint(equalToConstant: UIView.margin(of: [47, 47, 47])),
-            self.signUpTitle.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)])
+            self.signUpTitle.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
+        ])
     }
 
     private func activateFullNameFieldConstraints() {
         NSLayoutConstraint.activate([
             self.fullNameField.topAnchor.constraint(equalTo: self.signUpTitle.bottomAnchor, constant: UIView.margin(of: [19.625, 39.25, 78.5])),
             self.fullNameField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
-            self.fullNameField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
+            self.fullNameField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)
+        ])
     }
 
     private func activateUserNameFieldConstraints() {
         NSLayoutConstraint.activate([
             self.userNameField.topAnchor.constraint(equalTo: self.fullNameField.bottomAnchor, constant: UIView.margin(of: [12.5, 25, 50])),
             self.userNameField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
-            self.userNameField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
+            self.userNameField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)
+        ])
     }
 
     private func activateEmailFieldConstraints() {
         NSLayoutConstraint.activate([
             self.emailField.topAnchor.constraint(equalTo: self.userNameField.bottomAnchor, constant: UIView.margin(of: [12.5, 25, 50])),
             self.emailField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
-            self.emailField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
+            self.emailField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)
+        ])
     }
 
     private func activatePasswordFieldConstraints() {
         NSLayoutConstraint.activate([
             self.passwordField.topAnchor.constraint(equalTo: self.emailField.bottomAnchor, constant: UIView.margin(of: [12.5, 25, 50])),
             self.passwordField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 64.0),
-            self.passwordField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)])
+            self.passwordField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -64.0)
+        ])
     }
 
     private func activatePasswordRequirementConstraints() {
@@ -342,7 +348,7 @@ extension RegisterScreenViewController {
             self.passwordRequirement.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 137.5),
             self.passwordRequirement.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -84.5),
             self.passwordRequirement.heightAnchor.constraint(equalToConstant: 17)
-            ])
+        ])
     }
 
     private func activatePasswordRequirementCheckMarkConstraints() {
@@ -351,7 +357,7 @@ extension RegisterScreenViewController {
             self.passwordRequirementCheckMark.trailingAnchor.constraint(equalTo: self.passwordRequirement.leadingAnchor, constant: -22.5),// cia
             self.passwordRequirementCheckMark.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 97),
             self.passwordRequirementCheckMark.heightAnchor.constraint(equalToConstant: 18)
-            ])
+        ])
     }
 
     private func activateCreateAccoutButtonConstraints() {
@@ -359,7 +365,8 @@ extension RegisterScreenViewController {
             self.createAccoutButton.topAnchor.constraint(equalTo: self.passwordRequirement.bottomAnchor, constant: 32),
             self.createAccoutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 55.0),
             self.createAccoutButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -55.0),
-            self.createAccoutButton.heightAnchor.constraint(equalToConstant: 69)])
+            self.createAccoutButton.heightAnchor.constraint(equalToConstant: 69)
+        ])
     }
 
     private func activateDisclaimerConstraints() {
@@ -367,6 +374,7 @@ extension RegisterScreenViewController {
             self.disclaimer.topAnchor.constraint(equalTo: self.createAccoutButton.bottomAnchor, constant: 32),
             self.disclaimer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 95.0),
             self.disclaimer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -95.0),
-            self.disclaimer.heightAnchor.constraint(equalToConstant: 32)])
+            self.disclaimer.heightAnchor.constraint(equalToConstant: 32)
+        ])
     }
 }

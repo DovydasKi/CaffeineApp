@@ -9,7 +9,7 @@
 import UIKit
 
 class SplashScreenViewController: UIViewController {
-    private lazy var caffeineLabel: UILabel = self.initCaffeineLabel("Caffeine")
+    private lazy var caffeineLabel: UILabel = self.initCaffeineLabel()
     private lazy var caffeineLogo: UIImageView = self.initCaffeineLogo()
 
     override func viewDidLoad() {
@@ -18,13 +18,12 @@ class SplashScreenViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
 
         self.view.addSubview(self.caffeineLogo)
-        self.setBoltImageConstraints(self.caffeineLogo)
+        self.setCaffeineLogoConstraints()
 
         self.view.addSubview(self.caffeineLabel)
-        self.setCaffeineLabelConstraints(self.caffeineLabel)
+        self.setCaffeineLabelConstraints()
         
-        //temp
-        let viewController = RegistrationImageSelectionViewController()
+        let viewController = MainScreenViewController()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.navigationController?.setViewControllers([viewController], animated: true)
         }
@@ -33,9 +32,9 @@ class SplashScreenViewController: UIViewController {
 
 //MARK: UI elements extension
 extension SplashScreenViewController {
-    private func initCaffeineLabel(_ title: String) -> UILabel {
+    private func initCaffeineLabel() -> UILabel {
         let label = UILabel()
-        label.text = title
+        label.text = "Caffeine"
         label.font = UIFont(name: "Rubik-Bold", size: 68)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -55,23 +54,24 @@ extension SplashScreenViewController {
 
 //MARK: Constraints extension
 extension SplashScreenViewController {
-
-    private func setCaffeineLabelConstraints(_ caffeineLabel: UILabel) {
+    private func setCaffeineLogoConstraints() {
         NSLayoutConstraint.activate([
-			caffeineLabel.topAnchor.constraint(equalTo: self.caffeineLogo.bottomAnchor, constant: UIView.margin(of: [40.0, 60.0, 80.0])),
-            caffeineLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            caffeineLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
-			caffeineLabel.heightAnchor.constraint(equalToConstant: UIView.margin(of: [40.0, 60.0, 80.0]))
+            self.caffeineLogo.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            self.caffeineLogo.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [48.5, 72.75, 97.0])),
+            self.caffeineLogo.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [42.0, 63.0, 84.0])),
+            self.caffeineLogo.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -UIView.margin(of: [42.0, 63.0, 84.0])),
+            self.caffeineLogo.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [177.0, 265.5, 354.0]))
+        ])
+    }
+    
+    private func setCaffeineLabelConstraints() {
+        NSLayoutConstraint.activate([
+            self.caffeineLabel.topAnchor.constraint(equalTo: self.caffeineLogo.bottomAnchor, constant: UIView.margin(of: [40.0, 60.0, 80.0])),
+            self.caffeineLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            self.caffeineLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+			self.caffeineLabel.heightAnchor.constraint(equalToConstant: UIView.margin(of: [40.0, 60.0, 80.0]))
 		])
     }
 
-    private func setBoltImageConstraints(_ imageView: UIImageView) {
-        NSLayoutConstraint.activate([
-            imageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [48.5, 72.75, 97.0])),
-            imageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [42.0, 63.0, 84.0])),
-            imageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -UIView.margin(of: [42.0, 63.0, 84.0])),
-			imageView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [177.0, 265.5, 354.0]))
-		])
-    }
+    
 }
