@@ -14,10 +14,9 @@ class HomeScreenViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		self.tabBar.tabBar.tintColor = UIColor(named: "orangeMain")
 		navigationController?.navigationBar.isHidden = true
 		self.view.addSubview(self.tabBar.view)
-		self.tabBar.tabBar.tintColor = UIColor(named: "orangeMain")
 		self.tabBar.tabBar.barTintColor = .white
 	}
 }

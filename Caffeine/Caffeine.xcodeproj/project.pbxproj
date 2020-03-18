@@ -20,6 +20,8 @@
 		052B20462417B19800413048 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A671E963240D4FC200DF2577 /* Assets.xcassets */; };
 		052B20472417B2CA00413048 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053838282417AB130040FFDF /* NVActivityIndicatorView.framework */; };
 		052B20482417B2CA00413048 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 053838282417AB130040FFDF /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		052B204C2419176300413048 /* RegistrationImageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052B204B2419176300413048 /* RegistrationImageSelectionViewController.swift */; };
+		052B204E24194FA800413048 /* RegistrationImageSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052B204D24194FA800413048 /* RegistrationImageSelectionViewModel.swift */; };
 		0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */; };
 		057023652413E8B90018A710 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023642413E8B90018A710 /* RegisterViewController.swift */; };
 		057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023662413F8300018A710 /* TextFieldConnectFields.swift */; };
@@ -69,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		052B204B2419176300413048 /* RegistrationImageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationImageSelectionViewController.swift; sourceTree = "<group>"; };
+		052B204D24194FA800413048 /* RegistrationImageSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationImageSelectionViewModel.swift; sourceTree = "<group>"; };
 		053838282417AB130040FFDF /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewController.swift; sourceTree = "<group>"; };
 		057023642413E8B90018A710 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 				A66FDD612411310300CFC5FB /* LoginViewController.swift */,
 				057023642413E8B90018A710 /* RegisterViewController.swift */,
 				0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */,
+				052B204B2419176300413048 /* RegistrationImageSelectionViewController.swift */,
 				A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */,
 				A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */,
 				A68C52452422624100B2AA53 /* PropertyCardViewController.swift */,
@@ -190,6 +195,7 @@
 				057023682413FA150018A710 /* RegisterVIewModel.swift */,
 				05CF83DD2414FBBD0031E356 /* InputValidation.swift */,
 				A68C5243241EBFEF00B2AA53 /* RestaurantsViewModel.swift */,
+				052B204D24194FA800413048 /* RegistrationImageSelectionViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -377,6 +383,7 @@
 				A68C52462422624100B2AA53 /* PropertyCardViewController.swift in Sources */,
 				05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */,
 				A66FDD622411310300CFC5FB /* LoginViewController.swift in Sources */,
+				052B204E24194FA800413048 /* RegistrationImageSelectionViewModel.swift in Sources */,
 				A656F3DC240FD84D0038AA7B /* MainScreenViewController.swift in Sources */,
 				A671E95F240D4FBF00DF2577 /* ViewController.swift in Sources */,
 				057023652413E8B90018A710 /* RegisterViewController.swift in Sources */,
@@ -389,6 +396,7 @@
 				058E4B49240D638700D4C20A /* SplashScreenViewController.swift in Sources */,
 				057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */,
 				A6F4BF8B2416D18A005E55D9 /* TabBarViewController.swift in Sources */,
+				052B204C2419176300413048 /* RegistrationImageSelectionViewController.swift in Sources */,
 				A671E95D240D4FBF00DF2577 /* SceneDelegate.swift in Sources */,
 				05C08F61241196EE004F2BFA /* LoginViewModel.swift in Sources */,
 				A6F4BF912416D74A005E55D9 /* HomeScreenViewController.swift in Sources */,

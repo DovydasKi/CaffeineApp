@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 class MainScreenViewController: UIViewController {
-    private lazy var caffeineLabel: UILabel = self.initCaffeineLabel("Caffeine")
+    private lazy var caffeineLabel: UILabel = self.initCaffeineLabel()
     private lazy var caffeineLogo: UIImageView = self.initCaffeineLogo()
-    private lazy var loginButton: UIButton = self.initLoginInButton("Prisijungti")
-    private lazy var getStartedButton: UIButton = self.initGetStartedButton("Registruotis")
+    private lazy var loginButton: UIButton = self.initLoginInButton()
+    private lazy var getStartedButton: UIButton = self.initGetStartedButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,16 +21,16 @@ class MainScreenViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
 
         self.view.addSubview(self.caffeineLogo)
-        self.setCaffeineLogoConstraints(self.caffeineLogo)
+        self.setCaffeineLogoConstraints()
 
         self.view.addSubview(self.caffeineLabel)
-        self.setCaffeineLabelConstraints(self.caffeineLabel)
+        self.setCaffeineLabelConstraints()
 
         self.view.addSubview(self.loginButton)
-        self.setLoginButtonConstraints(self.loginButton)
+        self.setLoginButtonConstraints()
 
         self.view.addSubview(self.getStartedButton)
-        self.setGetStartedButtonConstraints(self.getStartedButton)
+        self.setGetStartedButtonConstraints()
     }
 }
 
@@ -46,10 +46,8 @@ extension MainScreenViewController {
     }
 }
 
-
 //MARK: UI elements extension
 extension MainScreenViewController {
-
     private func initCaffeineLogo() -> UIImageView {
         let image = #imageLiteral(resourceName: "bolt")
         let imageView = UIImageView(image: image)
@@ -59,10 +57,10 @@ extension MainScreenViewController {
         return imageView
     }
 
-    private func initCaffeineLabel(_ title: String) -> UILabel {
+    private func initCaffeineLabel() -> UILabel {
         let label = UILabel()
 		label.font = UIFont(name: "Rubik-Bold", size: 54)
-        label.text = title
+        label.text = "Caffeine"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -70,23 +68,23 @@ extension MainScreenViewController {
         return label
     }
 
-    private func initLoginInButton(_ title: String) -> UIButton {
+    private func initLoginInButton() -> UIButton {
         let button: UIButton = UIButton()
         button.layer.cornerRadius = 34.5
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 0, height: 2)
-        button.layer.shadowRadius = 4 // blur
+        button.layer.shadowRadius = 4
         button.layer.shadowOpacity = 0.5
         button.backgroundColor = .white
 		button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(title, for: .normal)
+        button.setTitle("Prisijungti", for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: 32)
         button.addTarget(self, action: #selector(turnOnLoginScreen), for: .touchUpInside)
         return button
     }
 
-    private func initGetStartedButton(_ title: String) -> UIButton {
+    private func initGetStartedButton() -> UIButton {
 		let button: UIButton = UIButton()
         button.layer.cornerRadius = 34.5
         button.layer.shadowColor = UIColor.black.cgColor
@@ -95,7 +93,7 @@ extension MainScreenViewController {
         button.layer.shadowOpacity = 0.5
         button.backgroundColor = .white
 		button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(title, for: .normal)
+        button.setTitle("Registruotis", for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: 32)
         button.addTarget(self, action: #selector(turnOnRegisterScreen), for: .touchUpInside)
@@ -105,7 +103,7 @@ extension MainScreenViewController {
 
 //MARK: Constraints extension
 extension MainScreenViewController {
-    private func setCaffeineLogoConstraints(_ caffeineLogo: UIImageView) {
+    private func setCaffeineLogoConstraints() {
         NSLayoutConstraint.activate([
 				self.caffeineLogo.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
 				self.caffeineLogo.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [48.5, 72.75, 97.0])),
@@ -115,7 +113,7 @@ extension MainScreenViewController {
 		])
     }
 
-    private func setCaffeineLabelConstraints(_ caffeineLabel: UILabel) {
+    private func setCaffeineLabelConstraints() {
         NSLayoutConstraint.activate([
 			self.caffeineLabel.topAnchor.constraint(equalTo: self.caffeineLogo.bottomAnchor, constant: UIView.margin(of: [7.5, 13.25, 26.5])),
 			self.caffeineLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [14.5, 29.25, 58.5])),
@@ -124,7 +122,7 @@ extension MainScreenViewController {
 		])
     }
 
-    private func setLoginButtonConstraints(_ loginButton: UIButton) {
+    private func setLoginButtonConstraints() {
         NSLayoutConstraint.activate([
 			self.loginButton.heightAnchor.constraint(equalToConstant: 69),
 			self.loginButton.widthAnchor.constraint(equalToConstant: UIView.margin(of: [16, 152.0, 304.0])),
@@ -134,7 +132,7 @@ extension MainScreenViewController {
 		])
     }
 
-    private func setGetStartedButtonConstraints(_ getStartedButton: UIButton) {
+    private func setGetStartedButtonConstraints() {
         NSLayoutConstraint.activate([
 			self.getStartedButton.heightAnchor.constraint(equalToConstant: 69),
 			self.getStartedButton.widthAnchor.constraint(equalToConstant: UIView.margin(of: [16, 152.0, 304.0])),
