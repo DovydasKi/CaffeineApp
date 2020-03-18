@@ -237,7 +237,7 @@ extension RegistrationImageSelectionViewController {
             self.caffeineLogo.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.caffeineLogo.heightAnchor.constraint(equalToConstant: 90),
             self.caffeineLogo.widthAnchor.constraint(equalToConstant: 54)
-            ])
+        ])
     }
 
     private func setInfoLabelConstraints(_ infoLabel: UILabel) {
@@ -246,14 +246,14 @@ extension RegistrationImageSelectionViewController {
             self.infoLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.infoLabel.heightAnchor.constraint(equalToConstant: 76),
             self.infoLabel.widthAnchor.constraint(equalToConstant: 378)
-            ])
+        ])
     }
 
     private func setProfileImagesStackViewConstraints(_ profileImagesStackView: UIStackView) {
         NSLayoutConstraint.activate([
             self.profileImagesStackView.topAnchor.constraint(equalTo: self.infoLabel.bottomAnchor, constant: UIView.margin(of: [32, 32, 64])),
             self.profileImagesStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            ])
+        ])
     }
 
     private func setSkipButtonConstraints(_ skipButton: UIButton) {
@@ -262,7 +262,6 @@ extension RegistrationImageSelectionViewController {
             self.skipOrSelectButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.skipOrSelectButton.widthAnchor.constraint(equalToConstant: 304),
             self.skipOrSelectButton.heightAnchor.constraint(equalToConstant: 69)
-            ])
+        ])
     }
-
 }
