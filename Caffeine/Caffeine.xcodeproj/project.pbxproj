@@ -36,6 +36,10 @@
 		A671E962240D4FBF00DF2577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A671E960240D4FBF00DF2577 /* Main.storyboard */; };
 		A671E967240D4FC200DF2577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A671E965240D4FC200DF2577 /* LaunchScreen.storyboard */; };
 		A671E972240D4FC200DF2577 /* CaffeineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A671E971240D4FC200DF2577 /* CaffeineTests.swift */; };
+		A68C5244241EBFEF00B2AA53 /* RestaurantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C5243241EBFEF00B2AA53 /* RestaurantsViewModel.swift */; };
+		A68C52462422624100B2AA53 /* PropertyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C52452422624100B2AA53 /* PropertyCardViewController.swift */; };
+		A6A1CFFD2418E164002333CA /* RestaurantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A1CFFC2418E164002333CA /* RestaurantsViewController.swift */; };
+		A6A1D0002418E5F8002333CA /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A1CFFF2418E5F8002333CA /* NVActivityIndicatorView */; };
 		A6F4BF8B2416D18A005E55D9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */; };
 		A6F4BF912416D74A005E55D9 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +91,10 @@
 		A671E96D240D4FC200DF2577 /* CaffeineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaffeineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A671E971240D4FC200DF2577 /* CaffeineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaffeineTests.swift; sourceTree = "<group>"; };
 		A671E973240D4FC200DF2577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A68C5243241EBFEF00B2AA53 /* RestaurantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewModel.swift; sourceTree = "<group>"; };
+		A68C52452422624100B2AA53 /* PropertyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCardViewController.swift; sourceTree = "<group>"; };
+		A6A1CFFC2418E164002333CA /* RestaurantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewController.swift; sourceTree = "<group>"; };
+		A6A1CFFF2418E5F8002333CA /* NVActivityIndicatorView */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = NVActivityIndicatorView; path = Caffeine/Resources/NVActivityIndicatorView.framework/NVActivityIndicatorView; sourceTree = "<group>"; };
 		A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		A6F9110F240F84C800B85B27 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
@@ -106,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6A1D0002418E5F8002333CA /* NVActivityIndicatorView in Frameworks */,
 				052B20472417B2CA00413048 /* NVActivityIndicatorView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +132,7 @@
 		051D301724104067002AF790 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A6A1CFFC2418E164002333CA /* RestaurantsViewController.swift */,
 				A656F3DB240FD84D0038AA7B /* MainScreenViewController.swift */,
 				058E4B48240D638700D4C20A /* SplashScreenViewController.swift */,
 				A66FDD612411310300CFC5FB /* LoginViewController.swift */,
@@ -130,6 +140,7 @@
 				0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */,
 				A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */,
 				A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */,
+				A68C52452422624100B2AA53 /* PropertyCardViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -178,6 +189,7 @@
 				057023662413F8300018A710 /* TextFieldConnectFields.swift */,
 				057023682413FA150018A710 /* RegisterVIewModel.swift */,
 				05CF83DD2414FBBD0031E356 /* InputValidation.swift */,
+				A68C5243241EBFEF00B2AA53 /* RestaurantsViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +200,7 @@
 				A671E959240D4FBF00DF2577 /* Caffeine */,
 				A671E970240D4FC200DF2577 /* CaffeineTests */,
 				A671E958240D4FBF00DF2577 /* Products */,
+				A6A1CFFE2418E5D8002333CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -222,6 +235,14 @@
 				A671E973240D4FC200DF2577 /* Info.plist */,
 			);
 			path = CaffeineTests;
+			sourceTree = "<group>";
+		};
+		A6A1CFFE2418E5D8002333CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6A1CFFF2418E5F8002333CA /* NVActivityIndicatorView */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A6F9110E240F84BB00B85B27 /* Fonts */ = {
@@ -353,12 +374,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A68C52462422624100B2AA53 /* PropertyCardViewController.swift in Sources */,
 				05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */,
 				A66FDD622411310300CFC5FB /* LoginViewController.swift in Sources */,
 				A656F3DC240FD84D0038AA7B /* MainScreenViewController.swift in Sources */,
 				A671E95F240D4FBF00DF2577 /* ViewController.swift in Sources */,
 				057023652413E8B90018A710 /* RegisterViewController.swift in Sources */,
+				A6A1CFFD2418E164002333CA /* RestaurantsViewController.swift in Sources */,
 				A6347E7524168A3100B1FC05 /* Margin.swift in Sources */,
+				A68C5244241EBFEF00B2AA53 /* RestaurantsViewModel.swift in Sources */,
 				0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */,
 				A671E95B240D4FBF00DF2577 /* AppDelegate.swift in Sources */,
 				057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */,
@@ -528,14 +552,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Caffeine/Resources",
 				);
 				INFOPLIST_FILE = "Caffeine/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Caffeine/Resources/NVActivityIndicatorView.framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CAF.Caffeine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -549,14 +579,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Caffeine/Resources",
 				);
 				INFOPLIST_FILE = "Caffeine/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Caffeine/Resources/NVActivityIndicatorView.framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CAF.Caffeine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
