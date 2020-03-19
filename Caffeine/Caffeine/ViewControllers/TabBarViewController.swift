@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class TabBarViewController: UITabBarController {
-	
 	enum TabView: Int {
 		case myProfile, reservation, restaurants
 	}
@@ -18,7 +17,7 @@ class TabBarViewController: UITabBarController {
 	private var contentViewControllers: [UIViewController] = []
 	
 	private lazy var profileViewController: UIViewController = {
-		let viewController = LoginViewController()
+		let viewController = ProfileReservationViewController()
 		let title = "Profilis"
 		viewController.title = title
 		
