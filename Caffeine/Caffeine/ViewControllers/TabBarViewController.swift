@@ -32,7 +32,7 @@ class TabBarViewController: UITabBarController {
 	}()
 	
 	private lazy var restaurantMapViewController: UIViewController = {
-		let viewController = RegisterScreenViewController()
+		let viewController = RestaurantsViewController()
 		let title = "Kavinės"
 		viewController.title = title
 		
