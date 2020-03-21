@@ -24,10 +24,8 @@ class CafeDrinkMenuViewController: UIViewController {
     private lazy var searchBar: UISearchBar = self.initSearchBar()
     private lazy var titleLabel: UILabel = self.initTitleLabel()
     private lazy var coffeeArray: [Coffee] = initCoffeeArray()
-    private lazy var firstColumnCoffeeStackView: [UIStackView] = initNthColumnCoffeeStackView(coffeArray: self.coffeeArray, sizeOfCoffeArray: self.coffeeArray.count, numberOfColumns: 2, isFirstColumn: true)
-    private lazy var secondColumnCoffeeStackView: [UIStackView] = initNthColumnCoffeeStackView(coffeArray: self.coffeeArray, sizeOfCoffeArray: self.coffeeArray.count, numberOfColumns: 2, isFirstColumn: false)
-    private lazy var firstColumnStackView: UIStackView = initFirstColumnStackView()
-    private lazy var secondColumnStackView: UIStackView = initSecondColumnStackView()
+    private lazy var firstColumnCoffeeStackView: UIStackView = initNthColumnCoffeeStackView(coffeArray: self.coffeeArray, sizeOfCoffeArray: self.coffeeArray.count, numberOfColumns: 2, isFirstColumn: true)
+    private lazy var secondColumnCoffeeStackView: UIStackView = initNthColumnCoffeeStackView(coffeArray: self.coffeeArray, sizeOfCoffeArray: self.coffeeArray.count, numberOfColumns: 2, isFirstColumn: false)
     private lazy var imageStackView: UIStackView = initImageStackView()
 
     override func viewDidLoad() {
@@ -40,31 +38,24 @@ class CafeDrinkMenuViewController: UIViewController {
         
         self.view.addSubview(titleLabel)
         self.activateTitleLabelConstraints()
-
-
+        
         for item in coffeeArray {
             self.view.addSubview(item.imageView!)
             self.view.addSubview(item.label!)
         }
-
-        for firstStackViewItem in firstColumnCoffeeStackView {
-            self.view.addSubview(firstStackViewItem)
-        }
-
-        for secondStackViewItem in secondColumnCoffeeStackView {
-            self.view.addSubview(secondStackViewItem)
-        }
-
+        
+        self.view.addSubview(self.firstColumnCoffeeStackView)
+        self.view.addSubview(self.secondColumnCoffeeStackView)
+        
         self.view.addSubview(self.imageStackView)
         self.setImageStackViewConstraints()
-
-
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
 }
 
+//MARK: UI elements extension
 extension CafeDrinkMenuViewController {
     private func initSearchBar() -> UISearchBar {
         let searchBar = UISearchBar()
@@ -73,8 +64,8 @@ extension CafeDrinkMenuViewController {
         searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Ieškoti")
         searchBar[keyPath: \.searchTextField].font = UIFont(name: "Rubik-Medium", size: 17)
         searchBar[keyPath: \.searchTextField].textColor = UIColor(named: "mainOrange")
-
         searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.searchBarStyle = .minimal
         return searchBar
     }
     
@@ -127,63 +118,29 @@ extension CafeDrinkMenuViewController {
         return coffeeArray
     }
 
-    private func initNthColumnCoffeeStackView(coffeArray: [Coffee], sizeOfCoffeArray: Int, numberOfColumns: Int, isFirstColumn: Bool) -> [UIStackView] {
-        var stackView = [UIStackView]()
-
-        for _ in 1...sizeOfCoffeArray / numberOfColumns {
-            stackView.append(UIStackView())
-        }
-
-        for stackViewItem in stackView {
-            stackViewItem.axis = NSLayoutConstraint.Axis.vertical
-            stackViewItem.distribution = UIStackView.Distribution.equalSpacing
-            stackViewItem.alignment = UIStackView.Alignment.center
-            stackViewItem.spacing = 4
-            if isFirstColumn {
-                for coffeeItem in coffeeArray {
-                    guard let imageView = coffeeItem.imageView else { return stackView }
-                    guard let label = coffeeItem.label else { return stackView }
-                    stackViewItem.addArrangedSubview(imageView)
-                    stackViewItem.addArrangedSubview(label)
-                }
-            }
-            else {
-                for index in sizeOfCoffeArray / 2...sizeOfCoffeArray - 1 {
-                    guard let imageView = coffeArray[index].imageView else { return stackView }
-                    guard let label = coffeArray[index].label else { return stackView }
-                    stackViewItem.addArrangedSubview(imageView)
-                    stackViewItem.addArrangedSubview(label)
-                }
-            }
-
-        }
-       
-        return stackView
-    }
-
-    private func initFirstColumnStackView () -> UIStackView {
+    private func initNthColumnCoffeeStackView(coffeArray: [Coffee], sizeOfCoffeArray: Int, numberOfColumns: Int, isFirstColumn: Bool) -> UIStackView {
         let stackView = UIStackView()
+        
         stackView.axis = NSLayoutConstraint.Axis.vertical
         stackView.distribution = UIStackView.Distribution.equalSpacing
         stackView.alignment = UIStackView.Alignment.center
-        stackView.spacing = 48
-        stackView.addArrangedSubview(self.firstColumnCoffeeStackView[0])
-        stackView.addArrangedSubview(self.firstColumnCoffeeStackView[1])
-        stackView.addArrangedSubview(self.firstColumnCoffeeStackView[2])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }
-
-    private func initSecondColumnStackView () -> UIStackView {
-        let stackView = UIStackView()
-        stackView.axis = NSLayoutConstraint.Axis.vertical
-        stackView.distribution = UIStackView.Distribution.equalSpacing
-        stackView.alignment = UIStackView.Alignment.center
-        stackView.spacing = 48
-        stackView.addArrangedSubview(self.secondColumnCoffeeStackView[0])
-        stackView.addArrangedSubview(self.secondColumnCoffeeStackView[1])
-        stackView.addArrangedSubview(self.secondColumnCoffeeStackView[2])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 8
+        if isFirstColumn {
+            for coffeeItem in coffeeArray {
+                guard let imageView = coffeeItem.imageView else { return stackView }
+                guard let label = coffeeItem.label else { return stackView }
+                stackView.addArrangedSubview(imageView)
+                stackView.addArrangedSubview(label)
+            }
+        }
+        else {
+            for index in sizeOfCoffeArray / 2...sizeOfCoffeArray - 1 {
+                guard let imageView = coffeArray[index].imageView else { return stackView }
+                guard let label = coffeArray[index].label else { return stackView }
+                stackView.addArrangedSubview(imageView)
+                stackView.addArrangedSubview(label)
+            }
+        }
         return stackView
     }
 
@@ -192,15 +149,14 @@ extension CafeDrinkMenuViewController {
         stackView.axis = NSLayoutConstraint.Axis.horizontal
         stackView.distribution = UIStackView.Distribution.equalSpacing
         stackView.alignment = UIStackView.Alignment.center
-        stackView.spacing = 16
-        stackView.addArrangedSubview(self.firstColumnStackView)
-        stackView.addArrangedSubview(self.secondColumnStackView)
+        stackView.addArrangedSubview(self.firstColumnCoffeeStackView)
+        stackView.addArrangedSubview(self.secondColumnCoffeeStackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }
-
 }
 
+//MARK: Constraints extension
 extension CafeDrinkMenuViewController {
     private func activateSearchBarConstraints() {
         NSLayoutConstraint.activate([
@@ -216,14 +172,12 @@ extension CafeDrinkMenuViewController {
             self.titleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
             ])
     }
-    
 
     private func setImageStackViewConstraints() {
         NSLayoutConstraint.activate([
             self.imageStackView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 32),
-            self.imageStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            self.imageStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
+            self.imageStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.imageStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20)
             ])
     }
-
 }
