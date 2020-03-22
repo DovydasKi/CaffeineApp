@@ -10,12 +10,13 @@ import Foundation
 import UIKit
 import MapKit
 
-class RestaurantsViewController: UIViewController, MKMapViewDelegate {
+class RestaurantsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 	private lazy var headerView: UIStackView = self.initHeaderView()
 	private lazy var titleLabel: UILabel = self.initTitleLabel()
 	private lazy var mapView: MKMapView = self.initMapView()
 	private lazy var mapViewCoordinates: [MKPointAnnotation] = self.initMapPoints()
 	let viewModel: RestaurantsViewModel = RestaurantsViewModel()
+	fileprivate let locationManager: CLLocationManager = CLLocationManager()
 	var initialStatusBarStyle : UIStatusBarStyle?
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -31,6 +32,20 @@ class RestaurantsViewController: UIViewController, MKMapViewDelegate {
 		self.view.addSubview(self.mapView)
 		self.mapView.delegate = self
 		
+		locationManager.requestAlwaysAuthorization()
+		locationManager.requestWhenInUseAuthorization()
+		if CLLocationManager.locationServicesEnabled() {
+			locationManager.delegate = self
+			locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+			locationManager.startUpdatingLocation()
+		}
+		
+		self.mapView.showsUserLocation = true
+				let regionRadius: CLLocationDistance = 5200
+		let coordinates = CLLocationCoordinate2D(latitude: 54.724288, longitude: 25.333273)
+				let coordinateRegion = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+		self.mapView.setRegion(coordinateRegion, animated: true)
+		
 		self.stackViewConstraints()
 		self.titleLabelConstraints()
 		self.mapViewConstraints()
@@ -44,6 +59,11 @@ class RestaurantsViewController: UIViewController, MKMapViewDelegate {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		UIApplication.shared.setStatusBarStyle(.darkContent, animated: animated)
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+		print("locations = \(locValue.latitude) \(locValue.longitude)")
 	}
 }
 
@@ -69,10 +89,6 @@ extension RestaurantsViewController {
 	private func initMapView() -> MKMapView {
 		let mapView = MKMapView()
 		mapView.translatesAutoresizingMaskIntoConstraints = false
-		let regionRadius: CLLocationDistance = 5200
-		let coordinates = CLLocationCoordinate2D(latitude: 54.696229, longitude: 25.277008)
-		let coordinateRegion = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-		mapView.setRegion(coordinateRegion, animated: true)
 		mapView.addAnnotations(self.mapViewCoordinates)
 		return mapView
 	}
