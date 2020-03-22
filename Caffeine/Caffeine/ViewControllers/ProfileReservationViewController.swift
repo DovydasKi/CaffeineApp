@@ -136,7 +136,7 @@ extension ProfileReservationViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.contentMode = .scaleAspectFit
-        let tap = UITapGestureRecognizer(target: self, action: #selector(turnOnInformationScreen))
+		let tap = UITapGestureRecognizer(target: self, action: #selector(self.turnOnInformationScreen))
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(tap)
         return label

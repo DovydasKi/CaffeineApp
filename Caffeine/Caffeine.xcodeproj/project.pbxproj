@@ -109,6 +109,7 @@
 		A68C52452422624100B2AA53 /* PropertyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCardViewController.swift; sourceTree = "<group>"; };
 		A6A1CFFC2418E164002333CA /* RestaurantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewController.swift; sourceTree = "<group>"; };
 		A6A1CFFF2418E5F8002333CA /* NVActivityIndicatorView */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = NVActivityIndicatorView; path = Caffeine/Resources/NVActivityIndicatorView.framework/NVActivityIndicatorView; sourceTree = "<group>"; };
+		A6AF0A462427DD7500D5D563 /* sauletekis.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = sauletekis.gpx; path = ../../sauletekis.gpx; sourceTree = "<group>"; };
 		A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		A6F9110F240F84C800B85B27 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 		A671E94E240D4FBF00DF2577 = {
 			isa = PBXGroup;
 			children = (
+				A6AF0A462427DD7500D5D563 /* sauletekis.gpx */,
 				A671E959240D4FBF00DF2577 /* Caffeine */,
 				A671E970240D4FC200DF2577 /* CaffeineTests */,
 				A671E958240D4FBF00DF2577 /* Products */,
