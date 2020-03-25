@@ -19,14 +19,18 @@ class Coffee {
     }
 }
 
+private class MyTapGesture: UITapGestureRecognizer {
+    var labelText: String?
+}
+
 class CafeDrinkMenuViewController: UIViewController {
 
     private lazy var searchBar: UISearchBar = self.initSearchBar()
     private lazy var titleLabel: UILabel = self.initTitleLabel()
-    private lazy var coffeeArray: [Coffee] = initCoffeeArray()
+    private lazy var coffeeArray: [Coffee] = self.initCoffeeArray()
     private lazy var firstColumnCoffeeStackView: UIStackView = initNthColumnCoffeeStackView(coffeArray: self.coffeeArray, sizeOfCoffeArray: self.coffeeArray.count, numberOfColumns: 2, isFirstColumn: true)
     private lazy var secondColumnCoffeeStackView: UIStackView = initNthColumnCoffeeStackView(coffeArray: self.coffeeArray, sizeOfCoffeArray: self.coffeeArray.count, numberOfColumns: 2, isFirstColumn: false)
-    private lazy var imageStackView: UIStackView = initImageStackView()
+    private lazy var imageStackView: UIStackView = self.initImageStackView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,23 +39,83 @@ class CafeDrinkMenuViewController: UIViewController {
 
         self.view.addSubview(self.searchBar)
         self.activateSearchBarConstraints()
-        
+
         self.view.addSubview(titleLabel)
         self.activateTitleLabelConstraints()
-        
+
         for item in coffeeArray {
             self.view.addSubview(item.imageView!)
             self.view.addSubview(item.label!)
         }
-        
+
         self.view.addSubview(self.firstColumnCoffeeStackView)
         self.view.addSubview(self.secondColumnCoffeeStackView)
-        
+
         self.view.addSubview(self.imageStackView)
         self.setImageStackViewConstraints()
+        self.setTapGesturesForCoffeeImageView(coffeeArray: self.coffeeArray)
+
     }
+
+    private func setTapGesturesForCoffeeImageView (coffeeArray: [Coffee]) {
+        var tapArray = [MyTapGesture]()
+
+        for _ in 0...coffeeArray.count - 1 {
+            tapArray.append(MyTapGesture.init(target: self, action: #selector(turnOnSelectedScreen)))
+        }
+
+        for index in 0...coffeeArray.count - 1 {
+            coffeeArray[index].imageView?.isUserInteractionEnabled = true
+            coffeeArray[index].imageView?.addGestureRecognizer(tapArray[index])
+            tapArray[index].labelText = (coffeeArray[index].label?.text)
+
+        }
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+
+}
+
+extension CafeDrinkMenuViewController {
+    @objc private func turnOnSelectedScreen(recognizer: MyTapGesture) {
+        guard let labelText = recognizer.labelText else { return }
+        let nextDetailedViewController = DetailedCoffeeViewController()
+        switch labelText {
+        case "Cappuccino":
+            nextDetailedViewController.modalPresentationStyle = .automatic
+            nextDetailedViewController.modalTransitionStyle = .coverVertical
+            nextDetailedViewController.imageName = labelText
+            self.present(nextDetailedViewController, animated: true, completion: nil)
+        case "Latte":
+            nextDetailedViewController.modalPresentationStyle = .automatic
+            nextDetailedViewController.modalTransitionStyle = .coverVertical
+            nextDetailedViewController.imageName = labelText
+            self.present(nextDetailedViewController, animated: true, completion: nil)
+        case "Black Coffee":
+            nextDetailedViewController.modalPresentationStyle = .automatic
+            nextDetailedViewController.modalTransitionStyle = .coverVertical
+            nextDetailedViewController.imageName = labelText
+            self.present(nextDetailedViewController, animated: true, completion: nil)
+        case "White Coffee":
+            nextDetailedViewController.modalPresentationStyle = .automatic
+            nextDetailedViewController.modalTransitionStyle = .coverVertical
+            nextDetailedViewController.imageName = labelText
+            self.present(nextDetailedViewController, animated: true, completion: nil)
+        case "Mocha":
+            nextDetailedViewController.modalPresentationStyle = .automatic
+            nextDetailedViewController.modalTransitionStyle = .coverVertical
+            nextDetailedViewController.imageName = labelText
+            self.present(nextDetailedViewController, animated: true, completion: nil)
+        case "Flat White":
+            nextDetailedViewController.modalPresentationStyle = .automatic
+            nextDetailedViewController.modalTransitionStyle = .coverVertical
+            nextDetailedViewController.imageName = labelText
+            self.present(nextDetailedViewController, animated: true, completion: nil)
+        default:
+            return
+        }
     }
 }
 
@@ -68,7 +132,7 @@ extension CafeDrinkMenuViewController {
         searchBar.searchBarStyle = .minimal
         return searchBar
     }
-    
+
     private func initTitleLabel() -> UILabel {
         let titleLabel = UILabel()
         titleLabel.text = "CAFFEINE"
@@ -83,17 +147,15 @@ extension CafeDrinkMenuViewController {
     private func initCoffeeArray() -> [Coffee] {
         var coffeeArray = [Coffee]()
 
-        for _ in 1...6 {
-            coffeeArray.append(Coffee(imageView: UIImageView(), label: UILabel()))
-        }
+        for _ in 0...5 { coffeeArray.append(Coffee(imageView: UIImageView(), label: UILabel())) }
 
         coffeeArray[0].imageView?.image = #imageLiteral(resourceName: "cappuccino")
         coffeeArray[0].label?.text = "Cappuccino"
         coffeeArray[1].imageView?.image = #imageLiteral(resourceName: "latte")
         coffeeArray[1].label?.text = "Latte"
-        coffeeArray[2].imageView?.image = #imageLiteral(resourceName: "dark")
+        coffeeArray[2].imageView?.image = #imageLiteral(resourceName: "blackCoffee")
         coffeeArray[2].label?.text = "Black Coffee"
-        coffeeArray[3].imageView?.image = #imageLiteral(resourceName: "white")
+        coffeeArray[3].imageView?.image = #imageLiteral(resourceName: "whiteCoffee")
         coffeeArray[3].label?.text = "White Coffee"
         coffeeArray[4].imageView?.image = #imageLiteral(resourceName: "mocha")
         coffeeArray[4].label?.text = "Mocha"
@@ -114,13 +176,12 @@ extension CafeDrinkMenuViewController {
             item.imageView?.heightAnchor.constraint(equalToConstant: 116).isActive = true
             item.imageView?.widthAnchor.constraint(equalToConstant: 174).isActive = true
         }
-
         return coffeeArray
     }
 
     private func initNthColumnCoffeeStackView(coffeArray: [Coffee], sizeOfCoffeArray: Int, numberOfColumns: Int, isFirstColumn: Bool) -> UIStackView {
         let stackView = UIStackView()
-        
+
         stackView.axis = NSLayoutConstraint.Axis.vertical
         stackView.distribution = UIStackView.Distribution.equalSpacing
         stackView.alignment = UIStackView.Alignment.center
@@ -165,7 +226,7 @@ extension CafeDrinkMenuViewController {
             self.searchBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
             ])
     }
-    
+
     private func activateTitleLabelConstraints() {
         NSLayoutConstraint.activate([
             self.titleLabel.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor, constant: 16),
