@@ -17,7 +17,7 @@ extension UIView {
 			return size
 		}
 	}
-	
+
 	static func margin(of sizes: [CGFloat], orientation: NSLayoutConstraint.Axis = .horizontal) -> CGFloat {
 		let screenSize = UIScreen.main.bounds.size
 		switch orientation {
