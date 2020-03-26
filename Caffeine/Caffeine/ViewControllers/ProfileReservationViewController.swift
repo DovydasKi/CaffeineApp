@@ -82,8 +82,7 @@ extension ProfileReservationViewController: UITableViewDelegate, UITableViewData
 extension ProfileReservationViewController {
     @objc private func turnOnInformationScreen() {
         let newVC = ProfileInformationViewController()
-        self.navigationController?.setViewControllers([newVC], animated: true)
-        //TODO: change animation
+        self.navigationController?.pushViewController(newVC, animated: true)
     }
 }
 
@@ -147,7 +146,7 @@ extension ProfileReservationViewController {
         stackView.axis = NSLayoutConstraint.Axis.horizontal
         stackView.distribution = UIStackView.Distribution.equalSpacing
         stackView.alignment = UIStackView.Alignment.center
-        stackView.spacing = 128
+        stackView.spacing = 64
         stackView.addArrangedSubview(self.reservationButton)
         stackView.addArrangedSubview(self.informationButton)
         stackView.translatesAutoresizingMaskIntoConstraints = false
