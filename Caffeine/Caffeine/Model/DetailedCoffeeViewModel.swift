@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class DetailedCoffeeViewModel {
-    
     public func setPriceForSelectedCoffee(imageView: UIImageView, cupSizesArray: inout [UIImageView], cupSizesDict: inout [UIImageView:Bool], imageName: String, priceTagLabel: inout UILabel) {
     
         guard let selectedImage = cupSizesDict.first(where: { $0.value == true })?.key else {return}
@@ -115,6 +114,7 @@ class DetailedCoffeeViewModel {
         }
         return ""
     }
+    
     private func convertStringToDouble(string: String) -> Double {
         return  NSString(format: "%.1", string).doubleValue
     }

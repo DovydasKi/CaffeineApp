@@ -46,7 +46,7 @@ class CafeDrinkMenuViewController: UIViewController {
             self.view.addSubview(item.imageView!)
             self.view.addSubview(item.label!)
         }
-
+        
         self.view.addSubview(self.firstColumnCoffeeStackView)
         self.view.addSubview(self.secondColumnCoffeeStackView)
 

@@ -117,6 +117,7 @@ extension DetailedCoffeeViewController {
 
         self.detailedCoffeeViewModel.setPriceForSelectedCoffee(imageView: imageView, cupSizesArray: &self.cupSizesArray, cupSizesDict: &self.cupSizesDict, imageName: imageName, priceTagLabel: &self.priceTagLabel)
     }
+    
     @objc private func backToPreviousScreen() {
         dismiss(animated: true, completion: nil)
     }
