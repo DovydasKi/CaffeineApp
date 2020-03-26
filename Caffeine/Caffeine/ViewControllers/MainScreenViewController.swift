@@ -32,6 +32,16 @@ class MainScreenViewController: UIViewController {
         self.view.addSubview(self.getStartedButton)
         self.setGetStartedButtonConstraints()
     }
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		UIApplication.shared.setStatusBarStyle(.default, animated: animated)
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		UIApplication.shared.setStatusBarStyle(.lightContent, animated: animated)
+	}
 }
 
 extension MainScreenViewController {

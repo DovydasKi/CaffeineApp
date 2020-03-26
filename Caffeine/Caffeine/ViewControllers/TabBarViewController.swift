@@ -47,7 +47,7 @@ class TabBarViewController: UITabBarController {
 	}()
 	
 	private lazy var reservationViewController: UIViewController = {
-		let viewController = LoginViewController()
+		let viewController = ReservationTypeViewController()
 		let title = "Rezervacija"
 		viewController.title = title
 		
