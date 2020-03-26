@@ -23,7 +23,7 @@ class SplashScreenViewController: UIViewController {
         self.view.addSubview(self.caffeineLabel)
         self.setCaffeineLabelConstraints()
         
-        let viewController = CafeDrinkMenuViewController()
+        let viewController = MainScreenViewController()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.navigationController?.setViewControllers([viewController], animated: true)
         }
