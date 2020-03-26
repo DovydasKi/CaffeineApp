@@ -19,10 +19,6 @@ class RestaurantsViewController: UIViewController, MKMapViewDelegate, CLLocation
 	fileprivate let locationManager: CLLocationManager = CLLocationManager()
 	var initialStatusBarStyle : UIStatusBarStyle?
 	
-	override var preferredStatusBarStyle: UIStatusBarStyle {
-		return .darkContent
-	}
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.navigationController?.navigationBar.isHidden = true
