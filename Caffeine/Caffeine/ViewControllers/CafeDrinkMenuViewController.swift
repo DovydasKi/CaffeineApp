@@ -24,7 +24,6 @@ private class MyTapGesture: UITapGestureRecognizer {
 }
 
 class CafeDrinkMenuViewController: UIViewController {
-
     private lazy var searchBar: UISearchBar = self.initSearchBar()
     private lazy var titleLabel: UILabel = self.initTitleLabel()
     private lazy var coffeeArray: [Coffee] = self.initCoffeeArray()
@@ -54,9 +53,16 @@ class CafeDrinkMenuViewController: UIViewController {
         self.view.addSubview(self.imageStackView)
         self.setImageStackViewConstraints()
         self.setTapGesturesForCoffeeImageView(coffeeArray: self.coffeeArray)
-
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
+}
+
+//MARK: Helper functions
+extension CafeDrinkMenuViewController {
     private func setTapGesturesForCoffeeImageView (coffeeArray: [Coffee]) {
         var tapArray = [MyTapGesture]()
 
@@ -68,16 +74,11 @@ class CafeDrinkMenuViewController: UIViewController {
             coffeeArray[index].imageView?.isUserInteractionEnabled = true
             coffeeArray[index].imageView?.addGestureRecognizer(tapArray[index])
             tapArray[index].labelText = (coffeeArray[index].label?.text)
-
         }
     }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-
 }
 
+//MARK: Button actions
 extension CafeDrinkMenuViewController {
     @objc private func turnOnSelectedScreen(recognizer: MyTapGesture) {
         guard let labelText = recognizer.labelText else { return }

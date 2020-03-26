@@ -21,7 +21,9 @@ class DetailedCoffeeViewController: UIViewController {
     private lazy var cupSizesArray: [UIImageView] = self.initCupSizesArray()
     private lazy var cupSizesDict: [UIImageView: Bool] = self.initCupSizesDict()
     private lazy var cupSizesStackView: UIStackView = self.initCupSizesStackView()
+    private lazy var descriptionTextView: UITextView = self.initDescriptionTextView()
     private var detailedCoffeeViewModel = DetailedCoffeeViewModel()
+    private lazy var cancelButton: UIButton = self.initCancelButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,6 @@ class DetailedCoffeeViewController: UIViewController {
         guard let imageName = self.imageName else { return }
 
         self.coffeeImage.image = UIImage(named: imageName.replacingOccurrences(of: " ", with: "").firstLowercased)
-        print(imageName.replacingOccurrences(of: " ", with: "").firstLowercased)
         self.view.addSubview(self.coffeeImage)
         self.activateCoffeeImageConstraints()
 
@@ -51,6 +52,13 @@ class DetailedCoffeeViewController: UIViewController {
         self.setPriceTag(imageView: self.coffeeImage, priceTagLabel: self.priceTagLabel)
 
         self.priceTagLabel.text = self.detailedCoffeeViewModel.setDefaultPrice(imageName: imageName, priceTagLabel: self.priceTagLabel)
+
+        self.view.addSubview(self.descriptionTextView)
+
+        self.setDescriptionTextViewConstraints()
+
+        self.view.addSubview(self.cancelButton)
+        self.setLogoutButtonConstraints()
     }
 }
 
@@ -59,15 +67,21 @@ extension StringProtocol {
     var firstLowercased: String { prefix(1).lowercased() + dropFirst() }
 }
 
+extension UITextView {
+    func adjustUITextViewHeight() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.sizeToFit()
+        self.isScrollEnabled = false
+    }
+}
+//MARK: Helper functions
 extension DetailedCoffeeViewController {
     private func setPriceTag(imageView: UIImageView, priceTagLabel: UILabel) {
         imageView.addSubview(priceTagLabel)
         priceTagLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -16).isActive = true
-        //priceTagLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 5).isActive = true
         priceTagLabel.rightAnchor.constraint(equalTo: imageView.rightAnchor, constant: -16).isActive = true
         priceTagLabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
         priceTagLabel.widthAnchor.constraint(equalToConstant: 128).isActive = true
-
     }
 
     private func initCupSizesDict() -> [UIImageView: Bool] {
@@ -93,14 +107,19 @@ extension DetailedCoffeeViewController {
             tapArray[index].imageView = (cupSizesArray[index])
         }
     }
+}
 
+//MARK: Button actions
+extension DetailedCoffeeViewController {
     @objc private func coffeeTapped(tapGestureRecognizer: MyTapGesture) {
         guard let imageView = tapGestureRecognizer.imageView else { return }
         guard let imageName = self.imageName else { return }
 
         self.detailedCoffeeViewModel.setPriceForSelectedCoffee(imageView: imageView, cupSizesArray: &self.cupSizesArray, cupSizesDict: &self.cupSizesDict, imageName: imageName, priceTagLabel: &self.priceTagLabel)
     }
-
+    @objc private func backToPreviousScreen() {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 //MARK: UI elements extension
@@ -110,7 +129,6 @@ extension DetailedCoffeeViewController {
         imageView.layer.cornerRadius = 12.5
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }
@@ -156,18 +174,53 @@ extension DetailedCoffeeViewController {
 
         return cupSizesImageViewArray
     }
+
     private func initCupSizesStackView () -> UIStackView {
         let stackView = UIStackView()
         stackView.axis = NSLayoutConstraint.Axis.horizontal
         stackView.distribution = UIStackView.Distribution.equalSpacing
         stackView.alignment = UIStackView.Alignment.center
         stackView.spacing = 16
+
         for index in 0...self.cupSizesArray.count - 1 {
             stackView.addArrangedSubview(self.cupSizesArray[index])
         }
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
+    }
+
+    private func initDescriptionTextView () -> UITextView {
+        let textView = UITextView()
+        textView.text = "Etiopijos ūkininkų užauginama šalies kava buvo griežtai registruojama ir eksportuojama keletu pavadinimu – Yirgacheffe, Sidamo, Harar regionų vardais. \nTokie išskirtiniai derliai buvo atsekami pagal tikslius vietovardžius ir ūkininkų pavardes"
+        textView.font = UIFont(name: "Rubik-Medium", size: 16)
+        textView.textAlignment = .justified
+        textView.textColor = UIColor(named: "orangeMain")
+        textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        textView.layer.cornerRadius = textView.frame.size.height / 2
+        textView.clipsToBounds = false
+        textView.layer.cornerRadius = 12.5
+        textView.layer.shadowOpacity = 0.4
+        textView.layer.shadowRadius = 4
+        textView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        textView.adjustUITextViewHeight()
+        return textView
+    }
+
+    private func initCancelButton() -> UIButton {
+        let button: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 304, height: 42))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 34.5
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowRadius = 4
+        button.layer.shadowOpacity = 0.5
+        button.backgroundColor = UIColor(named: "orangeMain")
+        button.setTitle("Atšaukti", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [20, 22, 24]))
+        button.addTarget(self, action: #selector(self.backToPreviousScreen), for: .touchUpInside)
+        return button
     }
 }
 
@@ -193,7 +246,23 @@ extension DetailedCoffeeViewController {
         NSLayoutConstraint.activate([
             self.cupSizesStackView.topAnchor.constraint(equalTo: self.coffeeLabel.bottomAnchor, constant: 16),
             self.cupSizesStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-            //self.cupSizesStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20)
+            ])
+    }
+
+    private func setDescriptionTextViewConstraints() {
+        NSLayoutConstraint.activate([
+            self.descriptionTextView.topAnchor.constraint(equalTo: self.cupSizesStackView.bottomAnchor, constant: 16),
+            self.descriptionTextView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            self.descriptionTextView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
+            ])
+    }
+
+    private func setLogoutButtonConstraints() {
+        NSLayoutConstraint.activate([
+            self.cancelButton.topAnchor.constraint(equalTo: self.descriptionTextView.bottomAnchor, constant: 64),
+            self.cancelButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.cancelButton.widthAnchor.constraint(equalToConstant: 254),
+            self.cancelButton.heightAnchor.constraint(equalToConstant: 69)
             ])
     }
 }
