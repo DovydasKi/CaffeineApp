@@ -21,8 +21,8 @@ class RegisterViewModel {
             passwordRequirementCheckMark.backgroundColor = UIColor.white
         }
     }
+    
     public func checkForAllValidFields(fullNameField: UITextField, userNameField: UITextField, emailField: UITextField, passwordField: UITextField) -> Bool {
-
         var fullNameIsValid = false
         var userNameIsValid = false
         var emailIsValid = false

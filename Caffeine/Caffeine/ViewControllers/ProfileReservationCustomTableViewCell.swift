@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 
 class ProfileReservationCustomTableViewCell: UITableViewCell {
-    private lazy var shadowProperty = Shadow()
     lazy var backView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white
-        self.shadowProperty.setShadow(view: view)
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 4
+        view.layer.shadowOpacity = 0.5
         return view
     }()
 
@@ -56,8 +58,6 @@ class ProfileReservationCustomTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-
 
     override func awakeFromNib() {
         super.awakeFromNib()

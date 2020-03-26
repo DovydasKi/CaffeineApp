@@ -12,7 +12,6 @@ import UIKit
 class RegistrationImageSelectionViewModel {
     public func chooseImage(imageArray: inout [UIImageView: Bool], tapGestureRecognizer: UITapGestureRecognizer) -> [UIImageView: Bool] {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
-
         if imageArray.contains(where: { $0.value == false }) && tappedImage.layer.shadowColor == UIColor.black.cgColor {
             if imageArray.contains(where: { $0.key.layer.shadowColor == UIColor.white.cgColor }) {
                 return imageArray

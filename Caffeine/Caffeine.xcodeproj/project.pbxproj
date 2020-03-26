@@ -25,13 +25,15 @@
 		052BE05D242A5F080005B822 /* DetailedCoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BE05C242A5F070005B822 /* DetailedCoffeeViewController.swift */; };
 		0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */; };
 		054BD2EB242BB77800A767EF /* DetailedCoffeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */; };
+		054BD2EE242D117900A767EF /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 054BD2EC242D105100A767EF /* Hero.framework */; };
+		054BD2EF242D117900A767EF /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 054BD2EC242D105100A767EF /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		054BD2F1242D23D900A767EF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD2F0242D23D900A767EF /* StringExtension.swift */; };
 		057023652413E8B90018A710 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023642413E8B90018A710 /* RegisterViewController.swift */; };
 		057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023662413F8300018A710 /* TextFieldConnectFields.swift */; };
 		057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023682413FA150018A710 /* RegisterVIewModel.swift */; };
 		0585AA7B24223C1300FDF884 /* ProfileInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0585AA7A24223C1300FDF884 /* ProfileInformationViewController.swift */; };
 		058E4B49240D638700D4C20A /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058E4B48240D638700D4C20A /* SplashScreenViewController.swift */; };
 		05C08F61241196EE004F2BFA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C08F60241196EE004F2BFA /* LoginViewModel.swift */; };
-		05C1C21324229E8800ED0AD0 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C21224229E8800ED0AD0 /* Shadow.swift */; };
 		05C1C2152422A37300ED0AD0 /* ProfileReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C2142422A37300ED0AD0 /* ProfileReservationViewController.swift */; };
 		05C1C2172422A3F500ED0AD0 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C2162422A3F500ED0AD0 /* ProfileViewModel.swift */; };
 		05C1C2192423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */; };
@@ -71,6 +73,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				054BD2EF242D117900A767EF /* Hero.framework in Embed Frameworks */,
 				052B20482417B2CA00413048 /* NVActivityIndicatorView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -85,13 +88,14 @@
 		053838282417AB130040FFDF /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewController.swift; sourceTree = "<group>"; };
 		054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCoffeeViewModel.swift; sourceTree = "<group>"; };
+		054BD2EC242D105100A767EF /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hero.framework; sourceTree = "<group>"; };
+		054BD2F0242D23D900A767EF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		057023642413E8B90018A710 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		057023662413F8300018A710 /* TextFieldConnectFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldConnectFields.swift; sourceTree = "<group>"; };
 		057023682413FA150018A710 /* RegisterVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVIewModel.swift; sourceTree = "<group>"; };
 		0585AA7A24223C1300FDF884 /* ProfileInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationViewController.swift; sourceTree = "<group>"; };
 		058E4B48240D638700D4C20A /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		05C08F60241196EE004F2BFA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		05C1C21224229E8800ED0AD0 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		05C1C2142422A37300ED0AD0 /* ProfileReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReservationViewController.swift; sourceTree = "<group>"; };
 		05C1C2162422A3F500ED0AD0 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReservationCustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			files = (
 				A6A1D0002418E5F8002333CA /* NVActivityIndicatorView in Frameworks */,
 				052B20472417B2CA00413048 /* NVActivityIndicatorView.framework in Frameworks */,
+				054BD2EE242D117900A767EF /* Hero.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +189,7 @@
 		051D301D24104393002AF790 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				054BD2EC242D105100A767EF /* Hero.framework */,
 				053838282417AB130040FFDF /* NVActivityIndicatorView.framework */,
 				A6F9110E240F84BB00B85B27 /* Fonts */,
 				A671E963240D4FC200DF2577 /* Assets.xcassets */,
@@ -204,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				A6347E7424168A3100B1FC05 /* Margin.swift */,
+				054BD2F0242D23D900A767EF /* StringExtension.swift */,
 			);
 			name = Extensions;
 			path = ../Extensions;
@@ -218,7 +225,6 @@
 				05CF83DD2414FBBD0031E356 /* InputValidation.swift */,
 				A68C5243241EBFEF00B2AA53 /* RestaurantsViewModel.swift */,
 				052B204D24194FA800413048 /* RegistrationImageSelectionViewModel.swift */,
-				05C1C21224229E8800ED0AD0 /* Shadow.swift */,
 				05C1C2162422A3F500ED0AD0 /* ProfileViewModel.swift */,
 				054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */,
 			);
@@ -406,7 +412,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05C1C21324229E8800ED0AD0 /* Shadow.swift in Sources */,
 				A68C52462422624100B2AA53 /* PropertyCardViewController.swift in Sources */,
 				05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */,
 				A66FDD622411310300CFC5FB /* LoginViewController.swift in Sources */,
@@ -415,6 +420,7 @@
 				A656F3DC240FD84D0038AA7B /* MainScreenViewController.swift in Sources */,
 				A671E95F240D4FBF00DF2577 /* ViewController.swift in Sources */,
 				054BD2EB242BB77800A767EF /* DetailedCoffeeViewModel.swift in Sources */,
+				054BD2F1242D23D900A767EF /* StringExtension.swift in Sources */,
 				05C1C2172422A3F500ED0AD0 /* ProfileViewModel.swift in Sources */,
 				057023652413E8B90018A710 /* RegisterViewController.swift in Sources */,
 				0585AA7B24223C1300FDF884 /* ProfileInformationViewController.swift in Sources */,

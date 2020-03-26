@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Hero
 
 
 class UserModal {
@@ -32,11 +33,10 @@ class ProfileReservationViewController: UIViewController {
     private lazy var reservationButton: UILabel = self.initReservationButton()
     private lazy var informationButton: UILabel = self.initInformationButton()
     private lazy var menuBarStackView: UIStackView = self.initMenuBarStackView()
-    private lazy var shadowProperty = Shadow()
     private lazy var tableViewScrollView: UIScrollView = self.intiTableViewScrollView()
     private lazy var tableView: UITableView = self.initTableView()
     private lazy var userArr = [UserModal]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -82,6 +82,8 @@ extension ProfileReservationViewController: UITableViewDelegate, UITableViewData
 extension ProfileReservationViewController {
     @objc private func turnOnInformationScreen() {
         let newVC = ProfileInformationViewController()
+        self.navigationController?.hero.isEnabled = true
+        self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .right), dismissing: .slide(direction: .left))
         self.navigationController?.pushViewController(newVC, animated: true)
     }
 }
@@ -92,7 +94,10 @@ extension ProfileReservationViewController {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "profileImage6")
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        self.shadowProperty.setShadow(view: imageView)
+        imageView.layer.shadowColor = UIColor.black.cgColor
+        imageView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        imageView.layer.shadowRadius = 4
+        imageView.layer.shadowOpacity = 0.5
         return imageView
     }
 
@@ -172,8 +177,7 @@ extension ProfileReservationViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
 
         self.tableView.register(ProfileReservationCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.title = "User List"
-
+       
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage6"), name: "Daniel", meetupPurpose: "Pokalbiai apie viską.", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "restaurant"), name: " ", meetupPurpose: " ", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage3"), name: "Dovydas", meetupPurpose: " ", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))

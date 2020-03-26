@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Hero
 
 class ProfileInformationViewController: UIViewController {
     private lazy var profilePicture: UIImageView = self.initProfilePicture()
@@ -26,7 +27,6 @@ class ProfileInformationViewController: UIViewController {
     private lazy var passwordStackView: UIStackView = self.initPasswordStackView()
     private lazy var informationStackView: UIStackView = self.initInformationStackView()
     private lazy var logoutButton: UIButton = self.initLogoutButton()
-    private lazy var shadowProperty = Shadow()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,10 @@ extension ProfileInformationViewController {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "profileImage6")
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        self.shadowProperty.setShadow(view: imageView)
+        imageView.layer.shadowColor = UIColor.black.cgColor
+        imageView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        imageView.layer.shadowRadius = 4
+        imageView.layer.shadowOpacity = 0.5
         return imageView
     }
     private func initFullNameLabel() -> UILabel {
