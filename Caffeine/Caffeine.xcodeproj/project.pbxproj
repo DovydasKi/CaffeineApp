@@ -22,7 +22,9 @@
 		052B20482417B2CA00413048 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 053838282417AB130040FFDF /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		052B204C2419176300413048 /* RegistrationImageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052B204B2419176300413048 /* RegistrationImageSelectionViewController.swift */; };
 		052B204E24194FA800413048 /* RegistrationImageSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052B204D24194FA800413048 /* RegistrationImageSelectionViewModel.swift */; };
+		052BE05D242A5F080005B822 /* DetailedCoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BE05C242A5F070005B822 /* DetailedCoffeeViewController.swift */; };
 		0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */; };
+		054BD2EB242BB77800A767EF /* DetailedCoffeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */; };
 		057023652413E8B90018A710 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023642413E8B90018A710 /* RegisterViewController.swift */; };
 		057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023662413F8300018A710 /* TextFieldConnectFields.swift */; };
 		057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023682413FA150018A710 /* RegisterVIewModel.swift */; };
@@ -34,6 +36,7 @@
 		05C1C2172422A3F500ED0AD0 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C2162422A3F500ED0AD0 /* ProfileViewModel.swift */; };
 		05C1C2192423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */; };
 		05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF83DD2414FBBD0031E356 /* InputValidation.swift */; };
+		05E3BDFC24252811004C85C4 /* CafeDrinkMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3BDFB24252810004C85C4 /* CafeDrinkMenuViewController.swift */; };
 		A6347E7524168A3100B1FC05 /* Margin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6347E7424168A3100B1FC05 /* Margin.swift */; };
 		A656F3DC240FD84D0038AA7B /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656F3DB240FD84D0038AA7B /* MainScreenViewController.swift */; };
 		A66FDD622411310300CFC5FB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FDD612411310300CFC5FB /* LoginViewController.swift */; };
@@ -78,8 +81,10 @@
 /* Begin PBXFileReference section */
 		052B204B2419176300413048 /* RegistrationImageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationImageSelectionViewController.swift; sourceTree = "<group>"; };
 		052B204D24194FA800413048 /* RegistrationImageSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationImageSelectionViewModel.swift; sourceTree = "<group>"; };
+		052BE05C242A5F070005B822 /* DetailedCoffeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCoffeeViewController.swift; sourceTree = "<group>"; };
 		053838282417AB130040FFDF /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewController.swift; sourceTree = "<group>"; };
+		054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCoffeeViewModel.swift; sourceTree = "<group>"; };
 		057023642413E8B90018A710 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		057023662413F8300018A710 /* TextFieldConnectFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldConnectFields.swift; sourceTree = "<group>"; };
 		057023682413FA150018A710 /* RegisterVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVIewModel.swift; sourceTree = "<group>"; };
@@ -91,6 +96,7 @@
 		05C1C2162422A3F500ED0AD0 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReservationCustomTableViewCell.swift; sourceTree = "<group>"; };
 		05CF83DD2414FBBD0031E356 /* InputValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidation.swift; sourceTree = "<group>"; };
+		05E3BDFB24252810004C85C4 /* CafeDrinkMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeDrinkMenuViewController.swift; sourceTree = "<group>"; };
 		A6347E7424168A3100B1FC05 /* Margin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Margin.swift; sourceTree = "<group>"; };
 		A656F3DB240FD84D0038AA7B /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		A66FDD612411310300CFC5FB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +166,8 @@
 				05C1C2142422A37300ED0AD0 /* ProfileReservationViewController.swift */,
 				05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */,
 				A68C52452422624100B2AA53 /* PropertyCardViewController.swift */,
+				05E3BDFB24252810004C85C4 /* CafeDrinkMenuViewController.swift */,
+				052BE05C242A5F070005B822 /* DetailedCoffeeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -212,6 +220,7 @@
 				052B204D24194FA800413048 /* RegistrationImageSelectionViewModel.swift */,
 				05C1C21224229E8800ED0AD0 /* Shadow.swift */,
 				05C1C2162422A3F500ED0AD0 /* ProfileViewModel.swift */,
+				054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,9 +410,11 @@
 				A68C52462422624100B2AA53 /* PropertyCardViewController.swift in Sources */,
 				05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */,
 				A66FDD622411310300CFC5FB /* LoginViewController.swift in Sources */,
+				052BE05D242A5F080005B822 /* DetailedCoffeeViewController.swift in Sources */,
 				052B204E24194FA800413048 /* RegistrationImageSelectionViewModel.swift in Sources */,
 				A656F3DC240FD84D0038AA7B /* MainScreenViewController.swift in Sources */,
 				A671E95F240D4FBF00DF2577 /* ViewController.swift in Sources */,
+				054BD2EB242BB77800A767EF /* DetailedCoffeeViewModel.swift in Sources */,
 				05C1C2172422A3F500ED0AD0 /* ProfileViewModel.swift in Sources */,
 				057023652413E8B90018A710 /* RegisterViewController.swift in Sources */,
 				0585AA7B24223C1300FDF884 /* ProfileInformationViewController.swift in Sources */,
@@ -422,6 +433,7 @@
 				A671E95D240D4FBF00DF2577 /* SceneDelegate.swift in Sources */,
 				05C08F61241196EE004F2BFA /* LoginViewModel.swift in Sources */,
 				A6F4BF912416D74A005E55D9 /* HomeScreenViewController.swift in Sources */,
+				05E3BDFC24252811004C85C4 /* CafeDrinkMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
