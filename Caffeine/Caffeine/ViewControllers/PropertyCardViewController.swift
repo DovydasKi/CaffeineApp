@@ -53,6 +53,15 @@ class PropertyCardViewController: UIView {
 		  super.removeFromSuperview()
 		}, completion: nil)
 	}
+    
+    @objc private func open() {
+        var topVC = UIApplication.shared.windows.filter({$0.isKeyWindow }).first?.rootViewController
+        while((topVC!.presentedViewController) != nil) {
+            topVC = topVC!.presentedViewController
+        }
+        let newVC = CafeDrinkMenuViewController()
+        topVC?.present(newVC, animated: true, completion: nil)
+    }
 }
 
 extension PropertyCardViewController {
@@ -63,6 +72,7 @@ extension PropertyCardViewController {
 		button.setTitle("Kavinės meniu", for: .normal)
 		button.setTitleColor(.white, for: .normal)
 		button.backgroundColor = UIColor(named: "orangeMain")
+        button.addTarget(self, action: #selector(self.open), for: .touchUpInside)
 		return button
 	}
 	
