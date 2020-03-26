@@ -83,7 +83,7 @@ extension ProfileReservationViewController {
     @objc private func turnOnInformationScreen() {
         let newVC = ProfileInformationViewController()
         self.navigationController?.hero.isEnabled = true
-        self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .right), dismissing: .slide(direction: .left))
+        self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .left), dismissing: .slide(direction: .right))
         self.navigationController?.pushViewController(newVC, animated: true)
     }
 }
