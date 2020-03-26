@@ -14,10 +14,12 @@ class ProfileViewModel {}
 extension UIStackView {
     func addBackground(color: UIColor, cornerRadius: CGFloat) {
         let subView = UIView(frame: bounds)
-        let shadowProperty = Shadow()
         subView.backgroundColor = color
         subView.layer.cornerRadius = cornerRadius
-        shadowProperty.setShadow(view: subView)
+        subView.layer.shadowColor = UIColor.black.cgColor
+        subView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        subView.layer.shadowRadius = 4
+        subView.layer.shadowOpacity = 0.5
         subView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         insertSubview(subView, at: 0)
     }

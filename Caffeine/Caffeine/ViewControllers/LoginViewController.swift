@@ -76,6 +76,7 @@ extension LoginViewController {
         let newVC = MainScreenViewController()
         self.navigationController?.setViewControllers([newVC], animated: true)
     }
+    
     @objc private func turnOnRegisterScreen() {
         let newVC = RegisterScreenViewController()
         self.navigationController?.setViewControllers([newVC], animated: true)

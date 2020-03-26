@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 //MARK: ability to change UITextField by pressing "next" button
 class TextFieldConnectFields {
     public func connectFields(fields: [UITextField]) -> Void {
@@ -24,5 +23,3 @@ class TextFieldConnectFields {
         last.addTarget(last, action: #selector(UIResponder.resignFirstResponder), for: .editingDidEndOnExit)
     }
 }
-
-

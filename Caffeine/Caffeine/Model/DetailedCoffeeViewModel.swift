@@ -123,8 +123,3 @@ class DetailedCoffeeViewModel {
         return String(format: "%.1f", number)
     }
 }
-
-extension LosslessStringConvertible {
-    var string: String { .init(self) }
-}
-

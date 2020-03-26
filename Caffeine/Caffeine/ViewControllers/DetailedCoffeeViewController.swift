@@ -62,11 +62,6 @@ class DetailedCoffeeViewController: UIViewController {
     }
 }
 
-extension StringProtocol {
-    var firstUppercased: String { prefix(1).uppercased() + dropFirst() }
-    var firstLowercased: String { prefix(1).lowercased() + dropFirst() }
-}
-
 extension UITextView {
     func adjustUITextViewHeight() {
         self.translatesAutoresizingMaskIntoConstraints = false

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Hero
 
 class ProfileInformationViewController: UIViewController {
     private lazy var profilePicture: UIImageView = self.initProfilePicture()
@@ -26,7 +27,6 @@ class ProfileInformationViewController: UIViewController {
     private lazy var passwordStackView: UIStackView = self.initPasswordStackView()
     private lazy var informationStackView: UIStackView = self.initInformationStackView()
     private lazy var logoutButton: UIButton = self.initLogoutButton()
-    private lazy var shadowProperty = Shadow()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,8 +57,7 @@ class ProfileInformationViewController: UIViewController {
 //MARK: Button actions
 extension ProfileInformationViewController {
     @objc private func turnOnReservationScreen() {
-        let newVC = ProfileReservationViewController()
-        self.navigationController?.setViewControllers([newVC], animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -68,7 +67,10 @@ extension ProfileInformationViewController {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "profileImage6")
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        self.shadowProperty.setShadow(view: imageView)
+        imageView.layer.shadowColor = UIColor.black.cgColor
+        imageView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        imageView.layer.shadowRadius = 4
+        imageView.layer.shadowOpacity = 0.5
         return imageView
     }
     private func initFullNameLabel() -> UILabel {
@@ -119,7 +121,7 @@ extension ProfileInformationViewController {
         stackView.axis = NSLayoutConstraint.Axis.horizontal
         stackView.distribution = UIStackView.Distribution.equalSpacing
         stackView.alignment = UIStackView.Alignment.center
-        stackView.spacing = 128
+        stackView.spacing = 64
         stackView.addArrangedSubview(self.reservationButton)
         stackView.addArrangedSubview(self.informationButton)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -264,28 +266,28 @@ extension ProfileInformationViewController {
             self.profilePicture.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.profilePicture.heightAnchor.constraint(equalToConstant: 144),
             self.profilePicture.widthAnchor.constraint(equalToConstant: 144)
-        ])
+            ])
     }
 
     private func setFullNameLabelConstraints() {
         NSLayoutConstraint.activate([
             self.fullNameLabel.topAnchor.constraint(equalTo: self.profilePicture.bottomAnchor, constant: 16),
             self.fullNameLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        ])
+            ])
     }
 
     private func setMenuBarStackViewConstraints() {
         NSLayoutConstraint.activate([
             self.menuBarStackView.topAnchor.constraint(equalTo: self.fullNameLabel.bottomAnchor, constant: 32),
             self.menuBarStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        ])
+            ])
     }
 
     private func setInformationStackViewConstraints() {
         NSLayoutConstraint.activate([
             self.informationStackView.topAnchor.constraint(equalTo: self.menuBarStackView.bottomAnchor, constant: 64),
             self.informationStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        ])
+            ])
     }
     private func setLogoutButtonConstraints() {
         NSLayoutConstraint.activate([
@@ -293,6 +295,6 @@ extension ProfileInformationViewController {
             self.logoutButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.logoutButton.widthAnchor.constraint(equalToConstant: 254),
             self.logoutButton.heightAnchor.constraint(equalToConstant: 69)
-        ])
+            ])
     }
 }
