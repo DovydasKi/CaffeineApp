@@ -43,8 +43,15 @@ class ReservationTypeViewController: UIViewController {
 		UIApplication.shared.setStatusBarStyle(.darkContent, animated: animated)
 	}
 	
-	@objc private func openReservationDetails() {
-		let vc = ReservationDetailsViewController()
+	@objc private func openReservationDetailsWithCompanion() {
+		let viewModel = ReservationDetailsViewModel(type: .withCompanion)
+		let vc = ReservationDetailsViewController(viewModel: viewModel)
+		self.navigationController?.pushViewController(vc, animated: true)
+	}
+	
+	@objc private func openReservationDetailsWithoutCompanion() {
+		let viewModel = ReservationDetailsViewModel(type: .withoutCompanion)
+		let vc = ReservationDetailsViewController(viewModel: viewModel)
 		self.navigationController?.pushViewController(vc, animated: true)
 	}
 }
@@ -70,7 +77,7 @@ extension ReservationTypeViewController {
 		view.addSubview(titleView)
 		view.backgroundColor = UIColor(named: "orangeMain")
 		view.layer.cornerRadius = 10.0
-		view.gestureRecognizers = [UITapGestureRecognizer(target: self, action: #selector(self.openReservationDetails))]
+		view.gestureRecognizers = [UITapGestureRecognizer(target: self, action: #selector(self.openReservationDetailsWithCompanion))]
 		
 		NSLayoutConstraint.activate([
 			titleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14.0),
@@ -90,6 +97,7 @@ extension ReservationTypeViewController {
 		view.addSubview(titleView)
 		view.backgroundColor = UIColor(named: "orangeMain")
 		view.layer.cornerRadius = 10.0
+		view.gestureRecognizers = [UITapGestureRecognizer(target: self, action: #selector(self.openReservationDetailsWithoutCompanion))]
 		
 		NSLayoutConstraint.activate([
 			titleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14.0),
