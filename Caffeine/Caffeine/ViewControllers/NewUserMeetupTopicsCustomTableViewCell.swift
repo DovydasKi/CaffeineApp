@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class NewUserMeetupTopicsCustomTableViewCell: UITableViewCell {
-    
     lazy var backView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -21,8 +20,7 @@ class NewUserMeetupTopicsCustomTableViewCell: UITableViewCell {
         view.layer.shadowOpacity = 0.5
         return view
     }()
-    
-    
+
     lazy var meetupPurposeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -31,29 +29,28 @@ class NewUserMeetupTopicsCustomTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+
     override func layoutSubviews() {
         contentView.backgroundColor = UIColor.clear
         backgroundColor = UIColor.clear
-        
-        
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: true)
         self.addSubview(self.backView)
         self.setBackViewConstraints()
-        
+
         self.backView.addSubview(self.meetupPurposeLabel)
         self.setMeetupPurposeLabelConstraints()
-        
-        if selected{
+
+        if selected {
             self.setSelectedColor()
-        }else{
+        }
+        else {
             self.setNotSelectedColor()
         }
     }
@@ -64,13 +61,13 @@ class NewUserMeetupTopicsCustomTableViewCell: UITableViewCell {
 }
 
 extension NewUserMeetupTopicsCustomTableViewCell {
-    private func setSelectedColor(){
+    private func setSelectedColor() {
         self.backView.layer.cornerRadius = 12
         self.backView.clipsToBounds = true
         self.backView.layer.borderWidth = 4
         self.backView.layer.borderColor = #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.7019607843, alpha: 1)
     }
-    private func setNotSelectedColor(){
+    private func setNotSelectedColor() {
         self.backView.layer.cornerRadius = 12
         self.backView.clipsToBounds = true
         self.backView.layer.borderWidth = 4
@@ -86,13 +83,13 @@ extension NewUserMeetupTopicsCustomTableViewCell {
             self.backView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8),
             self.backView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10),
             self.backView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10),
-        ])
+            ])
     }
-    
+
     private func setMeetupPurposeLabelConstraints() {
         NSLayoutConstraint.activate([
             self.meetupPurposeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.meetupPurposeLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-        ])
+            ])
     }
 }
