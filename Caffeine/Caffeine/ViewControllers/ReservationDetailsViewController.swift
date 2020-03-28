@@ -104,7 +104,7 @@ extension ReservationDetailsViewController {
 		imageView.backgroundColor = .clear
 		imageView.contentMode = .scaleAspectFit
 		imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.isUserInteractionEnabled = true
+		imageView.isUserInteractionEnabled = true
 		imageView.gestureRecognizers = [UITapGestureRecognizer(target: self, action: #selector(backToReservationTypeScreen))]
 		return imageView
 	}
@@ -305,8 +305,8 @@ extension ReservationDetailsViewController {
 	private func activateArrowBackConstraints() {
 		NSLayoutConstraint.activate([
 			self.arrowBackImage.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            self.arrowBackImage.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0),
-            self.arrowBackImage.heightAnchor.constraint(equalToConstant: 32)
+			self.arrowBackImage.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0),
+			self.arrowBackImage.heightAnchor.constraint(equalToConstant: 32)
 		])
 	}
 }

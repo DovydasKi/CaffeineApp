@@ -81,7 +81,7 @@ extension GuestAmmountViewController {
 		imageView.backgroundColor = .clear
 		imageView.contentMode = .scaleAspectFit
 		imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.isUserInteractionEnabled = true
+		imageView.isUserInteractionEnabled = true
 		imageView.gestureRecognizers = [UITapGestureRecognizer(target: self, action: #selector(backToPreviousScreen))]
 		return imageView
 	}
@@ -207,8 +207,8 @@ extension GuestAmmountViewController {
 	private func activateArrowBackConstraints() {
 		NSLayoutConstraint.activate([
 			self.arrowBackIcon.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            self.arrowBackIcon.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0),
-            self.arrowBackIcon.heightAnchor.constraint(equalToConstant: 32)
+			self.arrowBackIcon.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0),
+			self.arrowBackIcon.heightAnchor.constraint(equalToConstant: 32)
 		])
 	}
 }
