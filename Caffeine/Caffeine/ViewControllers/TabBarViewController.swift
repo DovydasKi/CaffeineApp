@@ -67,5 +67,6 @@ class TabBarViewController: UITabBarController {
 		self.view.backgroundColor = .white
 		self.contentViewControllers = [self.profileViewController, self.restaurantMapViewController, self.reservationViewController]
 		self.viewControllers = self.contentViewControllers
+		self.selectedIndex = 1
 	}
 }

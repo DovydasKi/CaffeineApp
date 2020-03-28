@@ -89,6 +89,11 @@ class ReservationDetailsViewController: UIViewController, UIPickerViewDelegate, 
 	@objc func backToReservationTypeScreen() {
 		self.navigationController?.popViewController(animated: true)
 	}
+	
+	@objc private func openGuestsAmmountScreen() {
+		let vc = GuestAmmountViewController(viewModel: self.viewModel)
+		self.navigationController?.pushViewController(vc, animated: true)
+	}
 }
 
 extension ReservationDetailsViewController {
@@ -99,7 +104,7 @@ extension ReservationDetailsViewController {
 		imageView.backgroundColor = .clear
 		imageView.contentMode = .scaleAspectFit
 		imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.isUserInteractionEnabled = true
+		imageView.isUserInteractionEnabled = true
 		imageView.gestureRecognizers = [UITapGestureRecognizer(target: self, action: #selector(backToReservationTypeScreen))]
 		return imageView
 	}
@@ -120,9 +125,9 @@ extension ReservationDetailsViewController {
 		
 		let text: String
 		if self.viewModel.reservationType == .withCompanion {
-			text = "Rezervacija su pašnekovu"
+			text = self.viewModel.reservationWithCompanionTitle
 		} else if self.viewModel.reservationType == .withoutCompanion {
-			text = "Rezervacija be pašnekovo"
+			text = self.viewModel.reservationWithoutCompanionTitle
 		} else {
 			text = "Pašnekovo paieška"
 		}
@@ -237,6 +242,7 @@ extension ReservationDetailsViewController {
 		button.setTitle("Išsaugoti", for: .normal)
 		button.setTitleColor(.white, for: .normal)
 		button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [24, 28, 32]))
+		button.addTarget(self, action: #selector(self.openGuestsAmmountScreen), for: .touchUpInside)
 		return button
 	}
 }
@@ -299,8 +305,8 @@ extension ReservationDetailsViewController {
 	private func activateArrowBackConstraints() {
 		NSLayoutConstraint.activate([
 			self.arrowBackImage.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            self.arrowBackImage.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0),
-            self.arrowBackImage.heightAnchor.constraint(equalToConstant: 32)
+			self.arrowBackImage.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0),
+			self.arrowBackImage.heightAnchor.constraint(equalToConstant: 32)
 		])
 	}
 }

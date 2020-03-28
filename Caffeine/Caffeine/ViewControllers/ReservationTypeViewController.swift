@@ -157,7 +157,7 @@ extension ReservationTypeViewController {
 				self.titleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0),
 				self.titleLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
 				self.titleLabel.heightAnchor.constraint(equalToConstant: 45.0)
-			])
+		])
 	}
 	
 	private func stackViewConstraints() {
