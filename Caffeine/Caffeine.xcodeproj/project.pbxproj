@@ -24,6 +24,8 @@
 		052B204E24194FA800413048 /* RegistrationImageSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052B204D24194FA800413048 /* RegistrationImageSelectionViewModel.swift */; };
 		052BE05D242A5F080005B822 /* DetailedCoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BE05C242A5F070005B822 /* DetailedCoffeeViewController.swift */; };
 		0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */; };
+		0549422A242E288200B520E7 /* NewUserMeetupTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05494229242E288200B520E7 /* NewUserMeetupTopicsViewController.swift */; };
+		0549422C242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0549422B242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift */; };
 		054BD2EB242BB77800A767EF /* DetailedCoffeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */; };
 		054BD2EE242D117900A767EF /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 054BD2EC242D105100A767EF /* Hero.framework */; };
 		054BD2EF242D117900A767EF /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 054BD2EC242D105100A767EF /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -90,6 +92,8 @@
 		052BE05C242A5F070005B822 /* DetailedCoffeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCoffeeViewController.swift; sourceTree = "<group>"; };
 		053838282417AB130040FFDF /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewController.swift; sourceTree = "<group>"; };
+		05494229242E288200B520E7 /* NewUserMeetupTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserMeetupTopicsViewController.swift; sourceTree = "<group>"; };
+		0549422B242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserMeetupTopicsCustomTableViewCell.swift; sourceTree = "<group>"; };
 		054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCoffeeViewModel.swift; sourceTree = "<group>"; };
 		054BD2EC242D105100A767EF /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hero.framework; sourceTree = "<group>"; };
 		054BD2F0242D23D900A767EF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 				A6E152AA242BB8E60069C79C /* ReservationDetailsViewController.swift */,
 				05E3BDFB24252810004C85C4 /* CafeDrinkMenuViewController.swift */,
 				052BE05C242A5F070005B822 /* DetailedCoffeeViewController.swift */,
+				05494229242E288200B520E7 /* NewUserMeetupTopicsViewController.swift */,
+				0549422B242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -421,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A68C52462422624100B2AA53 /* PropertyCardViewController.swift in Sources */,
+				0549422C242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift in Sources */,
 				05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */,
 				A66FDD622411310300CFC5FB /* LoginViewController.swift in Sources */,
 				A6E152AD242BBB080069C79C /* ReservationDetailsViewModel.swift in Sources */,
@@ -432,6 +439,7 @@
 				054BD2F1242D23D900A767EF /* StringExtension.swift in Sources */,
 				05C1C2172422A3F500ED0AD0 /* ProfileViewModel.swift in Sources */,
 				057023652413E8B90018A710 /* RegisterViewController.swift in Sources */,
+				0549422A242E288200B520E7 /* NewUserMeetupTopicsViewController.swift in Sources */,
 				0585AA7B24223C1300FDF884 /* ProfileInformationViewController.swift in Sources */,
 				A6A1CFFD2418E164002333CA /* RestaurantsViewController.swift in Sources */,
 				A6347E7524168A3100B1FC05 /* Margin.swift in Sources */,
