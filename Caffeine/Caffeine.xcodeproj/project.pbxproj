@@ -41,6 +41,7 @@
 		05C1C2192423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */; };
 		05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF83DD2414FBBD0031E356 /* InputValidation.swift */; };
 		05E3BDFC24252811004C85C4 /* CafeDrinkMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3BDFB24252810004C85C4 /* CafeDrinkMenuViewController.swift */; };
+		05EB9D8D242FDE700039D181 /* NewUserMeetupPurposeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EB9D8C242FDE700039D181 /* NewUserMeetupPurposeModel.swift */; };
 		A6316BD4242A7B2000EB5EF6 /* ReservationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6316BD3242A7B2000EB5EF6 /* ReservationTypeViewController.swift */; };
 		A6347E7524168A3100B1FC05 /* Margin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6347E7424168A3100B1FC05 /* Margin.swift */; };
 		A656F3DC240FD84D0038AA7B /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656F3DB240FD84D0038AA7B /* MainScreenViewController.swift */; };
@@ -108,6 +109,7 @@
 		05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReservationCustomTableViewCell.swift; sourceTree = "<group>"; };
 		05CF83DD2414FBBD0031E356 /* InputValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidation.swift; sourceTree = "<group>"; };
 		05E3BDFB24252810004C85C4 /* CafeDrinkMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeDrinkMenuViewController.swift; sourceTree = "<group>"; };
+		05EB9D8C242FDE700039D181 /* NewUserMeetupPurposeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserMeetupPurposeModel.swift; sourceTree = "<group>"; };
 		A6316BD3242A7B2000EB5EF6 /* ReservationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationTypeViewController.swift; sourceTree = "<group>"; };
 		A6347E7424168A3100B1FC05 /* Margin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Margin.swift; sourceTree = "<group>"; };
 		A656F3DB240FD84D0038AA7B /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				05C1C2162422A3F500ED0AD0 /* ProfileViewModel.swift */,
 				A6E152AC242BBB080069C79C /* ReservationDetailsViewModel.swift */,
 				054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */,
+				05EB9D8C242FDE700039D181 /* NewUserMeetupPurposeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				054BD2EB242BB77800A767EF /* DetailedCoffeeViewModel.swift in Sources */,
 				054BD2F1242D23D900A767EF /* StringExtension.swift in Sources */,
 				05C1C2172422A3F500ED0AD0 /* ProfileViewModel.swift in Sources */,
+				05EB9D8D242FDE700039D181 /* NewUserMeetupPurposeModel.swift in Sources */,
 				057023652413E8B90018A710 /* RegisterViewController.swift in Sources */,
 				0549422A242E288200B520E7 /* NewUserMeetupTopicsViewController.swift in Sources */,
 				0585AA7B24223C1300FDF884 /* ProfileInformationViewController.swift in Sources */,
