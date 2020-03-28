@@ -89,6 +89,11 @@ class ReservationDetailsViewController: UIViewController, UIPickerViewDelegate, 
 	@objc func backToReservationTypeScreen() {
 		self.navigationController?.popViewController(animated: true)
 	}
+	
+	@objc private func openGuestsAmmountScreen() {
+		let vc = GuestAmmountViewController(viewModel: self.viewModel)
+		self.navigationController?.pushViewController(vc, animated: true)
+	}
 }
 
 extension ReservationDetailsViewController {
@@ -120,9 +125,9 @@ extension ReservationDetailsViewController {
 		
 		let text: String
 		if self.viewModel.reservationType == .withCompanion {
-			text = "Rezervacija su pašnekovu"
+			text = self.viewModel.reservationWithCompanionTitle
 		} else if self.viewModel.reservationType == .withoutCompanion {
-			text = "Rezervacija be pašnekovo"
+			text = self.viewModel.reservationWithoutCompanionTitle
 		} else {
 			text = "Pašnekovo paieška"
 		}
@@ -237,6 +242,7 @@ extension ReservationDetailsViewController {
 		button.setTitle("Išsaugoti", for: .normal)
 		button.setTitleColor(.white, for: .normal)
 		button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [24, 28, 32]))
+		button.addTarget(self, action: #selector(self.openGuestsAmmountScreen), for: .touchUpInside)
 		return button
 	}
 }
