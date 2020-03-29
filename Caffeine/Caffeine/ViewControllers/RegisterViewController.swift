@@ -93,7 +93,7 @@ extension RegisterScreenViewController {
     @objc private func turnOnSecondRegisterScreen() {
         if self.registerViewModel.checkForAllValidFields(fullNameField: self.fullNameField, userNameField: self.userNameField, emailField: self.emailField, passwordField: self.passwordField) == true {
             let secondRegisterScreen = RegistrationConfirmationViewController()
-            self.navigationController?.setViewControllers([secondRegisterScreen], animated: true)
+            self.navigationController?.pushViewController(secondRegisterScreen, animated: true)
         }
     }
 }

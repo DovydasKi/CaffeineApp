@@ -58,9 +58,10 @@ class RegistrationImageSelectionViewController: UIViewController {
 //MARK: Actions
 extension RegistrationImageSelectionViewController {
     @objc private func turnOnHomeScreen() {
-        let homeScreenVC = HomeScreenViewController()
+        let newUserMeetupTopicsVC = NewUserMeetupTopicsViewController()
         if self.skipOrSelectButton.currentTitle == "Praleisti" {
-            self.navigationController?.setViewControllers([homeScreenVC], animated: true)
+            self.navigationController?.pushViewController(newUserMeetupTopicsVC, animated: true)
+            //self.navigationController?.setViewControllers([homeScreenVC], animated: true)
         }
         else {
             //TODO: set profile pic
