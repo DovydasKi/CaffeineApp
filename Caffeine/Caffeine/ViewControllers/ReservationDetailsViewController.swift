@@ -12,32 +12,47 @@ import UIKit
 class ReservationDetailsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 	private lazy var titleLabel: UILabel = self.initTextLabel()
 	private lazy var iconView: UIImageView = self.initImageView()
+	private lazy var arrowBackImage: UIImageView = self.initArrowBackView()
 	private lazy var saveButton: UIButton = self.initSaveButton()
 	private lazy var cafePickerView: UIPickerView = self.initPickerView()
 	private lazy var cafeTextField: UITextField = self.initCafeTextField()
 	private lazy var datePicker: UIDatePicker = self.initDatePicker()
 	private lazy var reservationDateTextField: UITextField = self.initDateTextField()
 	private lazy var conversationTheme: UITextField = self.initConversationThemeField()
-	let viewModel = ReservationDetailsViewModel()
+	let viewModel: ReservationDetailsViewModel
+	
+	public init(viewModel: ReservationDetailsViewModel) {
+		self.viewModel = viewModel
+		super.init(nibName: nil, bundle: nil)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		self.view.addSubview(self.arrowBackImage)
+		self.activateArrowBackConstraints()
 		
 		self.view.addSubview(self.iconView)
 		self.activateIconConstraints()
 		
 		self.view.addSubview(self.titleLabel)
 		self.activateTitleLabelConstraints()
-
+		
 		self.view.addSubview(self.cafeTextField)
 		self.activatePickerViewConstraints()
 		
 		self.view.addSubview(self.reservationDateTextField)
 		self.activateTimePickerViewConstraints()
 		
-		self.view.addSubview(self.conversationTheme)
-		self.activateConversationThemeTextFieldConstraints()
-		
+		if viewModel.reservationType == .withCompanion {
+			self.view.addSubview(self.conversationTheme)
+			self.activateConversationThemeTextFieldConstraints()
+			
+		}
 		self.view.addSubview(self.saveButton)
 		self.activateSaveButtonConstraints()
 	}
@@ -61,7 +76,7 @@ class ReservationDetailsViewController: UIViewController, UIPickerViewDelegate, 
 	}
 	
 	@objc func action() {
-		  view.endEditing(true)
+		view.endEditing(true)
 	}
 	
 	@objc func datePickerValueChanged(_ sender: UIDatePicker) {
@@ -70,9 +85,30 @@ class ReservationDetailsViewController: UIViewController, UIPickerViewDelegate, 
 		let selectedDate: String = dateFormatter.string(from: sender.date)
 		self.reservationDateTextField.text = selectedDate
 	}
+	
+	@objc func backToReservationTypeScreen() {
+		self.navigationController?.popViewController(animated: true)
+	}
+	
+	@objc private func openGuestsAmmountScreen() {
+		let vc = GuestAmmountViewController(viewModel: self.viewModel)
+		self.navigationController?.pushViewController(vc, animated: true)
+	}
 }
 
 extension ReservationDetailsViewController {
+	private func initArrowBackView() -> UIImageView {
+		let imageView = UIImageView()
+		imageView.image = #imageLiteral(resourceName: "arrowBack").withRenderingMode(.alwaysTemplate)
+		imageView.tintColor = UIColor(named: "orangeMain")
+		imageView.backgroundColor = .clear
+		imageView.contentMode = .scaleAspectFit
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		imageView.isUserInteractionEnabled = true
+		imageView.gestureRecognizers = [UITapGestureRecognizer(target: self, action: #selector(backToReservationTypeScreen))]
+		return imageView
+	}
+	
 	private func initImageView() -> UIImageView {
 		let imageView = UIImageView()
 		imageView.image = #imageLiteral(resourceName: "bolt").withRenderingMode(.alwaysTemplate)
@@ -86,7 +122,17 @@ extension ReservationDetailsViewController {
 	private func initTextLabel() -> UILabel {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Rezervacija su pašnekovu"
+		
+		let text: String
+		if self.viewModel.reservationType == .withCompanion {
+			text = self.viewModel.reservationWithCompanionTitle
+		} else if self.viewModel.reservationType == .withoutCompanion {
+			text = self.viewModel.reservationWithoutCompanionTitle
+		} else {
+			text = "Pašnekovo paieška"
+		}
+		
+		label.text = text
 		label.textColor = UIColor(named: "orangeMain")
 		label.font = UIFont(name: "Rubik-Black", size: 34.0)
 		label.numberOfLines = 2
@@ -106,7 +152,7 @@ extension ReservationDetailsViewController {
 		pickerView.translatesAutoresizingMaskIntoConstraints = false
 		pickerView.datePickerMode = UIDatePicker.Mode.dateAndTime
 		pickerView.addTarget(self, action: #selector(self.datePickerValueChanged(_:)), for: .valueChanged)
-
+		
 		return pickerView
 	}
 	
@@ -115,22 +161,22 @@ extension ReservationDetailsViewController {
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		textField.inputView = self.cafePickerView
 		textField.textAlignment = .center
-		textField.attributedPlaceholder = NSAttributedString(string: "Kavinės", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "placeholderOrange") ?? .white])
+		textField.attributedPlaceholder = NSAttributedString(string: "Kavinė", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "placeholderOrange") ?? .white])
 		textField.font = UIFont(name: "Rubik-Medium", size: 24.0)
 		textField.textColor = UIColor(named: "textOrange")
 		
 		let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        bottomBorder.backgroundColor = UIColor(named: "placeholderOrange")
-        bottomBorder.translatesAutoresizingMaskIntoConstraints = false
-        textField.addSubview(bottomBorder)
-        bottomBorder.bottomAnchor.constraint(equalTo: textField.bottomAnchor, constant: 3).isActive = true
-        bottomBorder.leftAnchor.constraint(equalTo: textField.leftAnchor).isActive = true
-        bottomBorder.rightAnchor.constraint(equalTo: textField.rightAnchor).isActive = true
-        bottomBorder.heightAnchor.constraint(equalToConstant: 2).isActive = true
+		bottomBorder.backgroundColor = UIColor(named: "placeholderOrange")
+		bottomBorder.translatesAutoresizingMaskIntoConstraints = false
+		textField.addSubview(bottomBorder)
+		bottomBorder.bottomAnchor.constraint(equalTo: textField.bottomAnchor, constant: 3).isActive = true
+		bottomBorder.leftAnchor.constraint(equalTo: textField.leftAnchor).isActive = true
+		bottomBorder.rightAnchor.constraint(equalTo: textField.rightAnchor).isActive = true
+		bottomBorder.heightAnchor.constraint(equalToConstant: 2).isActive = true
 		
 		let toolBar = UIToolbar()
 		toolBar.sizeToFit()
-		let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+		let button = UIBarButtonItem(title: "Pasirinkti", style: .plain, target: self, action: #selector(self.action))
 		toolBar.setItems([button], animated: true)
 		toolBar.isUserInteractionEnabled = true
 		textField.inputAccessoryView = toolBar
@@ -147,17 +193,17 @@ extension ReservationDetailsViewController {
 		textField.textColor = UIColor(named: "textOrange")
 		
 		let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        bottomBorder.backgroundColor = UIColor(named: "placeholderOrange")
-        bottomBorder.translatesAutoresizingMaskIntoConstraints = false
-        textField.addSubview(bottomBorder)
-        bottomBorder.bottomAnchor.constraint(equalTo: textField.bottomAnchor, constant: 3).isActive = true
-        bottomBorder.leftAnchor.constraint(equalTo: textField.leftAnchor).isActive = true
-        bottomBorder.rightAnchor.constraint(equalTo: textField.rightAnchor).isActive = true
-        bottomBorder.heightAnchor.constraint(equalToConstant: 2).isActive = true
+		bottomBorder.backgroundColor = UIColor(named: "placeholderOrange")
+		bottomBorder.translatesAutoresizingMaskIntoConstraints = false
+		textField.addSubview(bottomBorder)
+		bottomBorder.bottomAnchor.constraint(equalTo: textField.bottomAnchor, constant: 3).isActive = true
+		bottomBorder.leftAnchor.constraint(equalTo: textField.leftAnchor).isActive = true
+		bottomBorder.rightAnchor.constraint(equalTo: textField.rightAnchor).isActive = true
+		bottomBorder.heightAnchor.constraint(equalToConstant: 2).isActive = true
 		
 		let toolBar = UIToolbar()
 		toolBar.sizeToFit()
-		let button = UIBarButtonItem(title: "Atlikta", style: .plain, target: self, action: #selector(self.action))
+		let button = UIBarButtonItem(title: "Pasirinkti", style: .plain, target: self, action: #selector(self.action))
 		toolBar.setItems([button], animated: true)
 		toolBar.isUserInteractionEnabled = true
 		textField.inputAccessoryView = toolBar
@@ -173,50 +219,51 @@ extension ReservationDetailsViewController {
 		textField.textColor = UIColor(named: "textOrange")
 		
 		let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        bottomBorder.backgroundColor = UIColor(named: "placeholderOrange")
-        bottomBorder.translatesAutoresizingMaskIntoConstraints = false
-        textField.addSubview(bottomBorder)
-        bottomBorder.bottomAnchor.constraint(equalTo: textField.bottomAnchor, constant: 3).isActive = true
-        bottomBorder.leftAnchor.constraint(equalTo: textField.leftAnchor).isActive = true
-        bottomBorder.rightAnchor.constraint(equalTo: textField.rightAnchor).isActive = true
-        bottomBorder.heightAnchor.constraint(equalToConstant: 2).isActive = true
+		bottomBorder.backgroundColor = UIColor(named: "placeholderOrange")
+		bottomBorder.translatesAutoresizingMaskIntoConstraints = false
+		textField.addSubview(bottomBorder)
+		bottomBorder.bottomAnchor.constraint(equalTo: textField.bottomAnchor, constant: 3).isActive = true
+		bottomBorder.leftAnchor.constraint(equalTo: textField.leftAnchor).isActive = true
+		bottomBorder.rightAnchor.constraint(equalTo: textField.rightAnchor).isActive = true
+		bottomBorder.heightAnchor.constraint(equalToConstant: 2).isActive = true
 		
 		return textField
 	}
 	
 	private func initSaveButton() -> UIButton {
-        let button: UIButton = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 34.5
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 0, height: 2)
-        button.layer.shadowRadius = 4
-        button.layer.shadowOpacity = 0.5
-        button.backgroundColor = UIColor(named: "orangeMain")
-        button.setTitle("Išsaugoti", for: .normal)
+		let button: UIButton = UIButton()
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.layer.cornerRadius = 34.5
+		button.layer.shadowColor = UIColor.black.cgColor
+		button.layer.shadowOffset = CGSize(width: 0, height: 2)
+		button.layer.shadowRadius = 4
+		button.layer.shadowOpacity = 0.5
+		button.backgroundColor = UIColor(named: "orangeMain")
+		button.setTitle("Išsaugoti", for: .normal)
 		button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [24, 28, 32]))
-        return button
-    }
+		button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [24, 28, 32]))
+		button.addTarget(self, action: #selector(self.openGuestsAmmountScreen), for: .touchUpInside)
+		return button
+	}
 }
 
 extension ReservationDetailsViewController {
 	private func activatePickerViewConstraints() {
-			NSLayoutConstraint.activate([
-				self.cafeTextField.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 30.0),
-				self.cafeTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 32.0),
-				self.cafeTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -32.0),
-				self.cafeTextField.heightAnchor.constraint(equalToConstant: 32)
-				])
+		NSLayoutConstraint.activate([
+			self.cafeTextField.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 45.0),
+			self.cafeTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 32.0),
+			self.cafeTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -32.0),
+			self.cafeTextField.heightAnchor.constraint(equalToConstant: 32)
+		])
 	}
 	
 	private func activateTimePickerViewConstraints() {
-			NSLayoutConstraint.activate([
-				self.reservationDateTextField.topAnchor.constraint(equalTo: self.cafeTextField.bottomAnchor, constant: 20.0),
-				self.reservationDateTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 32.0),
-				self.reservationDateTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -32.0),
-				self.reservationDateTextField.heightAnchor.constraint(equalToConstant: 32)
-				])
+		NSLayoutConstraint.activate([
+			self.reservationDateTextField.topAnchor.constraint(equalTo: self.cafeTextField.bottomAnchor, constant: 30.0),
+			self.reservationDateTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 32.0),
+			self.reservationDateTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -32.0),
+			self.reservationDateTextField.heightAnchor.constraint(equalToConstant: 32)
+		])
 	}
 	
 	private func activateIconConstraints() {
@@ -239,11 +286,11 @@ extension ReservationDetailsViewController {
 	
 	private func activateConversationThemeTextFieldConstraints() {
 		NSLayoutConstraint.activate([
-			self.conversationTheme.topAnchor.constraint(equalTo: self.reservationDateTextField.bottomAnchor, constant: 20.0),
+			self.conversationTheme.topAnchor.constraint(equalTo: self.reservationDateTextField.bottomAnchor, constant: 30.0),
 			self.conversationTheme.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 32.0),
 			self.conversationTheme.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -32.0),
 			self.conversationTheme.heightAnchor.constraint(equalToConstant: 32)
-			])
+		])
 	}
 	
 	private func activateSaveButtonConstraints() {
@@ -252,6 +299,14 @@ extension ReservationDetailsViewController {
 			self.saveButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -79.5),
 			self.saveButton.heightAnchor.constraint(equalToConstant: 69),
 			self.saveButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -100.0)
-			])
+		])
+	}
+	
+	private func activateArrowBackConstraints() {
+		NSLayoutConstraint.activate([
+			self.arrowBackImage.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
+			self.arrowBackImage.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0),
+			self.arrowBackImage.heightAnchor.constraint(equalToConstant: 32)
+		])
 	}
 }
