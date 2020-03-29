@@ -46,7 +46,6 @@ class NewUserMeetupTopicsCustomTableViewCell: UITableViewCell {
 
         self.backView.addSubview(self.meetupPurposeLabel)
         self.setMeetupPurposeLabelConstraints()
-
         if selected {
             self.setSelectedColor()
         }

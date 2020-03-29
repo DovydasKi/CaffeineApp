@@ -36,7 +36,7 @@ class RegistrationConfirmationViewController: UIViewController, NVActivityIndica
         
         let viewController = RegistrationImageSelectionViewController()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.navigationController?.setViewControllers([viewController], animated: true)
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
 	
