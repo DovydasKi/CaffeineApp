@@ -15,8 +15,8 @@ class ProfileInformationViewController: UIViewController {
     private lazy var fullNameLabel: UILabel = self.initFullNameLabel()
     private lazy var menuBarView: UIView = self.initMenuBarView()
 
-    private lazy var reservationButton: UILabel = self.initReservationButton()
-    private lazy var meetupTopicsButton: UILabel = self.initMeetupTopicsButton()
+    private lazy var reservationButton: UIView = self.initReservationButton()
+    private lazy var meetupTopicsButton: UIView = self.initMeetupTopicsButton()
     private lazy var informationButton: UIView = self.initInformationButton()
 
     private lazy var emaillTitle: UILabel = self.initEmailTitle()
@@ -68,14 +68,18 @@ class ProfileInformationViewController: UIViewController {
 
 //MARK: Button actions
 extension ProfileInformationViewController {
-    @objc private func turnOnReservationScreen() {
-        self.navigationController?.popViewController(animated: true)
-    }
-
     @objc private func turnOnMeetupTopicsScreen() {
-        let newVC = ProfileMeetupTopicsViewController()
+       let newVC = ProfileMeetupTopicsViewController()
+       self.navigationController?.hero.isEnabled = true
+       self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .right), dismissing: .slide(direction: .right))
+       self.navigationController?.viewControllers = [self]
+       self.navigationController?.pushViewController(newVC, animated: true)
+    }
+    @objc private func turnOnReservationScreen() {
+        let newVC = ProfileReservationViewController()
         self.navigationController?.hero.isEnabled = true
-        self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .left), dismissing: .slide(direction: .right))
+        self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .right), dismissing: .slide(direction: .right))
+        self.navigationController?.viewControllers = [self]
         self.navigationController?.pushViewController(newVC, animated: true)
     }
 }
@@ -102,67 +106,85 @@ extension ProfileInformationViewController {
         label.contentMode = .scaleAspectFit
         return label
     }
-    private func initReservationButton() -> UILabel {
-        let label = UILabel()
-        label.font = UIFont(name: "Rubik-Bold", size: 14)
-        label.text = "Rezervacijos"
-        label.textColor = .systemGray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        //label.contentMode = .scaleAspectFit
-        let tap = UITapGestureRecognizer(target: self, action: #selector(turnOnReservationScreen))
-        label.isUserInteractionEnabled = true
-        label.addGestureRecognizer(tap)
-        return label
+    
+    private func initMenuBarView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9254901961, alpha: 1)
+        view.layer.cornerRadius = 12.5
+
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }
-    private func initInformationButton() -> UIView {
+    
+    private func initReservationButton() -> UIView {
         let view = UIView()
         let label = UILabel()
         
-        view.backgroundColor = UIColor(named: "orangeMain")
+        view.backgroundColor = .clear
         view.layer.cornerRadius = 12.5
         
         label.font = UIFont(name: "Rubik-Bold", size: 14)
-        label.text = "Informacija"
-        label.textColor = .white
+        label.text = "Rezervacijos"
+        label.textColor = .systemGray
+        label.textAlignment = .center
+
+        view.addSubview(label)
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(turnOnReservationScreen))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
+        return view
+    }
+    
+    private func initMeetupTopicsButton() -> UIView {
+        let view = UIView()
+        let label = UILabel()
+        
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = 12.5
+        
+        label.font = UIFont(name: "Rubik-Bold", size: 14)
+        label.text = "Pokalbio temos"
+        label.textColor = .systemGray
         label.textAlignment = .center
         view.addSubview(label)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.heightAnchor.constraint(equalToConstant: label.intrinsicContentSize.height + 12).isActive = true
-        view.widthAnchor.constraint(equalToConstant: label.intrinsicContentSize.width + 12).isActive = true
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.turnOnMeetupTopicsScreen))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
+        return view
+    }
+    
+    private func initInformationButton() -> UIView {
+        let view = UIView()
+        let label = UILabel()
+        
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 12.5
+        
+        label.font = UIFont(name: "Rubik-Bold", size: 14)
+        label.text = "Informacija"
+        label.textColor = .black
+        label.textAlignment = .center
+        view.addSubview(label)
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         return view
     }
 
-    private func initMeetupTopicsButton() -> UILabel {
-        let label = UILabel()
-        label.font = UIFont(name: "Rubik-Bold", size: 14)
-        label.text = "Pokalbio temos"
-        label.textColor = .systemGray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        //label.contentMode = .scaleAspectFit
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.turnOnMeetupTopicsScreen))
-        label.isUserInteractionEnabled = true
-        label.addGestureRecognizer(tap)
-        return label
-    }
-
-    private func initMenuBarView() -> UIView {
-        let view = UIView()
-        view.backgroundColor = UIColor.white
-        view.layer.cornerRadius = 12.5
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowRadius = 4
-        view.layer.shadowOpacity = 0.5
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }
     private func initEmailTitle() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
@@ -324,22 +346,28 @@ extension ProfileInformationViewController {
 
     private func setReservationButtonConstraints() {
         NSLayoutConstraint.activate([
-            self.reservationButton.centerYAnchor.constraint(equalTo: self.menuBarView.centerYAnchor),
-            self.reservationButton.leadingAnchor.constraint(equalTo: self.menuBarView.leadingAnchor, constant: 16)
+            self.reservationButton.topAnchor.constraint(equalTo: self.menuBarView.topAnchor, constant: 4),
+            self.reservationButton.widthAnchor.constraint(equalToConstant: 123),
+            self.reservationButton.bottomAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: -4),
+            self.reservationButton.leadingAnchor.constraint(equalTo: self.menuBarView.leadingAnchor, constant: 4)
             ])
     }
 
     private func setMeetupTopicsButtonConstraints() {
         NSLayoutConstraint.activate([
             self.meetupTopicsButton.centerXAnchor.constraint(equalTo: self.menuBarView.centerXAnchor),
-            self.meetupTopicsButton.centerYAnchor.constraint(equalTo: self.menuBarView.centerYAnchor)
+            self.meetupTopicsButton.widthAnchor.constraint(equalToConstant: 123),
+            self.meetupTopicsButton.topAnchor.constraint(equalTo: self.menuBarView.topAnchor, constant: 4),
+            self.meetupTopicsButton.bottomAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: -4)
             ])
     }
 
     private func setInformationButtonConstraints() {
         NSLayoutConstraint.activate([
-            self.informationButton.centerYAnchor.constraint(equalTo: self.menuBarView.centerYAnchor),
-            self.informationButton.trailingAnchor.constraint(equalTo: self.menuBarView.trailingAnchor, constant: -16)
+            self.informationButton.topAnchor.constraint(equalTo: self.menuBarView.topAnchor, constant: 4),
+            self.informationButton.widthAnchor.constraint(equalToConstant: 123),
+            self.informationButton.bottomAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: -4),
+            self.informationButton.trailingAnchor.constraint(equalTo: self.menuBarView.trailingAnchor, constant: -4)
             ])
     }
     private func setInformationStackViewConstraints() {
