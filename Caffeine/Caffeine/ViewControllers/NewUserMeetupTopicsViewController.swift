@@ -275,7 +275,6 @@ extension NewUserMeetupTopicsViewController {
         let view = UIView()
         view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 12
-        //view.clipsToBounds = true
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.layer.shadowRadius = 4

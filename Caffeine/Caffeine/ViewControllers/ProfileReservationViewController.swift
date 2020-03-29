@@ -32,6 +32,7 @@ class ProfileReservationViewController: UIViewController {
     private lazy var fullNameLabel: UILabel = self.initFullNameLabel()
     private lazy var reservationButton: UILabel = self.initReservationButton()
     private lazy var informationButton: UILabel = self.initInformationButton()
+    private lazy var meetupTopicsButton: UILabel = self.initMeetupTopicsButton()
     private lazy var menuBarStackView: UIStackView = self.initMenuBarStackView()
     private lazy var tableViewScrollView: UIScrollView = self.intiTableViewScrollView()
     private lazy var tableView: UITableView = self.initTableView()
@@ -82,6 +83,12 @@ extension ProfileReservationViewController: UITableViewDelegate, UITableViewData
 extension ProfileReservationViewController {
     @objc private func turnOnInformationScreen() {
         let newVC = ProfileInformationViewController()
+        self.navigationController?.hero.isEnabled = true
+        self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .left), dismissing: .slide(direction: .right))
+        self.navigationController?.pushViewController(newVC, animated: true)
+    }
+    @objc private func turnOnMeetupTopicsScreen() {
+        let newVC = ProfileMeetupTopicsViewController()
         self.navigationController?.hero.isEnabled = true
         self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .left), dismissing: .slide(direction: .right))
         self.navigationController?.pushViewController(newVC, animated: true)
@@ -145,15 +152,32 @@ extension ProfileReservationViewController {
         label.addGestureRecognizer(tap)
         return label
     }
+    
+    private func initMeetupTopicsButton() -> UILabel {
+        let label = UILabel()
+        label.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [16, 18, 20]))
+        label.text = "Pokalbio temos"
+        label.textColor = UIColor(named: "orangeMain")
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.contentMode = .scaleAspectFit
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.turnOnMeetupTopicsScreen))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tap)
+        return label
+    }
+    
+    
 
     private func initMenuBarStackView() -> UIStackView {
         let stackView = UIStackView()
         stackView.axis = NSLayoutConstraint.Axis.horizontal
         stackView.distribution = UIStackView.Distribution.equalSpacing
         stackView.alignment = UIStackView.Alignment.center
-        stackView.spacing = 64
+        stackView.spacing = 16
         stackView.addArrangedSubview(self.reservationButton)
         stackView.addArrangedSubview(self.informationButton)
+        stackView.addArrangedSubview(self.meetupTopicsButton)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }

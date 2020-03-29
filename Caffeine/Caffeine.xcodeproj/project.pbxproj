@@ -24,6 +24,7 @@
 		052B204E24194FA800413048 /* RegistrationImageSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052B204D24194FA800413048 /* RegistrationImageSelectionViewModel.swift */; };
 		052BE05D242A5F080005B822 /* DetailedCoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BE05C242A5F070005B822 /* DetailedCoffeeViewController.swift */; };
 		0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */; };
+		054882532430E40E0095E256 /* ProfileMeetupTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054882522430E40E0095E256 /* ProfileMeetupTopicsViewController.swift */; };
 		0549422A242E288200B520E7 /* NewUserMeetupTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05494229242E288200B520E7 /* NewUserMeetupTopicsViewController.swift */; };
 		0549422C242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0549422B242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift */; };
 		054BD2EB242BB77800A767EF /* DetailedCoffeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */; };
@@ -94,6 +95,7 @@
 		052BE05C242A5F070005B822 /* DetailedCoffeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCoffeeViewController.swift; sourceTree = "<group>"; };
 		053838282417AB130040FFDF /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewController.swift; sourceTree = "<group>"; };
+		054882522430E40E0095E256 /* ProfileMeetupTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMeetupTopicsViewController.swift; sourceTree = "<group>"; };
 		05494229242E288200B520E7 /* NewUserMeetupTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserMeetupTopicsViewController.swift; sourceTree = "<group>"; };
 		0549422B242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserMeetupTopicsCustomTableViewCell.swift; sourceTree = "<group>"; };
 		054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCoffeeViewModel.swift; sourceTree = "<group>"; };
@@ -181,9 +183,10 @@
 				052B204B2419176300413048 /* RegistrationImageSelectionViewController.swift */,
 				A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */,
 				A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */,
-				0585AA7A24223C1300FDF884 /* ProfileInformationViewController.swift */,
 				05C1C2142422A37300ED0AD0 /* ProfileReservationViewController.swift */,
 				05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */,
+				0585AA7A24223C1300FDF884 /* ProfileInformationViewController.swift */,
+				054882522430E40E0095E256 /* ProfileMeetupTopicsViewController.swift */,
 				A68C52452422624100B2AA53 /* PropertyCardViewController.swift */,
 				A6316BD3242A7B2000EB5EF6 /* ReservationTypeViewController.swift */,
 				A6E152AA242BB8E60069C79C /* ReservationDetailsViewController.swift */,
@@ -456,6 +459,7 @@
 				A6E152AB242BB8E60069C79C /* ReservationDetailsViewController.swift in Sources */,
 				A671E95B240D4FBF00DF2577 /* AppDelegate.swift in Sources */,
 				A6316BD4242A7B2000EB5EF6 /* ReservationTypeViewController.swift in Sources */,
+				054882532430E40E0095E256 /* ProfileMeetupTopicsViewController.swift in Sources */,
 				05C1C2152422A37300ED0AD0 /* ProfileReservationViewController.swift in Sources */,
 				05C1C2192423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift in Sources */,
 				057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */,
