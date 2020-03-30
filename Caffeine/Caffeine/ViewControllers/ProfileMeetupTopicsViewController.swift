@@ -348,13 +348,7 @@ extension ProfileMeetupTopicsViewController {
     
     private func initMainView() -> UIView {
         let view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 12.5
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowRadius = 4
-        view.layer.shadowOpacity = 0.5
-        
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
@@ -508,8 +502,8 @@ extension ProfileMeetupTopicsViewController {
             self.tableView.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 16),
             self.tableView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.tableView.heightAnchor.constraint(equalToConstant: 318),
-            self.tableView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 16),
-            self.tableView.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: -16)
+            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32),
+            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32)
         ])
     }
     
@@ -518,8 +512,8 @@ extension ProfileMeetupTopicsViewController {
             self.tableViewScrollView.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 16),
             self.tableViewScrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.tableViewScrollView.heightAnchor.constraint(equalToConstant: 318),
-            self.tableViewScrollView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 16),
-            self.tableViewScrollView.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: -16)
+            self.tableViewScrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32),
+            self.tableViewScrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32)
         ])
     }
     

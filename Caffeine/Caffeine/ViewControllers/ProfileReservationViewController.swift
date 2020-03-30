@@ -19,6 +19,7 @@ class ProfileReservationViewController: UIViewController {
     private lazy var meetupTopicsButton: UIView = self.initMeetupTopicsButton()
     private lazy var informationButton: UIView = self.initInformationButton()
 
+    private lazy var mainView: UIView = self.initMainView()
     private lazy var tableViewScrollView: UIScrollView = self.intiTableViewScrollView()
     private lazy var tableView: UITableView = self.initTableView()
     private lazy var userArr = [UserModal]()
@@ -28,31 +29,71 @@ class ProfileReservationViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .white
 
-        self.view.addSubview(self.profilePicture)
-        self.setProfilePictureConstraints()
-
-        self.view.addSubview(self.fullNameLabel)
-        self.setFullNameLabelConstraints()
-
-        self.view.addSubview(self.menuBarView)
-        self.setMenuBarViewConstraints()
-
-        self.menuBarView.addSubview(self.reservationButton)
-        self.setReservationButtonConstraints()
-
-        self.menuBarView.addSubview(self.meetupTopicsButton)
-        self.setMeetupTopicsButtonConstraints()
-
-        self.menuBarView.addSubview(self.informationButton)
-        self.setInformationButtonConstraints()
-
-        self.view.addSubview(self.tableViewScrollView)
-        self.tableViewScrollView.showsVerticalScrollIndicator = false
-        self.setTableViewScrollViewConstraints()
-
+        self.configureProfilePicture()
+        self.configureFullNameLabel()
+        self.configureMenuBarView()
+        self.configureMainView()
+        self.configureTableScrollView()
+        self.configureTablewView()
     }
 }
 
+//MARK: UI configuratrion
+extension ProfileReservationViewController {
+    private func configureProfilePicture() {
+        self.view.addSubview(self.profilePicture)
+        self.setProfilePictureConstraints()
+    }
+
+    private func configureFullNameLabel() {
+        self.view.addSubview(self.fullNameLabel)
+        self.setFullNameLabelConstraints()
+    }
+
+    private func configureMenuBarView() {
+        self.view.addSubview(self.menuBarView)
+        self.setMenuBarViewConstraints()
+        self.configureReservationButton()
+        self.configureMeetupTopicsButton()
+        self.configureInformationButton()
+    }
+
+    private func configureReservationButton() {
+        self.menuBarView.addSubview(self.reservationButton)
+        self.setReservationButtonConstraints()
+    }
+
+    private func configureMeetupTopicsButton() {
+        self.menuBarView.addSubview(self.meetupTopicsButton)
+        self.setMeetupTopicsButtonConstraints()
+    }
+
+    private func configureInformationButton() {
+        self.menuBarView.addSubview(self.informationButton)
+        self.setInformationButtonConstraints()
+    }
+
+    private func configureMainView() {
+        self.view.addSubview(self.mainView)
+        self.setMainViewConstraintes()
+    }
+
+    private func configureTableScrollView() {
+        self.mainView.addSubview(self.tableViewScrollView)
+        self.tableViewScrollView.showsVerticalScrollIndicator = false
+        self.setTableViewScrollViewConstraints()
+    }
+
+    private func configureTablewView() {
+        self.tableView.showsVerticalScrollIndicator = true
+        self.tableView.flashScrollIndicators()
+        self.setTableViewConstraints()
+    }
+
+
+}
+
+//MARK: UITableView extension
 extension ProfileReservationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.userArr.count
@@ -89,7 +130,37 @@ extension ProfileReservationViewController {
         self.navigationController?.viewControllers = [self]
         self.navigationController?.pushViewController(newVC, animated: true)
     }
-    
+
+    @objc func longPress(sender: UILongPressGestureRecognizer) {
+
+        if sender.state == UIGestureRecognizer.State.began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                var actions: [(String, UIAlertAction.Style)] = []
+                actions.append(("Redaguoti", UIAlertAction.Style.default))
+                actions.append(("Ištrinti", UIAlertAction.Style.destructive))
+                actions.append(("Atšaukti", UIAlertAction.Style.cancel))
+                print(indexPath.row)
+                ActionSheet.showActionsheet(viewController: self, title: "Rezervacijos redagavimas", message: "", actions: actions) {
+                    (index) in
+                    switch index {
+                    case 0:
+                        break
+                        //TODO: add edit
+                    case 1:
+                        self.userArr.remove(at: indexPath.row)
+                        self.tableView.beginUpdates()
+                        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                        self.tableView.endUpdates()
+                    default:
+                        return
+                    }
+                }
+                print("Long press Pressed:)")
+            }
+        }
+    }
+
 }
 
 //MARK: UI elements extension
@@ -115,12 +186,12 @@ extension ProfileReservationViewController {
         label.contentMode = .scaleAspectFit
         return label
     }
-    
+
     private func initMenuBarView() -> UIView {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9254901961, alpha: 1)
         view.layer.cornerRadius = 12.5
-        
+
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
@@ -209,6 +280,15 @@ extension ProfileReservationViewController {
         return stackView
     }
 
+    private func initMainView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = .clear
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress))
+        self.tableView.addGestureRecognizer(longPress)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
+
     private func initTableView() -> UITableView {
         let tableView = UITableView()
         tableView.frame = self.view.frame
@@ -217,7 +297,7 @@ extension ProfileReservationViewController {
         tableView.dataSource = self as UITableViewDataSource
         tableView.separatorColor = UIColor.clear
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        tableView.frame = CGRect(x: 0, y: 0, width: 382, height: 382)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }
 
@@ -295,13 +375,33 @@ extension ProfileReservationViewController {
             ])
     }
 
+    private func setMainViewConstraintes() {
+        NSLayoutConstraint.activate([
+            self.mainView.topAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: 32),
+            self.mainView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.mainView.heightAnchor.constraint(equalToConstant: 411),
+            self.mainView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32),
+            self.mainView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32)
+            ])
+    }
+
+    private func setTableViewConstraints() {
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 16),
+            self.tableView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: -16),
+            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32),
+            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32)
+            ])
+    }
+
     private func setTableViewScrollViewConstraints() {
         NSLayoutConstraint.activate([
-            self.tableViewScrollView.topAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: 32),
+            self.tableViewScrollView.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 16),
             self.tableViewScrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.tableViewScrollView.heightAnchor.constraint(equalToConstant: 382),
-            self.tableViewScrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            self.tableViewScrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+            self.tableViewScrollView.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: -16),
+            self.tableViewScrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32),
+            self.tableViewScrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32)
             ])
     }
 }
