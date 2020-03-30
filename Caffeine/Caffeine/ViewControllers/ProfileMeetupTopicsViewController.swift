@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class ProfileMeetupTopicsViewController: UIViewController{
     private lazy var profilePicture: UIImageView = self.initProfilePicture()
@@ -24,11 +25,10 @@ class ProfileMeetupTopicsViewController: UIViewController{
     private lazy var newTopicView: UIView = self.initNewTopicView()
     private lazy var newTopicField: UITextField = self.initNewTopicFieldTextField()
     private lazy var addNewTopicButton: UILabel = self.initAddNewTopicButton()
+    private lazy var topicsAmount: UILabel = self.initTopicsAmountLabel()
     
     private lazy var topicArr = [TopicModal]()
-    private var selectedTopics: Int?
     private var userMeetupPurposeModel = MeetupPurposeModel()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -41,6 +41,7 @@ class ProfileMeetupTopicsViewController: UIViewController{
         self.configureTableScrollView()
         self.configureTablewView()
         self.configureNewTopicView()
+        self.configureTopicsAmountLabel()
         self.configureKeyboardDynamicView()
     }
 }
@@ -115,6 +116,12 @@ extension ProfileMeetupTopicsViewController {
         self.setAddNewTopicButtonConstraints()
     }
     
+    private func configureTopicsAmountLabel() {
+        self.view.addSubview(self.topicsAmount)
+        self.setTopicsAmountLabelConstraints()
+        self.updateTopicsAmount()
+    }
+
     private func configureKeyboardDynamicView() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -126,13 +133,14 @@ extension ProfileMeetupTopicsViewController: UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return self.topicArr.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? MeetupTopicsCustomTableViewCell else { fatalError("Unable to create cell") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ProfileMeetupTopicsCustomTableViewCell else { fatalError("Unable to create cell") }
         cell.meetupPurposeLabel.text = self.topicArr[indexPath.row].meetupPurpose
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 64 }
+    
 }
 
 extension ProfileMeetupTopicsViewController: UITextFieldDelegate {
@@ -142,12 +150,53 @@ extension ProfileMeetupTopicsViewController: UITextFieldDelegate {
     }
 }
 
+//MARK: Helper functions
+extension ProfileMeetupTopicsViewController {
+    private func updateTopicsAmount() {
+        if self.topicArr.count == 0 {
+            self.topicsAmount.text = "Iš viso: \(String(describing: 0))"
+        }
+        self.topicsAmount.text = "Iš viso: \(String(describing: self.topicArr.count))"
+    }
+    
+    private func writeToJSON() {
+        do {
+            let fileURL = try FileManager.default
+                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                .appendingPathComponent("example.json")
+            
+            try JSONEncoder().encode(self.topicArr)
+                .write(to: fileURL)
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func readFromJSON() {
+        do {
+            let fileURL = try FileManager.default
+                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                .appendingPathComponent("example.json")
+
+            let data = try Data(contentsOf: fileURL)
+            let topics = try JSONDecoder().decode([TopicModal].self, from: data)
+            for topic in topics {
+                if topic.isSelected == true {
+                    self.topicArr.append(topic)
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+}
+
 //MARK: Dynamic view
 extension ProfileMeetupTopicsViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height - 74
+                self.view.frame.origin.y -= keyboardSize.height - 94
             }
         }
     }
@@ -169,7 +218,6 @@ extension ProfileMeetupTopicsViewController {
     }
 
     @objc private func turnOnInformationScreen() {
-        
         let newVC = ProfileInformationViewController()
         self.navigationController?.hero.isEnabled = true
         self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .left), dismissing: .slide(direction: .left))
@@ -184,15 +232,16 @@ extension ProfileMeetupTopicsViewController {
             self.userMeetupPurposeModel.shakeIfInvalid(view: self.newTopicView)
             return
         }
-        self.topicArr.insert(TopicModal(meetupPurpose: newTopicText), at: 0)
+        self.topicArr.insert(TopicModal(meetupPurpose: newTopicText, isSelected: true), at: 0)
         
         self.tableView.beginUpdates()
         self.tableView.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
         self.tableView.endUpdates()
         self.tableView.selectRow(at: IndexPath.init(row: 0, section: 0), animated: false, scrollPosition: .none)
+        self.newTopicField.text?.removeAll()
+        self.writeToJSON()
+        self.updateTopicsAmount()
     }
-    
-    
 }
 
 //MARK: UI elements extension
@@ -328,14 +377,8 @@ extension ProfileMeetupTopicsViewController {
         
         scrollView.addSubview(self.tableView)
         
-        self.tableView.register(MeetupTopicsCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie abc"))
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie cbd"))
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie qwe"))
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie rty"))
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie uio"))
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie asd"))
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie vbn"))
+        self.tableView.register(ProfileMeetupTopicsCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.readFromJSON()
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
@@ -350,7 +393,7 @@ extension ProfileMeetupTopicsViewController {
         view.layer.shadowRadius = 4
         view.layer.shadowOpacity = 0.5
         view.layer.borderWidth = 5
-        view.layer.borderColor = #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.7019607843, alpha: 1)
+        view.layer.borderColor = #colorLiteral(red: 0.8980547786, green: 0.2980546653, blue: 0.08636900038, alpha: 1)
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -358,7 +401,7 @@ extension ProfileMeetupTopicsViewController {
     
     private func initNewTopicFieldTextField() -> UITextField {
         let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "Pokalbio tema", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        textField.attributedPlaceholder = NSAttributedString(string: "Pokalbio tema", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
         textField.textColor = .black
         textField.textAlignment = .left
         textField.font = UIFont.init(name: "Rubik-Medium", size: 18)
@@ -371,7 +414,7 @@ extension ProfileMeetupTopicsViewController {
         let label = UILabel()
         label.text = "Pridėti"
         label.font = UIFont(name: "Rubik-Medium", size: 18)
-        label.textColor = #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.7019607843, alpha: 1)
+        label.textColor = UIColor(named: "orangeMain")
         label.textAlignment = .center
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(addNewTopic))
@@ -381,6 +424,18 @@ extension ProfileMeetupTopicsViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }
+    
+    private func initTopicsAmountLabel() -> UILabel {
+        let label = UILabel()
+        label.text = ""
+        label.font = UIFont(name: "Rubik-Medium", size: 12)
+        label.textColor = UIColor(named: "orangeMain")
+        label.textAlignment = .center
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }
+    
 }
 
 //MARK: Constraints extension
@@ -492,5 +547,13 @@ extension ProfileMeetupTopicsViewController {
             self.addNewTopicButton.trailingAnchor.constraint(equalTo: self.newTopicView.trailingAnchor, constant: -21)
         ])
     }
+    
+    private func setTopicsAmountLabelConstraints () {
+        NSLayoutConstraint.activate([
+            self.topicsAmount.topAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: 16),
+            self.topicsAmount.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+        ])
+    }
+    
     
 }

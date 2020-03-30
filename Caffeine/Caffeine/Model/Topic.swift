@@ -8,10 +8,12 @@
 
 import Foundation
 
-class TopicModal {
+class TopicModal: Encodable, Decodable{
     var meetupPurpose: String?
+    var isSelected: Bool?
     
-    init(meetupPurpose: String) {
+    init(meetupPurpose: String, isSelected: Bool) {
         self.meetupPurpose = meetupPurpose
+        self.isSelected = isSelected
     }
 }

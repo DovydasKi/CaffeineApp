@@ -20,7 +20,7 @@ class NewUserMeetupTopicsViewController: UIViewController {
     private lazy var addNewTopicButton: UILabel = self.initAddNewTopicButton()
     private lazy var newTopicView: UIView = self.initNewTopicView()
     private lazy var selectOrSkipButton: UIButton = self.initSelectOrSkipButton()
-    private var selectedTopics: Int?
+    //private var selectedTopics: Int?
     private var newUserMeetupPurposeModel = MeetupPurposeModel()
     
     override func viewDidLoad() {
@@ -106,7 +106,7 @@ extension NewUserMeetupTopicsViewController: UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return self.topicArr.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? MeetupTopicsCustomTableViewCell else { fatalError("Unable to create cell") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? NewUserMeetupTopicsCustomTableViewCell else { fatalError("Unable to create cell") }
         cell.meetupPurposeLabel.text = self.topicArr[indexPath.row].meetupPurpose
         cell.selectionStyle = .none
         return cell
@@ -114,9 +114,15 @@ extension NewUserMeetupTopicsViewController: UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 64 }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { self.updateCount() }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.updateCount()
+        self.topicArr[indexPath.row].isSelected = true
+    }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) { self.updateCount() }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        self.updateCount()
+        self.topicArr[indexPath.row].isSelected = false
+    }
     
     func updateCount() {
         guard let list = tableView.indexPathsForSelectedRows as [NSIndexPath]? else {
@@ -142,6 +148,19 @@ extension NewUserMeetupTopicsViewController {
             return
         }
         self.selectOrSkipButton.setTitle("Pasirinkti", for: .normal)
+    }
+    
+    private func writeToJSON() {
+        do {
+            let fileURL = try FileManager.default
+                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                .appendingPathComponent("example.json")
+            
+            try JSONEncoder().encode(self.topicArr)
+                .write(to: fileURL)
+        } catch {
+            print(error)
+        }
     }
 }
 
@@ -170,7 +189,7 @@ extension NewUserMeetupTopicsViewController {
             self.newUserMeetupPurposeModel.shakeIfInvalid(view: self.newTopicView)
             return
         }
-        self.topicArr.insert(TopicModal(meetupPurpose: newTopicText), at: 0)
+        self.topicArr.insert(TopicModal(meetupPurpose: newTopicText, isSelected: true), at: 0)
         
         self.tableView.beginUpdates()
         self.tableView.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
@@ -187,7 +206,7 @@ extension NewUserMeetupTopicsViewController {
             self.navigationController?.setViewControllers([homeScreenVC], animated: true)
         }
         else {
-            //TODO: pass data to another VC
+            self.writeToJSON()
             self.navigationController?.setViewControllers([homeScreenVC], animated: true)
         }
     }
@@ -250,14 +269,14 @@ extension NewUserMeetupTopicsViewController {
         
         scrollView.addSubview(self.tableView)
         
-        self.tableView.register(MeetupTopicsCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie abc"))
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie cbd"))
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie qwe"))
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie rty"))
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie uio"))
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie asd"))
-        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie vbn"))
+        self.tableView.register(NewUserMeetupTopicsCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie abc", isSelected: false))
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie cbd", isSelected: false))
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie qwe", isSelected: false))
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie rty", isSelected: false))
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie uio", isSelected: false))
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie asd", isSelected: false))
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie vbn", isSelected: false))
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
