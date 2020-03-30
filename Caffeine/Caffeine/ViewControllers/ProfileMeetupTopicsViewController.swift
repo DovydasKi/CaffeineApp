@@ -18,28 +18,143 @@ class ProfileMeetupTopicsViewController: UIViewController{
     private lazy var meetupTopicsButton: UIView = self.initMeetupTopicsButton()
     private lazy var informationButton: UIView = self.initInformationButton()
     
+    private lazy var mainView: UIView = self.initMainView()
+    private lazy var tableViewScrollView: UIScrollView = self.initTableViewScrollView()
+    private lazy var tableView: UITableView = self.initTableView()
+    private lazy var newTopicView: UIView = self.initNewTopicView()
+    private lazy var newTopicField: UITextField = self.initNewTopicFieldTextField()
+    private lazy var addNewTopicButton: UILabel = self.initAddNewTopicButton()
+    
+    private lazy var topicArr = [TopicModal]()
+    private var selectedTopics: Int?
+    private var userMeetupPurposeModel = MeetupPurposeModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .white
         
+        self.configureProfilePicture()
+        self.configureFullNameLabel()
+        self.configureMenuBarView()
+        self.configureMainView()
+        self.configureTableScrollView()
+        self.configureTablewView()
+        self.configureNewTopicView()
+        self.configureKeyboardDynamicView()
+    }
+}
+
+//MARK: UI configuratrion
+extension ProfileMeetupTopicsViewController {
+    private func configureProfilePicture() {
         self.view.addSubview(self.profilePicture)
         self.setProfilePictureConstraints()
-
+    }
+    
+    private func configureFullNameLabel() {
         self.view.addSubview(self.fullNameLabel)
         self.setFullNameLabelConstraints()
-
+    }
+    
+    private func configureMenuBarView() {
         self.view.addSubview(self.menuBarView)
         self.setMenuBarViewConstraints()
-
+        self.configureReservationButton()
+        self.configureMeetupTopicsButton()
+        self.configureInformationButton()
+    }
+    
+    private func configureReservationButton() {
         self.menuBarView.addSubview(self.reservationButton)
         self.setReservationButtonConstraints()
-
+    }
+    
+    private func configureMeetupTopicsButton() {
         self.menuBarView.addSubview(self.meetupTopicsButton)
         self.setMeetupTopicsButtonConstraints()
-
+    }
+    
+    private func configureInformationButton() {
         self.menuBarView.addSubview(self.informationButton)
         self.setInformationButtonConstraints()
+    }
+    
+    private func configureMainView() {
+        self.view.addSubview(self.mainView)
+        self.setMainViewConstraintes()
+    }
+    
+    private func configureTableScrollView() {
+        self.mainView.addSubview(self.tableViewScrollView)
+        self.tableViewScrollView.showsVerticalScrollIndicator = false
+        self.setTableViewScrollViewConstraints()
+    }
+    
+    private func configureTablewView() {
+        self.tableView.allowsMultipleSelection = true
+        self.tableView.showsVerticalScrollIndicator = true
+        self.tableView.flashScrollIndicators()
+        self.setTableViewConstraints()
+    }
+    
+    private func configureNewTopicView() {
+        self.mainView.addSubview(self.newTopicView)
+        self.setNewTopicViewConstraints()
+        self.configureNewTopicField()
+        self.configureAddNewTopicButton()
+    }
+    
+    private func configureNewTopicField() {
+        self.newTopicView.addSubview(self.newTopicField)
+        self.setNewTopicFieldConstraints()
+    }
+    
+    private func configureAddNewTopicButton() {
+        self.newTopicView.addSubview(self.addNewTopicButton)
+        self.setAddNewTopicButtonConstraints()
+    }
+    
+    private func configureKeyboardDynamicView() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+//MARK: UITableView extension
+extension ProfileMeetupTopicsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return self.topicArr.count }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? MeetupTopicsCustomTableViewCell else { fatalError("Unable to create cell") }
+        cell.meetupPurposeLabel.text = self.topicArr[indexPath.row].meetupPurpose
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 64 }
+}
+
+extension ProfileMeetupTopicsViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+//MARK: Dynamic view
+extension ProfileMeetupTopicsViewController {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height - 74
+            }
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
 }
 
@@ -60,6 +175,21 @@ extension ProfileMeetupTopicsViewController {
         self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .left), dismissing: .slide(direction: .left))
         self.navigationController?.viewControllers = [self]
         self.navigationController?.pushViewController(newVC, animated: true)
+    }
+    
+    @objc private func addNewTopic() {
+        guard let newTopicText = self.newTopicField.text, !newTopicText.isEmpty else { return }
+        
+        if self.userMeetupPurposeModel.checkIfAlreadyExists(topicArr: self.topicArr, text: newTopicText) {
+            self.userMeetupPurposeModel.shakeIfInvalid(view: self.newTopicView)
+            return
+        }
+        self.topicArr.insert(TopicModal(meetupPurpose: newTopicText), at: 0)
+        
+        self.tableView.beginUpdates()
+        self.tableView.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
+        self.tableView.endUpdates()
+        self.tableView.selectRow(at: IndexPath.init(row: 0, section: 0), animated: false, scrollPosition: .none)
     }
     
     
@@ -166,6 +296,91 @@ extension ProfileMeetupTopicsViewController {
         view.addGestureRecognizer(tap)
         return view
     }
+    
+    private func initMainView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 12.5
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 4
+        view.layer.shadowOpacity = 0.5
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
+    
+    private func initTableView() -> UITableView {
+        let tableView = UITableView()
+        tableView.frame = self.view.frame
+        tableView.backgroundColor = UIColor.clear
+        tableView.delegate = self as UITableViewDelegate
+        tableView.dataSource = self as UITableViewDataSource
+        tableView.separatorColor = UIColor.clear
+        tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }
+    
+    private func initTableViewScrollView() -> UIScrollView {
+        let scrollView = UIScrollView()
+        
+        scrollView.addSubview(self.tableView)
+        
+        self.tableView.register(MeetupTopicsCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie abc"))
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie cbd"))
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie qwe"))
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie rty"))
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie uio"))
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie asd"))
+        self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie vbn"))
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }
+    
+    private func initNewTopicView () -> UIView {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = 12
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 4
+        view.layer.shadowOpacity = 0.5
+        view.layer.borderWidth = 5
+        view.layer.borderColor = #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.7019607843, alpha: 1)
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
+    
+    private func initNewTopicFieldTextField() -> UITextField {
+        let textField = UITextField()
+        textField.attributedPlaceholder = NSAttributedString(string: "Pokalbio tema", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        textField.textColor = .black
+        textField.textAlignment = .left
+        textField.font = UIFont.init(name: "Rubik-Medium", size: 18)
+        textField.delegate = self
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }
+    
+    private func initAddNewTopicButton() -> UILabel {
+        let label = UILabel()
+        label.text = "Pridėti"
+        label.font = UIFont(name: "Rubik-Medium", size: 18)
+        label.textColor = #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.7019607843, alpha: 1)
+        label.textAlignment = .center
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(addNewTopic))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tap)
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }
 }
 
 //MARK: Constraints extension
@@ -222,4 +437,60 @@ extension ProfileMeetupTopicsViewController {
             self.informationButton.trailingAnchor.constraint(equalTo: self.menuBarView.trailingAnchor, constant: -4)
             ])
     }
+    
+    private func setMainViewConstraintes() {
+        NSLayoutConstraint.activate([
+            self.mainView.topAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: 32),
+            self.mainView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.mainView.heightAnchor.constraint(equalToConstant: 411),
+            self.mainView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32),
+            self.mainView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32)
+        ])
+    }
+    
+    private func setTableViewConstraints() {
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 16),
+            self.tableView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.tableView.heightAnchor.constraint(equalToConstant: 318),
+            self.tableView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 16),
+            self.tableView.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: -16)
+        ])
+    }
+    
+    private func setTableViewScrollViewConstraints() {
+        NSLayoutConstraint.activate([
+            self.tableViewScrollView.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 16),
+            self.tableViewScrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.tableViewScrollView.heightAnchor.constraint(equalToConstant: 318),
+            self.tableViewScrollView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 16),
+            self.tableViewScrollView.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: -16)
+        ])
+    }
+    
+    private func setNewTopicViewConstraints () {
+        NSLayoutConstraint.activate([
+            self.newTopicView.topAnchor.constraint(equalTo: self.tableViewScrollView.bottomAnchor, constant: 16),
+            self.newTopicView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.newTopicView.heightAnchor.constraint(equalToConstant: 45),
+            self.newTopicView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 32),
+            self.newTopicView.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: -32)
+        ])
+    }
+    
+    private func setNewTopicFieldConstraints () {
+        NSLayoutConstraint.activate([
+            self.newTopicField.centerYAnchor.constraint(equalTo: self.newTopicView.centerYAnchor),
+            self.newTopicField.leadingAnchor.constraint(equalTo: self.newTopicView.leadingAnchor, constant: 12),
+            self.newTopicField.trailingAnchor.constraint(equalTo: self.newTopicView.trailingAnchor, constant: -135)
+        ])
+    }
+    
+    private func setAddNewTopicButtonConstraints () {
+        NSLayoutConstraint.activate([
+            self.addNewTopicButton.centerYAnchor.constraint(equalTo: self.newTopicView.centerYAnchor),
+            self.addNewTopicButton.trailingAnchor.constraint(equalTo: self.newTopicView.trailingAnchor, constant: -21)
+        ])
+    }
+    
 }

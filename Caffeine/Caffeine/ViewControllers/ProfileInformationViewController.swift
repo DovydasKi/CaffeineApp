@@ -60,7 +60,6 @@ class ProfileInformationViewController: UIViewController {
 
         self.view.addSubview(self.informationStackView)
         self.setInformationStackViewConstraints()
-
         self.view.addSubview(self.logoutButton)
         self.setLogoutButtonConstraints()
     }
@@ -69,11 +68,11 @@ class ProfileInformationViewController: UIViewController {
 //MARK: Button actions
 extension ProfileInformationViewController {
     @objc private func turnOnMeetupTopicsScreen() {
-       let newVC = ProfileMeetupTopicsViewController()
-       self.navigationController?.hero.isEnabled = true
-       self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .right), dismissing: .slide(direction: .right))
-       self.navigationController?.viewControllers = [self]
-       self.navigationController?.pushViewController(newVC, animated: true)
+        let newVC = ProfileMeetupTopicsViewController()
+        self.navigationController?.hero.isEnabled = true
+        self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .right), dismissing: .slide(direction: .right))
+        self.navigationController?.viewControllers = [self]
+        self.navigationController?.pushViewController(newVC, animated: true)
     }
     @objc private func turnOnReservationScreen() {
         let newVC = ProfileReservationViewController()
@@ -106,7 +105,7 @@ extension ProfileInformationViewController {
         label.contentMode = .scaleAspectFit
         return label
     }
-    
+
     private func initMenuBarView() -> UIView {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9254901961, alpha: 1)
@@ -115,69 +114,69 @@ extension ProfileInformationViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
-    
+
     private func initReservationButton() -> UIView {
         let view = UIView()
         let label = UILabel()
-        
+
         view.backgroundColor = .clear
         view.layer.cornerRadius = 12.5
-        
+
         label.font = UIFont(name: "Rubik-Bold", size: 14)
         label.text = "Rezervacijos"
         label.textColor = .systemGray
         label.textAlignment = .center
 
         view.addSubview(label)
-        
+
         label.translatesAutoresizingMaskIntoConstraints = false
         view.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(turnOnReservationScreen))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
         return view
     }
-    
+
     private func initMeetupTopicsButton() -> UIView {
         let view = UIView()
         let label = UILabel()
-        
+
         view.backgroundColor = .clear
         view.layer.cornerRadius = 12.5
-        
+
         label.font = UIFont(name: "Rubik-Bold", size: 14)
         label.text = "Pokalbio temos"
         label.textColor = .systemGray
         label.textAlignment = .center
         view.addSubview(label)
-        
+
         label.translatesAutoresizingMaskIntoConstraints = false
         view.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.turnOnMeetupTopicsScreen))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
         return view
     }
-    
+
     private func initInformationButton() -> UIView {
         let view = UIView()
         let label = UILabel()
-        
+
         view.backgroundColor = .white
         view.layer.cornerRadius = 12.5
-        
+
         label.font = UIFont(name: "Rubik-Bold", size: 14)
         label.text = "Informacija"
         label.textColor = .black
         label.textAlignment = .center
         view.addSubview(label)
-        
+
         label.translatesAutoresizingMaskIntoConstraints = false
         view.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -297,6 +296,7 @@ extension ProfileInformationViewController {
         stackView.addArrangedSubview(self.emailStackView)
         stackView.addArrangedSubview(self.userSinceStackView)
         stackView.addArrangedSubview(self.passwordStackView)
+
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }
@@ -373,12 +373,14 @@ extension ProfileInformationViewController {
     private func setInformationStackViewConstraints() {
         NSLayoutConstraint.activate([
             self.informationStackView.topAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: 32),
-            self.informationStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            self.informationStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.informationStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32),
+            self.informationStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32)
             ])
     }
     private func setLogoutButtonConstraints() {
         NSLayoutConstraint.activate([
-            self.logoutButton.topAnchor.constraint(equalTo: self.informationStackView.bottomAnchor, constant: 48),
+            self.logoutButton.topAnchor.constraint(equalTo: self.informationStackView.bottomAnchor, constant: 64),
             self.logoutButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.logoutButton.widthAnchor.constraint(equalToConstant: 254),
             self.logoutButton.heightAnchor.constraint(equalToConstant: 69)

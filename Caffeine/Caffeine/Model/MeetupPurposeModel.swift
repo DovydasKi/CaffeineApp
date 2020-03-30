@@ -9,7 +9,7 @@
 import Foundation
 import  UIKit
 
-class NewUserMeetupPurposeModel {
+class MeetupPurposeModel {
     public func checkIfAlreadyExists(topicArr: [TopicModal], text: String) -> Bool {
         if topicArr.contains( where: { $0.meetupPurpose == text } ) {
             return true

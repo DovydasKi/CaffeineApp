@@ -26,11 +26,14 @@
 		0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */; };
 		054882532430E40E0095E256 /* ProfileMeetupTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054882522430E40E0095E256 /* ProfileMeetupTopicsViewController.swift */; };
 		0549422A242E288200B520E7 /* NewUserMeetupTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05494229242E288200B520E7 /* NewUserMeetupTopicsViewController.swift */; };
-		0549422C242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0549422B242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift */; };
+		0549422C242E5EF600B520E7 /* MeetupTopicsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0549422B242E5EF600B520E7 /* MeetupTopicsCustomTableViewCell.swift */; };
 		054BD2EB242BB77800A767EF /* DetailedCoffeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */; };
 		054BD2EE242D117900A767EF /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 054BD2EC242D105100A767EF /* Hero.framework */; };
 		054BD2EF242D117900A767EF /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 054BD2EC242D105100A767EF /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		054BD2F1242D23D900A767EF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD2F0242D23D900A767EF /* StringExtension.swift */; };
+		055E82222431CF6F00B42BCC /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E82212431CF6F00B42BCC /* Topic.swift */; };
+		055E82242431CFB200B42BCC /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E82232431CFB200B42BCC /* Coffee.swift */; };
+		055E82262431CFEF00B42BCC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E82252431CFEF00B42BCC /* User.swift */; };
 		057023652413E8B90018A710 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023642413E8B90018A710 /* RegisterViewController.swift */; };
 		057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023662413F8300018A710 /* TextFieldConnectFields.swift */; };
 		057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023682413FA150018A710 /* RegisterVIewModel.swift */; };
@@ -42,7 +45,7 @@
 		05C1C2192423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */; };
 		05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF83DD2414FBBD0031E356 /* InputValidation.swift */; };
 		05E3BDFC24252811004C85C4 /* CafeDrinkMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3BDFB24252810004C85C4 /* CafeDrinkMenuViewController.swift */; };
-		05EB9D8D242FDE700039D181 /* NewUserMeetupPurposeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EB9D8C242FDE700039D181 /* NewUserMeetupPurposeModel.swift */; };
+		05EB9D8D242FDE700039D181 /* MeetupPurposeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EB9D8C242FDE700039D181 /* MeetupPurposeModel.swift */; };
 		A6316BD4242A7B2000EB5EF6 /* ReservationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6316BD3242A7B2000EB5EF6 /* ReservationTypeViewController.swift */; };
 		A6347E7524168A3100B1FC05 /* Margin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6347E7424168A3100B1FC05 /* Margin.swift */; };
 		A656F3DC240FD84D0038AA7B /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656F3DB240FD84D0038AA7B /* MainScreenViewController.swift */; };
@@ -97,10 +100,13 @@
 		0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewController.swift; sourceTree = "<group>"; };
 		054882522430E40E0095E256 /* ProfileMeetupTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMeetupTopicsViewController.swift; sourceTree = "<group>"; };
 		05494229242E288200B520E7 /* NewUserMeetupTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserMeetupTopicsViewController.swift; sourceTree = "<group>"; };
-		0549422B242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserMeetupTopicsCustomTableViewCell.swift; sourceTree = "<group>"; };
+		0549422B242E5EF600B520E7 /* MeetupTopicsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupTopicsCustomTableViewCell.swift; sourceTree = "<group>"; };
 		054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCoffeeViewModel.swift; sourceTree = "<group>"; };
 		054BD2EC242D105100A767EF /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hero.framework; sourceTree = "<group>"; };
 		054BD2F0242D23D900A767EF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		055E82212431CF6F00B42BCC /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		055E82232431CFB200B42BCC /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
+		055E82252431CFEF00B42BCC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		057023642413E8B90018A710 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		057023662413F8300018A710 /* TextFieldConnectFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldConnectFields.swift; sourceTree = "<group>"; };
 		057023682413FA150018A710 /* RegisterVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVIewModel.swift; sourceTree = "<group>"; };
@@ -112,7 +118,7 @@
 		05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReservationCustomTableViewCell.swift; sourceTree = "<group>"; };
 		05CF83DD2414FBBD0031E356 /* InputValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidation.swift; sourceTree = "<group>"; };
 		05E3BDFB24252810004C85C4 /* CafeDrinkMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeDrinkMenuViewController.swift; sourceTree = "<group>"; };
-		05EB9D8C242FDE700039D181 /* NewUserMeetupPurposeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserMeetupPurposeModel.swift; sourceTree = "<group>"; };
+		05EB9D8C242FDE700039D181 /* MeetupPurposeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupPurposeModel.swift; sourceTree = "<group>"; };
 		A6316BD3242A7B2000EB5EF6 /* ReservationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationTypeViewController.swift; sourceTree = "<group>"; };
 		A6347E7424168A3100B1FC05 /* Margin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Margin.swift; sourceTree = "<group>"; };
 		A656F3DB240FD84D0038AA7B /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
@@ -193,7 +199,7 @@
 				05E3BDFB24252810004C85C4 /* CafeDrinkMenuViewController.swift */,
 				052BE05C242A5F070005B822 /* DetailedCoffeeViewController.swift */,
 				05494229242E288200B520E7 /* NewUserMeetupTopicsViewController.swift */,
-				0549422B242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift */,
+				0549422B242E5EF600B520E7 /* MeetupTopicsCustomTableViewCell.swift */,
 				A6DCDCE1242F767200CEDEDE /* GuestAmmountViewController.swift */,
 			);
 			path = ViewControllers;
@@ -249,7 +255,10 @@
 				05C1C2162422A3F500ED0AD0 /* ProfileViewModel.swift */,
 				A6E152AC242BBB080069C79C /* ReservationDetailsViewModel.swift */,
 				054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */,
-				05EB9D8C242FDE700039D181 /* NewUserMeetupPurposeModel.swift */,
+				05EB9D8C242FDE700039D181 /* MeetupPurposeModel.swift */,
+				055E82212431CF6F00B42BCC /* Topic.swift */,
+				055E82232431CFB200B42BCC /* Coffee.swift */,
+				055E82252431CFEF00B42BCC /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -436,7 +445,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A68C52462422624100B2AA53 /* PropertyCardViewController.swift in Sources */,
-				0549422C242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift in Sources */,
+				055E82242431CFB200B42BCC /* Coffee.swift in Sources */,
+				0549422C242E5EF600B520E7 /* MeetupTopicsCustomTableViewCell.swift in Sources */,
 				05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */,
 				A66FDD622411310300CFC5FB /* LoginViewController.swift in Sources */,
 				A6E152AD242BBB080069C79C /* ReservationDetailsViewModel.swift in Sources */,
@@ -448,10 +458,11 @@
 				054BD2EB242BB77800A767EF /* DetailedCoffeeViewModel.swift in Sources */,
 				054BD2F1242D23D900A767EF /* StringExtension.swift in Sources */,
 				05C1C2172422A3F500ED0AD0 /* ProfileViewModel.swift in Sources */,
-				05EB9D8D242FDE700039D181 /* NewUserMeetupPurposeModel.swift in Sources */,
+				05EB9D8D242FDE700039D181 /* MeetupPurposeModel.swift in Sources */,
 				057023652413E8B90018A710 /* RegisterViewController.swift in Sources */,
 				0549422A242E288200B520E7 /* NewUserMeetupTopicsViewController.swift in Sources */,
 				0585AA7B24223C1300FDF884 /* ProfileInformationViewController.swift in Sources */,
+				055E82222431CF6F00B42BCC /* Topic.swift in Sources */,
 				A6A1CFFD2418E164002333CA /* RestaurantsViewController.swift in Sources */,
 				A6347E7524168A3100B1FC05 /* Margin.swift in Sources */,
 				A68C5244241EBFEF00B2AA53 /* RestaurantsViewModel.swift in Sources */,
@@ -459,6 +470,7 @@
 				A6E152AB242BB8E60069C79C /* ReservationDetailsViewController.swift in Sources */,
 				A671E95B240D4FBF00DF2577 /* AppDelegate.swift in Sources */,
 				A6316BD4242A7B2000EB5EF6 /* ReservationTypeViewController.swift in Sources */,
+				055E82262431CFEF00B42BCC /* User.swift in Sources */,
 				054882532430E40E0095E256 /* ProfileMeetupTopicsViewController.swift in Sources */,
 				05C1C2152422A37300ED0AD0 /* ProfileReservationViewController.swift in Sources */,
 				05C1C2192423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift in Sources */,

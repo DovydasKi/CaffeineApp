@@ -9,14 +9,6 @@
 import Foundation
 import UIKit
 
-class TopicModal {
-    var meetupPurpose: String?
-    
-    init(meetupPurpose: String) {
-        self.meetupPurpose = meetupPurpose
-    }
-}
-
 class NewUserMeetupTopicsViewController: UIViewController {
     private lazy var caffeineLogo: UIImageView = self.initCaffeineLogo()
     private lazy var topicTitle: UILabel = self.initTopicTitleLabel()
@@ -29,7 +21,7 @@ class NewUserMeetupTopicsViewController: UIViewController {
     private lazy var newTopicView: UIView = self.initNewTopicView()
     private lazy var selectOrSkipButton: UIButton = self.initSelectOrSkipButton()
     private var selectedTopics: Int?
-    private var newUserMeetupPurposeModel = NewUserMeetupPurposeModel()
+    private var newUserMeetupPurposeModel = MeetupPurposeModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +106,7 @@ extension NewUserMeetupTopicsViewController: UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return self.topicArr.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? NewUserMeetupTopicsCustomTableViewCell else { fatalError("Unable to create cell") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? MeetupTopicsCustomTableViewCell else { fatalError("Unable to create cell") }
         cell.meetupPurposeLabel.text = self.topicArr[indexPath.row].meetupPurpose
         cell.selectionStyle = .none
         return cell
@@ -258,7 +250,7 @@ extension NewUserMeetupTopicsViewController {
         
         scrollView.addSubview(self.tableView)
         
-        self.tableView.register(NewUserMeetupTopicsCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(MeetupTopicsCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie abc"))
         self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie cbd"))
         self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie qwe"))

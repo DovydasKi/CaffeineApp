@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class NewUserMeetupTopicsCustomTableViewCell: UITableViewCell {
+class MeetupTopicsCustomTableViewCell: UITableViewCell {
     lazy var backView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +59,7 @@ class NewUserMeetupTopicsCustomTableViewCell: UITableViewCell {
     }
 }
 
-extension NewUserMeetupTopicsCustomTableViewCell {
+extension MeetupTopicsCustomTableViewCell {
     private func setSelectedColor() {
         self.backView.layer.cornerRadius = 12
         self.backView.clipsToBounds = true
@@ -75,7 +75,7 @@ extension NewUserMeetupTopicsCustomTableViewCell {
 }
 
 
-extension NewUserMeetupTopicsCustomTableViewCell {
+extension MeetupTopicsCustomTableViewCell {
     private func setBackViewConstraints() {
         NSLayoutConstraint.activate([
             self.backView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),

@@ -10,23 +10,6 @@ import Foundation
 import UIKit
 import Hero
 
-
-class UserModal {
-    var userImage: UIImage?
-    var name: String?
-    var meetupPurpose: String?
-    var address: String?
-    var dateAndTime: String?
-
-    init(userImage: UIImage, name: String, meetupPurpose: String, address: String, dateAndTime: String) {
-        self.userImage = userImage
-        self.name = name
-        self.meetupPurpose = meetupPurpose
-        self.address = address
-        self.dateAndTime = dateAndTime
-    }
-}
-
 class ProfileReservationViewController: UIViewController {
     private lazy var profilePicture: UIImageView = self.initProfilePicture()
     private lazy var fullNameLabel: UILabel = self.initFullNameLabel()
@@ -314,7 +297,7 @@ extension ProfileReservationViewController {
 
     private func setTableViewScrollViewConstraints() {
         NSLayoutConstraint.activate([
-            self.tableViewScrollView.topAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: 64),
+            self.tableViewScrollView.topAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: 32),
             self.tableViewScrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.tableViewScrollView.heightAnchor.constraint(equalToConstant: 382),
             self.tableViewScrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
