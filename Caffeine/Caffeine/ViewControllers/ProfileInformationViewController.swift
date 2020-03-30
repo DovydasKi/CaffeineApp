@@ -13,9 +13,12 @@ import Hero
 class ProfileInformationViewController: UIViewController {
     private lazy var profilePicture: UIImageView = self.initProfilePicture()
     private lazy var fullNameLabel: UILabel = self.initFullNameLabel()
-    private lazy var reservationButton: UILabel = self.initReservationButton()
-    private lazy var informationButton: UILabel = self.initInformationButton()
-    private lazy var menuBarStackView: UIStackView = self.initMenuBarStackView()
+    private lazy var menuBarView: UIView = self.initMenuBarView()
+
+    private lazy var reservationButton: UIView = self.initReservationButton()
+    private lazy var meetupTopicsButton: UIView = self.initMeetupTopicsButton()
+    private lazy var informationButton: UIView = self.initInformationButton()
+
     private lazy var emaillTitle: UILabel = self.initEmailTitle()
     private lazy var emailBody: UILabel = self.initEmailBody()
     private lazy var emailStackView: UIStackView = self.initEmailStackView()
@@ -39,8 +42,17 @@ class ProfileInformationViewController: UIViewController {
         self.view.addSubview(self.fullNameLabel)
         self.setFullNameLabelConstraints()
 
-        self.view.addSubview(menuBarStackView)
-        self.setMenuBarStackViewConstraints()
+        self.view.addSubview(self.menuBarView)
+        self.setMenuBarViewConstraints()
+
+        self.menuBarView.addSubview(self.reservationButton)
+        self.setReservationButtonConstraints()
+
+        self.menuBarView.addSubview(self.meetupTopicsButton)
+        self.setMeetupTopicsButtonConstraints()
+
+        self.menuBarView.addSubview(self.informationButton)
+        self.setInformationButtonConstraints()
 
         self.view.addSubview(self.emailStackView)
         self.view.addSubview(self.userSinceStackView)
@@ -48,7 +60,6 @@ class ProfileInformationViewController: UIViewController {
 
         self.view.addSubview(self.informationStackView)
         self.setInformationStackViewConstraints()
-
         self.view.addSubview(self.logoutButton)
         self.setLogoutButtonConstraints()
     }
@@ -56,8 +67,19 @@ class ProfileInformationViewController: UIViewController {
 
 //MARK: Button actions
 extension ProfileInformationViewController {
+    @objc private func turnOnMeetupTopicsScreen() {
+        let newVC = ProfileMeetupTopicsViewController()
+        self.navigationController?.hero.isEnabled = true
+        self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .right), dismissing: .slide(direction: .right))
+        self.navigationController?.viewControllers = [self]
+        self.navigationController?.pushViewController(newVC, animated: true)
+    }
     @objc private func turnOnReservationScreen() {
-        self.navigationController?.popViewController(animated: true)
+        let newVC = ProfileReservationViewController()
+        self.navigationController?.hero.isEnabled = true
+        self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .right), dismissing: .slide(direction: .right))
+        self.navigationController?.viewControllers = [self]
+        self.navigationController?.pushViewController(newVC, animated: true)
     }
 }
 
@@ -83,55 +105,90 @@ extension ProfileInformationViewController {
         label.contentMode = .scaleAspectFit
         return label
     }
-    private func initReservationButton() -> UILabel {
+
+    private func initMenuBarView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9254901961, alpha: 1)
+        view.layer.cornerRadius = 12.5
+
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
+
+    private func initReservationButton() -> UIView {
+        let view = UIView()
         let label = UILabel()
-        label.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [16, 18, 20]))
+
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = 12.5
+
+        label.font = UIFont(name: "Rubik-Bold", size: 14)
         label.text = "Rezervacijos"
-        label.textColor = UIColor(named: "orangeMain")
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .systemGray
         label.textAlignment = .center
-        label.contentMode = .scaleAspectFit
+
+        view.addSubview(label)
+
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(turnOnReservationScreen))
-        label.isUserInteractionEnabled = true
-        label.addGestureRecognizer(tap)
-        return label
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
+        return view
     }
-    private func initInformationButton() -> UILabel {
+
+    private func initMeetupTopicsButton() -> UIView {
+        let view = UIView()
         let label = UILabel()
-        label.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [16, 18, 20]))
-        label.text = "Informacija"
-        label.textColor = UIColor(named: "orangeMain")
-        label.translatesAutoresizingMaskIntoConstraints = false
+
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = 12.5
+
+        label.font = UIFont(name: "Rubik-Bold", size: 14)
+        label.text = "Pokalbio temos"
+        label.textColor = .systemGray
         label.textAlignment = .center
-        label.contentMode = .scaleAspectFit
+        view.addSubview(label)
 
-        let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        bottomBorder.backgroundColor = UIColor(named: "orangeMain")
-        bottomBorder.translatesAutoresizingMaskIntoConstraints = false
-        label.addSubview(bottomBorder)
-        bottomBorder.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 3).isActive = true
-        bottomBorder.leftAnchor.constraint(equalTo: label.leftAnchor).isActive = true
-        bottomBorder.rightAnchor.constraint(equalTo: label.rightAnchor).isActive = true
-        bottomBorder.heightAnchor.constraint(equalToConstant: 3).isActive = true
-        return label
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.turnOnMeetupTopicsScreen))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
+        return view
     }
 
-    private func initMenuBarStackView() -> UIStackView {
-        let stackView = UIStackView()
-        stackView.axis = NSLayoutConstraint.Axis.horizontal
-        stackView.distribution = UIStackView.Distribution.equalSpacing
-        stackView.alignment = UIStackView.Alignment.center
-        stackView.spacing = 64
-        stackView.addArrangedSubview(self.reservationButton)
-        stackView.addArrangedSubview(self.informationButton)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
+    private func initInformationButton() -> UIView {
+        let view = UIView()
+        let label = UILabel()
+
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 12.5
+
+        label.font = UIFont(name: "Rubik-Bold", size: 14)
+        label.text = "Informacija"
+        label.textColor = .black
+        label.textAlignment = .center
+        view.addSubview(label)
+
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        return view
     }
+
     private func initEmailTitle() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
         label.text = "El. pašto adresas:"
-        label.textColor = .white
+        label.textColor = UIColor(named: "orangeMain")
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.contentMode = .scaleAspectFit
@@ -141,7 +198,7 @@ extension ProfileInformationViewController {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
         label.text = "vardas.pavardenis@stud.vgtu.lt"
-        label.textColor = .white
+        label.textColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.contentMode = .scaleAspectFit
@@ -149,7 +206,7 @@ extension ProfileInformationViewController {
     }
     private func initEmailStackView() -> UIStackView {
         let stackView = UIStackView()
-        stackView.addBackground(color: UIColor(named: "orangeMain") ?? .white, cornerRadius: 12.5)
+        stackView.addBackground(color: .white, cornerRadius: 12.5)
         stackView.axis = NSLayoutConstraint.Axis.vertical
         stackView.distribution = UIStackView.Distribution.equalSpacing
         stackView.alignment = UIStackView.Alignment.center
@@ -166,7 +223,7 @@ extension ProfileInformationViewController {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
         label.text = "Akyvus nuo:"
-        label.textColor = .white
+        label.textColor = UIColor(named: "orangeMain")
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.contentMode = .scaleAspectFit
@@ -176,7 +233,7 @@ extension ProfileInformationViewController {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
         label.text = "2020-02-25"
-        label.textColor = .white
+        label.textColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.contentMode = .scaleAspectFit
@@ -184,7 +241,7 @@ extension ProfileInformationViewController {
     }
     private func initUserSinceStackView() -> UIStackView {
         let stackView = UIStackView()
-        stackView.addBackground(color: UIColor(named: "orangeMain") ?? .white, cornerRadius: 12.5)
+        stackView.addBackground(color: .white, cornerRadius: 12.5)
         stackView.axis = NSLayoutConstraint.Axis.vertical
         stackView.distribution = UIStackView.Distribution.equalSpacing
         stackView.alignment = UIStackView.Alignment.center
@@ -200,7 +257,7 @@ extension ProfileInformationViewController {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
         label.text = "Slpatažodis:"
-        label.textColor = .white
+        label.textColor = UIColor(named: "orangeMain")
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.contentMode = .scaleAspectFit
@@ -210,7 +267,7 @@ extension ProfileInformationViewController {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
         label.text = "*************"
-        label.textColor = .white
+        label.textColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.contentMode = .scaleAspectFit
@@ -218,7 +275,7 @@ extension ProfileInformationViewController {
     }
     private func initPasswordStackView() -> UIStackView {
         let stackView = UIStackView()
-        stackView.addBackground(color: UIColor(named: "orangeMain") ?? .white, cornerRadius: 12.5)
+        stackView.addBackground(color: .white, cornerRadius: 12.5)
         stackView.axis = NSLayoutConstraint.Axis.vertical
         stackView.distribution = UIStackView.Distribution.equalSpacing
         stackView.alignment = UIStackView.Alignment.center
@@ -239,6 +296,7 @@ extension ProfileInformationViewController {
         stackView.addArrangedSubview(self.emailStackView)
         stackView.addArrangedSubview(self.userSinceStackView)
         stackView.addArrangedSubview(self.passwordStackView)
+
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }
@@ -276,17 +334,48 @@ extension ProfileInformationViewController {
             ])
     }
 
-    private func setMenuBarStackViewConstraints() {
+    private func setMenuBarViewConstraints() {
         NSLayoutConstraint.activate([
-            self.menuBarStackView.topAnchor.constraint(equalTo: self.fullNameLabel.bottomAnchor, constant: 32),
-            self.menuBarStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            self.menuBarView.topAnchor.constraint(equalTo: self.fullNameLabel.bottomAnchor, constant: 32),
+            self.menuBarView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.menuBarView.heightAnchor.constraint(equalToConstant: 45),
+            self.menuBarView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            self.menuBarView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
             ])
     }
 
+    private func setReservationButtonConstraints() {
+        NSLayoutConstraint.activate([
+            self.reservationButton.topAnchor.constraint(equalTo: self.menuBarView.topAnchor, constant: 4),
+            self.reservationButton.widthAnchor.constraint(equalToConstant: 123),
+            self.reservationButton.bottomAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: -4),
+            self.reservationButton.leadingAnchor.constraint(equalTo: self.menuBarView.leadingAnchor, constant: 4)
+            ])
+    }
+
+    private func setMeetupTopicsButtonConstraints() {
+        NSLayoutConstraint.activate([
+            self.meetupTopicsButton.centerXAnchor.constraint(equalTo: self.menuBarView.centerXAnchor),
+            self.meetupTopicsButton.widthAnchor.constraint(equalToConstant: 123),
+            self.meetupTopicsButton.topAnchor.constraint(equalTo: self.menuBarView.topAnchor, constant: 4),
+            self.meetupTopicsButton.bottomAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: -4)
+            ])
+    }
+
+    private func setInformationButtonConstraints() {
+        NSLayoutConstraint.activate([
+            self.informationButton.topAnchor.constraint(equalTo: self.menuBarView.topAnchor, constant: 4),
+            self.informationButton.widthAnchor.constraint(equalToConstant: 123),
+            self.informationButton.bottomAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: -4),
+            self.informationButton.trailingAnchor.constraint(equalTo: self.menuBarView.trailingAnchor, constant: -4)
+            ])
+    }
     private func setInformationStackViewConstraints() {
         NSLayoutConstraint.activate([
-            self.informationStackView.topAnchor.constraint(equalTo: self.menuBarStackView.bottomAnchor, constant: 64),
-            self.informationStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            self.informationStackView.topAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: 32),
+            self.informationStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.informationStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32),
+            self.informationStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32)
             ])
     }
     private func setLogoutButtonConstraints() {

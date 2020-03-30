@@ -9,16 +9,6 @@
 import Foundation
 import UIKit
 
-class Coffee {
-    var imageView: UIImageView?
-    var label: UILabel?
-
-    init(imageView: UIImageView, label: UILabel) {
-        self.imageView = imageView
-        self.label = label
-    }
-}
-
 private class MyTapGesture: UITapGestureRecognizer {
     var labelText: String?
 }

@@ -10,33 +10,19 @@ import Foundation
 import UIKit
 import Hero
 
-
-class UserModal {
-    var userImage: UIImage?
-    var name: String?
-    var meetupPurpose: String?
-    var address: String?
-    var dateAndTime: String?
-
-    init(userImage: UIImage, name: String, meetupPurpose: String, address: String, dateAndTime: String) {
-        self.userImage = userImage
-        self.name = name
-        self.meetupPurpose = meetupPurpose
-        self.address = address
-        self.dateAndTime = dateAndTime
-    }
-}
-
 class ProfileReservationViewController: UIViewController {
     private lazy var profilePicture: UIImageView = self.initProfilePicture()
     private lazy var fullNameLabel: UILabel = self.initFullNameLabel()
-    private lazy var reservationButton: UILabel = self.initReservationButton()
-    private lazy var informationButton: UILabel = self.initInformationButton()
-    private lazy var menuBarStackView: UIStackView = self.initMenuBarStackView()
+    private lazy var menuBarView: UIView = self.initMenuBarView()
+
+    private lazy var reservationButton: UIView = self.initReservationButton()
+    private lazy var meetupTopicsButton: UIView = self.initMeetupTopicsButton()
+    private lazy var informationButton: UIView = self.initInformationButton()
+
     private lazy var tableViewScrollView: UIScrollView = self.intiTableViewScrollView()
     private lazy var tableView: UITableView = self.initTableView()
     private lazy var userArr = [UserModal]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -48,8 +34,17 @@ class ProfileReservationViewController: UIViewController {
         self.view.addSubview(self.fullNameLabel)
         self.setFullNameLabelConstraints()
 
-        self.view.addSubview(menuBarStackView)
-        self.setMenuBarStackViewConstraints()
+        self.view.addSubview(self.menuBarView)
+        self.setMenuBarViewConstraints()
+
+        self.menuBarView.addSubview(self.reservationButton)
+        self.setReservationButtonConstraints()
+
+        self.menuBarView.addSubview(self.meetupTopicsButton)
+        self.setMeetupTopicsButtonConstraints()
+
+        self.menuBarView.addSubview(self.informationButton)
+        self.setInformationButtonConstraints()
 
         self.view.addSubview(self.tableViewScrollView)
         self.tableViewScrollView.showsVerticalScrollIndicator = false
@@ -80,12 +75,21 @@ extension ProfileReservationViewController: UITableViewDelegate, UITableViewData
 
 //MARK: Button actions
 extension ProfileReservationViewController {
+    @objc private func turnOnMeetupTopicsScreen() {
+        let newVC = ProfileMeetupTopicsViewController()
+        self.navigationController?.hero.isEnabled = true
+        self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .left), dismissing: .slide(direction: .left))
+        self.navigationController?.viewControllers = [self]
+        self.navigationController?.pushViewController(newVC, animated: true)
+    }
     @objc private func turnOnInformationScreen() {
         let newVC = ProfileInformationViewController()
         self.navigationController?.hero.isEnabled = true
-        self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .left), dismissing: .slide(direction: .right))
+        self.navigationController?.hero.navigationAnimationType = .selectBy(presenting: .slide(direction: .left), dismissing: .slide(direction: .left))
+        self.navigationController?.viewControllers = [self]
         self.navigationController?.pushViewController(newVC, animated: true)
     }
+    
 }
 
 //MARK: UI elements extension
@@ -111,49 +115,96 @@ extension ProfileReservationViewController {
         label.contentMode = .scaleAspectFit
         return label
     }
+    
+    private func initMenuBarView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9254901961, alpha: 1)
+        view.layer.cornerRadius = 12.5
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
 
-    private func initReservationButton() -> UILabel {
+    private func initReservationButton() -> UIView {
+        let view = UIView()
         let label = UILabel()
-        label.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [16, 18, 20]))
+
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 12.5
+
+        label.font = UIFont(name: "Rubik-Bold", size: 14)
         label.text = "Rezervacijos"
-        label.textColor = UIColor(named: "orangeMain")
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
         label.textAlignment = .center
-        label.contentMode = .scaleAspectFit
 
-        let bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        bottomBorder.backgroundColor = UIColor(named: "orangeMain")
-        bottomBorder.translatesAutoresizingMaskIntoConstraints = false
-        label.addSubview(bottomBorder)
-        bottomBorder.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 3).isActive = true
-        bottomBorder.leftAnchor.constraint(equalTo: label.leftAnchor).isActive = true
-        bottomBorder.rightAnchor.constraint(equalTo: label.rightAnchor).isActive = true
-        bottomBorder.heightAnchor.constraint(equalToConstant: 3).isActive = true
-        return label
+        view.addSubview(label)
+
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        return view
     }
 
-    private func initInformationButton() -> UILabel {
+    private func initMeetupTopicsButton() -> UIView {
+        let view = UIView()
         let label = UILabel()
-        label.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [16, 18, 20]))
-        label.text = "Informacija"
-        label.textColor = UIColor(named: "orangeMain")
-        label.translatesAutoresizingMaskIntoConstraints = false
+
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = 12.5
+
+        label.font = UIFont(name: "Rubik-Bold", size: 14)
+        label.text = "Pokalbio temos"
+        label.textColor = .systemGray
         label.textAlignment = .center
-        label.contentMode = .scaleAspectFit
-		let tap = UITapGestureRecognizer(target: self, action: #selector(self.turnOnInformationScreen))
-        label.isUserInteractionEnabled = true
-        label.addGestureRecognizer(tap)
-        return label
+        view.addSubview(label)
+
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(turnOnMeetupTopicsScreen))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
+
+        return view
     }
+
+    private func initInformationButton() -> UIView {
+        let view = UIView()
+        let label = UILabel()
+
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = 12.5
+
+        label.font = UIFont(name: "Rubik-Bold", size: 14)
+        label.text = "Informacija"
+        label.textColor = .systemGray
+        label.textAlignment = .center
+        view.addSubview(label)
+
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.turnOnInformationScreen))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
+        return view
+    }
+
 
     private func initMenuBarStackView() -> UIStackView {
         let stackView = UIStackView()
         stackView.axis = NSLayoutConstraint.Axis.horizontal
         stackView.distribution = UIStackView.Distribution.equalSpacing
         stackView.alignment = UIStackView.Alignment.center
-        stackView.spacing = 64
+        stackView.spacing = 16
         stackView.addArrangedSubview(self.reservationButton)
         stackView.addArrangedSubview(self.informationButton)
+        stackView.addArrangedSubview(self.meetupTopicsButton)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }
@@ -177,7 +228,7 @@ extension ProfileReservationViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
 
         self.tableView.register(ProfileReservationCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
-       
+
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage6"), name: "Daniel", meetupPurpose: "Pokalbiai apie viską.", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "restaurant"), name: " ", meetupPurpose: " ", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage2"), name: "Dovydas", meetupPurpose: " ", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
@@ -207,16 +258,46 @@ extension ProfileReservationViewController {
             ])
     }
 
-    private func setMenuBarStackViewConstraints() {
+    private func setMenuBarViewConstraints() {
         NSLayoutConstraint.activate([
-            self.menuBarStackView.topAnchor.constraint(equalTo: self.fullNameLabel.bottomAnchor, constant: 32),
-            self.menuBarStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            self.menuBarView.topAnchor.constraint(equalTo: self.fullNameLabel.bottomAnchor, constant: 32),
+            self.menuBarView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.menuBarView.heightAnchor.constraint(equalToConstant: 45),
+            self.menuBarView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            self.menuBarView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
+            ])
+    }
+
+    private func setReservationButtonConstraints() {
+        NSLayoutConstraint.activate([
+            self.reservationButton.topAnchor.constraint(equalTo: self.menuBarView.topAnchor, constant: 4),
+            self.reservationButton.widthAnchor.constraint(equalToConstant: 123),
+            self.reservationButton.bottomAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: -4),
+            self.reservationButton.leadingAnchor.constraint(equalTo: self.menuBarView.leadingAnchor, constant: 4)
+            ])
+    }
+
+    private func setMeetupTopicsButtonConstraints() {
+        NSLayoutConstraint.activate([
+            self.meetupTopicsButton.centerXAnchor.constraint(equalTo: self.menuBarView.centerXAnchor),
+            self.meetupTopicsButton.widthAnchor.constraint(equalToConstant: 123),
+            self.meetupTopicsButton.topAnchor.constraint(equalTo: self.menuBarView.topAnchor, constant: 4),
+            self.meetupTopicsButton.bottomAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: -4)
+            ])
+    }
+
+    private func setInformationButtonConstraints() {
+        NSLayoutConstraint.activate([
+            self.informationButton.topAnchor.constraint(equalTo: self.menuBarView.topAnchor, constant: 4),
+            self.informationButton.widthAnchor.constraint(equalToConstant: 123),
+            self.informationButton.bottomAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: -4),
+            self.informationButton.trailingAnchor.constraint(equalTo: self.menuBarView.trailingAnchor, constant: -4)
             ])
     }
 
     private func setTableViewScrollViewConstraints() {
         NSLayoutConstraint.activate([
-            self.tableViewScrollView.topAnchor.constraint(equalTo: self.menuBarStackView.bottomAnchor, constant: 64),
+            self.tableViewScrollView.topAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: 32),
             self.tableViewScrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.tableViewScrollView.heightAnchor.constraint(equalToConstant: 382),
             self.tableViewScrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
