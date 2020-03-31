@@ -10,16 +10,31 @@ import Foundation
 import UIKit
 
 
-private var contentViewsArray =  [profileView]()
+
 
 class ProfileViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    private var contentViewsArray =  [Profile]()
+    
+    lazy var test: UIView = {
+        let view = UIView()
+        view.backgroundColor = .blue
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.contentViewsArray.append(Profile(contentView: UserReservationView() as UIView))
+        self.contentViewsArray.append(Profile(contentView: UserReservationView() as UIView))
+       
         navigationController?.navigationBar.isHidden = true
         collectionView?.backgroundColor = .white
-        collectionView?.register(ProfileCell.self, forCellWithReuseIdentifier: "cellId")
-
+        //collectionView?.register(ProfileCell.self, forCellWithReuseIdentifier: "cellId")
+        
+        collectionView?.register(ProfileCell.self, forCellWithReuseIdentifier: "Cell")
+        
+        
+        print(contentViewsArray)
         collectionView?.isPagingEnabled = true
         collectionView?.showsHorizontalScrollIndicator = false
 
@@ -29,15 +44,15 @@ class ProfileViewController: UICollectionViewController, UICollectionViewDelegat
         return 0
     }
     
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return contentViewsArray.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? ProfileCell else { fatalError("Unabel to create cell") }
-        cell.reservationView = self.contentViewsArray[indexPath.row]
-        cell.topicView = self.contentViewsArray[indexPath.row]
-        cell.informationView = self.contentViewsArray[indexPath.row]
+        guard let contentView = self.contentViewsArray[indexPath.row].contentView else { return cell}
+        cell.content = contentView
         return cell
     }
 
