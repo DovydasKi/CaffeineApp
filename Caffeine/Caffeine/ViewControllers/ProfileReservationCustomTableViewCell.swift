@@ -14,6 +14,7 @@ class ProfileReservationCustomTableViewCell: UITableViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = 12
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.layer.shadowRadius = 4
@@ -67,10 +68,6 @@ class ProfileReservationCustomTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         contentView.backgroundColor = UIColor.clear
         backgroundColor = UIColor.clear
-        self.backView.layer.cornerRadius = 12
-        self.backView.clipsToBounds = true
-        self.backView.layer.borderWidth = 4
-        self.backView.layer.borderColor = #colorLiteral(red: 0.8980392157, green: 0.2980392157, blue: 0.0862745098, alpha: 1)
         self.userImage.layer.cornerRadius = 32
         self.userImage.clipsToBounds = true
     }
@@ -99,7 +96,7 @@ class ProfileReservationCustomTableViewCell: UITableViewCell {
 extension ProfileReservationCustomTableViewCell {
     private func setBackViewConstraints() {
         NSLayoutConstraint.activate([
-            self.backView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            self.backView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
             self.backView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.backView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             ])
@@ -111,7 +108,7 @@ extension ProfileReservationCustomTableViewCell {
             self.userImage.centerYAnchor.constraint(equalTo: self.backView.centerYAnchor),
             self.userImage.heightAnchor.constraint(equalToConstant: 70),
             self.userImage.widthAnchor.constraint(equalToConstant: 70),
-            self.userImage.leadingAnchor.constraint(equalTo: self.backView.leadingAnchor, constant: 22)
+            self.userImage.leadingAnchor.constraint(equalTo: self.backView.leadingAnchor, constant: 16)
             ])
     }
 
@@ -125,7 +122,7 @@ extension ProfileReservationCustomTableViewCell {
     private func setMeetupPurposeLabelConstraints() {
         NSLayoutConstraint.activate([
             self.meetupPurposeLabel.topAnchor.constraint(equalTo: self.backView.topAnchor, constant: 25),
-            self.meetupPurposeLabel.leadingAnchor.constraint(equalTo: self.namelabel.trailingAnchor, constant: 24)
+            self.meetupPurposeLabel.leadingAnchor.constraint(equalTo: self.namelabel.trailingAnchor, constant: 8)
             ])
     }
 

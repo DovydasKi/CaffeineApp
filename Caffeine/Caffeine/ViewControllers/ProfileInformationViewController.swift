@@ -372,10 +372,10 @@ extension ProfileInformationViewController {
     }
     private func setInformationStackViewConstraints() {
         NSLayoutConstraint.activate([
-            self.informationStackView.topAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: 32),
+            self.informationStackView.topAnchor.constraint(equalTo: self.menuBarView.bottomAnchor, constant: 56),
             self.informationStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.informationStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32),
-            self.informationStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32)
+            self.informationStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 48),
+            self.informationStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -48)
             ])
     }
     private func setLogoutButtonConstraints() {
