@@ -89,8 +89,6 @@ extension ProfileReservationViewController {
         self.tableView.flashScrollIndicators()
         self.setTableViewConstraints()
     }
-
-
 }
 
 //MARK: UITableView extension
@@ -132,22 +130,21 @@ extension ProfileReservationViewController {
     }
 
     @objc func longPress(sender: UILongPressGestureRecognizer) {
-
         if sender.state == UIGestureRecognizer.State.began {
             let touchPoint = sender.location(in: tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                guard let name = self.userArr[indexPath.row].name else { return }
+                guard let purpose = self.userArr[indexPath.row].meetupPurpose else { return }
+                guard let address = self.userArr[indexPath.row].address else { return }
+                guard let time = self.userArr[indexPath.row].dateAndTime else { return }
                 var actions: [(String, UIAlertAction.Style)] = []
-                actions.append(("Redaguoti", UIAlertAction.Style.default))
                 actions.append(("Ištrinti", UIAlertAction.Style.destructive))
                 actions.append(("Atšaukti", UIAlertAction.Style.cancel))
                 print(indexPath.row)
-                ActionSheet.showActionsheet(viewController: self, title: "Rezervacijos redagavimas", message: "", actions: actions) {
+                ActionSheet.showActionsheet(viewController: self, title: "Rezervacija", message: "\(String(describing: name + ": " + purpose + "\n" + address + "\n" + time))", actions: actions) {
                     (index) in
                     switch index {
                     case 0:
-                        break
-                        //TODO: add edit
-                    case 1:
                         self.userArr.remove(at: indexPath.row)
                         self.tableView.beginUpdates()
                         self.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -156,11 +153,9 @@ extension ProfileReservationViewController {
                         return
                     }
                 }
-                print("Long press Pressed:)")
             }
         }
     }
-
 }
 
 //MARK: UI elements extension
@@ -238,7 +233,6 @@ extension ProfileReservationViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(turnOnMeetupTopicsScreen))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
-
         return view
     }
 
@@ -309,12 +303,12 @@ extension ProfileReservationViewController {
 
         self.tableView.register(ProfileReservationCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
 
-        self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage6"), name: "Daniel", meetupPurpose: "Pokalbiai apie viską.", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
+        self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage6"), name: "Daniel", meetupPurpose: "Pokalbiai apie viską", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "restaurant"), name: " ", meetupPurpose: " ", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage2"), name: "Dovydas", meetupPurpose: " ", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
-        self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage5"), name: "Lukas", meetupPurpose: "Pokalbiai apie viską.", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
+        self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage5"), name: "Lukas", meetupPurpose: "Pokalbiai apie viską", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage2"), name: "Dovilė", meetupPurpose: " ", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
-        self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage4"), name: "Aušrinė", meetupPurpose: "Pokalbiai apie viską.", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
+        self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage4"), name: "Aušrinė", meetupPurpose: "Pokalbiai apie viską", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
         return scrollView
     }
 
