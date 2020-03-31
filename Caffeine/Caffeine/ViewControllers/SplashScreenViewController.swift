@@ -23,7 +23,7 @@ class SplashScreenViewController: UIViewController {
         self.view.addSubview(self.caffeineLabel)
         self.setCaffeineLabelConstraints()
         
-        let viewController = ProfileReservationViewController()
+        let viewController = HomeScreenViewController()
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.navigationController?.setViewControllers([viewController], animated: true)
         }
