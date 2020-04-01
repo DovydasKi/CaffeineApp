@@ -65,6 +65,7 @@
 		A6DCDCE2242F767200CEDEDE /* GuestAmmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DCDCE1242F767200CEDEDE /* GuestAmmountViewController.swift */; };
 		A6E152AB242BB8E60069C79C /* ReservationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E152AA242BB8E60069C79C /* ReservationDetailsViewController.swift */; };
 		A6E152AD242BBB080069C79C /* ReservationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E152AC242BBB080069C79C /* ReservationDetailsViewModel.swift */; };
+		A6E392102434D28A0091CC2E /* CompanionFoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E3920F2434D28A0091CC2E /* CompanionFoundViewController.swift */; };
 		A6F4BF8B2416D18A005E55D9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */; };
 		A6F4BF912416D74A005E55D9 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */; };
 /* End PBXBuildFile section */
@@ -146,6 +147,7 @@
 		A6DCDCE1242F767200CEDEDE /* GuestAmmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestAmmountViewController.swift; sourceTree = "<group>"; };
 		A6E152AA242BB8E60069C79C /* ReservationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDetailsViewController.swift; sourceTree = "<group>"; };
 		A6E152AC242BBB080069C79C /* ReservationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDetailsViewModel.swift; sourceTree = "<group>"; };
+		A6E3920F2434D28A0091CC2E /* CompanionFoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionFoundViewController.swift; sourceTree = "<group>"; };
 		A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		A6F9110F240F84C800B85B27 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				05494229242E288200B520E7 /* NewUserMeetupTopicsViewController.swift */,
 				0549422B242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift */,
 				A6DCDCE1242F767200CEDEDE /* GuestAmmountViewController.swift */,
+				A6E3920F2434D28A0091CC2E /* CompanionFoundViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				05C08F61241196EE004F2BFA /* LoginViewModel.swift in Sources */,
 				A6F4BF912416D74A005E55D9 /* HomeScreenViewController.swift in Sources */,
 				05E3BDFC24252811004C85C4 /* CafeDrinkMenuViewController.swift in Sources */,
+				A6E392102434D28A0091CC2E /* CompanionFoundViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
