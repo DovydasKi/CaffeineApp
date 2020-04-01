@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import SwiftyJSON
 
 class ProfileMeetupTopicsViewController: UIViewController{
     private lazy var profilePicture: UIImageView = self.initProfilePicture()
@@ -133,7 +132,7 @@ extension ProfileMeetupTopicsViewController: UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return self.topicArr.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ProfileMeetupTopicsCustomTableViewCell else { fatalError("Unable to create cell") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? MeetupTopicsCustomTableViewCell else { fatalError("Unable to create cell") }
         cell.meetupPurposeLabel.text = self.topicArr[indexPath.row].meetupPurpose
         cell.selectionStyle = .none
         return cell
@@ -371,7 +370,7 @@ extension ProfileMeetupTopicsViewController {
         
         scrollView.addSubview(self.tableView)
         
-        self.tableView.register(ProfileMeetupTopicsCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(MeetupTopicsCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         self.readFromJSON()
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false

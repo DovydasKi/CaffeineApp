@@ -29,7 +29,6 @@ class UserReservationView: UIView {
 
     private func setupView() {
         backgroundColor = .clear
-
         self.configureMainView()
         self.configureTableScrollView()
         self.configureTablewView()

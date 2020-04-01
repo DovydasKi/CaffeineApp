@@ -10,9 +10,8 @@ import Foundation
 import UIKit
 
 class Profile {
-    var contentView: UIView?
+    var contentView: UIView
     init(contentView: UIView) {
         self.contentView = contentView
-        
     }
 }
