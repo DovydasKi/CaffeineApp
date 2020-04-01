@@ -34,9 +34,11 @@
 		055E82222431CF6F00B42BCC /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E82212431CF6F00B42BCC /* Topic.swift */; };
 		055E82242431CFB200B42BCC /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E82232431CFB200B42BCC /* Coffee.swift */; };
 		055E82262431CFEF00B42BCC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E82252431CFEF00B42BCC /* User.swift */; };
-		055E82282431F22800B42BCC /* ProfileMeetupTopicsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E82272431F22800B42BCC /* ProfileMeetupTopicsCustomTableViewCell.swift */; };
+		055E82282431F22800B42BCC /* MeetupTopicsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E82272431F22800B42BCC /* MeetupTopicsCustomTableViewCell.swift */; };
 		055E823124327B7500B42BCC /* ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E823024327B7400B42BCC /* ActionSheet.swift */; };
 		0563FFA32434C62300131041 /* UserMeetupTopicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563FFA22434C62300131041 /* UserMeetupTopicsView.swift */; };
+		0563FFA524351F5400131041 /* UserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563FFA424351F5400131041 /* UserInformationView.swift */; };
+		0563FFA72435257F00131041 /* ProfileMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563FFA62435257F00131041 /* ProfileMenuBarView.swift */; };
 		057023652413E8B90018A710 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023642413E8B90018A710 /* RegisterViewController.swift */; };
 		057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023662413F8300018A710 /* TextFieldConnectFields.swift */; };
 		057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023682413FA150018A710 /* RegisterVIewModel.swift */; };
@@ -49,7 +51,7 @@
 		05C08F61241196EE004F2BFA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C08F60241196EE004F2BFA /* LoginViewModel.swift */; };
 		05C1C2152422A37300ED0AD0 /* ProfileReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C2142422A37300ED0AD0 /* ProfileReservationViewController.swift */; };
 		05C1C2172422A3F500ED0AD0 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C2162422A3F500ED0AD0 /* ProfileViewModel.swift */; };
-		05C1C2192423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */; };
+		05C1C2192423878D00ED0AD0 /* ReservationCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C2182423878D00ED0AD0 /* ReservationCustomTableViewCell.swift */; };
 		05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF83DD2414FBBD0031E356 /* InputValidation.swift */; };
 		05E3BDFC24252811004C85C4 /* CafeDrinkMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3BDFB24252810004C85C4 /* CafeDrinkMenuViewController.swift */; };
 		05EB9D8D242FDE700039D181 /* MeetupPurposeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EB9D8C242FDE700039D181 /* MeetupPurposeModel.swift */; };
@@ -114,9 +116,11 @@
 		055E82212431CF6F00B42BCC /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		055E82232431CFB200B42BCC /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
 		055E82252431CFEF00B42BCC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		055E82272431F22800B42BCC /* ProfileMeetupTopicsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMeetupTopicsCustomTableViewCell.swift; sourceTree = "<group>"; };
+		055E82272431F22800B42BCC /* MeetupTopicsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupTopicsCustomTableViewCell.swift; sourceTree = "<group>"; };
 		055E823024327B7400B42BCC /* ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheet.swift; sourceTree = "<group>"; };
 		0563FFA22434C62300131041 /* UserMeetupTopicsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMeetupTopicsView.swift; sourceTree = "<group>"; };
+		0563FFA424351F5400131041 /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
+		0563FFA62435257F00131041 /* ProfileMenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuBarView.swift; sourceTree = "<group>"; };
 		057023642413E8B90018A710 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		057023662413F8300018A710 /* TextFieldConnectFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldConnectFields.swift; sourceTree = "<group>"; };
 		057023682413FA150018A710 /* RegisterVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVIewModel.swift; sourceTree = "<group>"; };
@@ -129,7 +133,7 @@
 		05C08F60241196EE004F2BFA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		05C1C2142422A37300ED0AD0 /* ProfileReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReservationViewController.swift; sourceTree = "<group>"; };
 		05C1C2162422A3F500ED0AD0 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReservationCustomTableViewCell.swift; sourceTree = "<group>"; };
+		05C1C2182423878D00ED0AD0 /* ReservationCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationCustomTableViewCell.swift; sourceTree = "<group>"; };
 		05CF83DD2414FBBD0031E356 /* InputValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidation.swift; sourceTree = "<group>"; };
 		05E3BDFB24252810004C85C4 /* CafeDrinkMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeDrinkMenuViewController.swift; sourceTree = "<group>"; };
 		05EB9D8C242FDE700039D181 /* MeetupPurposeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupPurposeModel.swift; sourceTree = "<group>"; };
@@ -204,9 +208,9 @@
 				A6F4BF8A2416D18A005E55D9 /* TabBarViewController.swift */,
 				A6F4BF902416D74A005E55D9 /* HomeScreenViewController.swift */,
 				05C1C2142422A37300ED0AD0 /* ProfileReservationViewController.swift */,
-				05C1C2182423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift */,
+				05C1C2182423878D00ED0AD0 /* ReservationCustomTableViewCell.swift */,
 				054882522430E40E0095E256 /* ProfileMeetupTopicsViewController.swift */,
-				055E82272431F22800B42BCC /* ProfileMeetupTopicsCustomTableViewCell.swift */,
+				055E82272431F22800B42BCC /* MeetupTopicsCustomTableViewCell.swift */,
 				0585AA7A24223C1300FDF884 /* ProfileInformationViewController.swift */,
 				A68C52452422624100B2AA53 /* PropertyCardViewController.swift */,
 				A6316BD3242A7B2000EB5EF6 /* ReservationTypeViewController.swift */,
@@ -218,8 +222,10 @@
 				A6DCDCE1242F767200CEDEDE /* GuestAmmountViewController.swift */,
 				05BBB7DF2433795500487160 /* ProfileViewController.swift */,
 				05BBB7E124339A5200487160 /* ProfileCell.swift */,
-				0563FFA22434C62300131041 /* UserMeetupTopicsView.swift */,
 				05BBB7E32433A00F00487160 /* UserReservationView.swift */,
+				0563FFA22434C62300131041 /* UserMeetupTopicsView.swift */,
+				0563FFA424351F5400131041 /* UserInformationView.swift */,
+				0563FFA62435257F00131041 /* ProfileMenuBarView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -494,17 +500,19 @@
 				055E82222431CF6F00B42BCC /* Topic.swift in Sources */,
 				A6A1CFFD2418E164002333CA /* RestaurantsViewController.swift in Sources */,
 				A6347E7524168A3100B1FC05 /* Margin.swift in Sources */,
+				0563FFA72435257F00131041 /* ProfileMenuBarView.swift in Sources */,
+				0563FFA524351F5400131041 /* UserInformationView.swift in Sources */,
 				A68C5244241EBFEF00B2AA53 /* RestaurantsViewModel.swift in Sources */,
 				0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */,
 				A6E152AB242BB8E60069C79C /* ReservationDetailsViewController.swift in Sources */,
 				A671E95B240D4FBF00DF2577 /* AppDelegate.swift in Sources */,
-				055E82282431F22800B42BCC /* ProfileMeetupTopicsCustomTableViewCell.swift in Sources */,
+				055E82282431F22800B42BCC /* MeetupTopicsCustomTableViewCell.swift in Sources */,
 				A6316BD4242A7B2000EB5EF6 /* ReservationTypeViewController.swift in Sources */,
 				055E82262431CFEF00B42BCC /* User.swift in Sources */,
 				054882532430E40E0095E256 /* ProfileMeetupTopicsViewController.swift in Sources */,
 				05C1C2152422A37300ED0AD0 /* ProfileReservationViewController.swift in Sources */,
 				05BBB7E42433A00F00487160 /* UserReservationView.swift in Sources */,
-				05C1C2192423878D00ED0AD0 /* ProfileReservationCustomTableViewCell.swift in Sources */,
+				05C1C2192423878D00ED0AD0 /* ReservationCustomTableViewCell.swift in Sources */,
 				057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */,
 				058E4B49240D638700D4C20A /* SplashScreenViewController.swift in Sources */,
 				057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */,

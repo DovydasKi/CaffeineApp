@@ -1,5 +1,5 @@
 //
-//  ProfileMeetupTopicsCustomTableViewCell.swift.swift
+//  ProfileMeetupTopicsCustomTableViewCell.swift
 //  Caffeine
 //
 //  Created by Daniel Dluzhnevsky on 2020-03-30.

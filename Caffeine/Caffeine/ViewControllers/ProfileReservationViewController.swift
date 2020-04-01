@@ -98,7 +98,7 @@ extension ProfileReservationViewController: UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ProfileReservationCustomTableViewCell else { fatalError("Unabel to create cell") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ReservationCustomTableViewCell else { fatalError("Unabel to create cell") }
         cell.userImage.image = self.userArr[indexPath.row].userImage
         cell.namelabel.text = self.userArr[indexPath.row].name
         cell.meetupPurposeLabel.text = self.userArr[indexPath.row].meetupPurpose
@@ -301,7 +301,7 @@ extension ProfileReservationViewController {
         scrollView.addSubview(self.tableView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
 
-        self.tableView.register(ProfileReservationCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(ReservationCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
 
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage6"), name: "Daniel", meetupPurpose: "Pokalbiai apie viską", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "restaurant"), name: " ", meetupPurpose: " ", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))

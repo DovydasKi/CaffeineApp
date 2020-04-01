@@ -36,6 +36,38 @@ class UserReservationView: UIView {
     }
 }
 
+//MARK: Button action
+extension UserReservationView {
+    @objc func longPress(sender: UILongPressGestureRecognizer) {
+        guard let currentVC = UIApplication.shared.keyWindow?.rootViewController else {return}
+        if sender.state == UIGestureRecognizer.State.began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                guard let name = self.userArr[indexPath.row].name else { return }
+                guard let purpose = self.userArr[indexPath.row].meetupPurpose else { return }
+                guard let address = self.userArr[indexPath.row].address else { return }
+                guard let time = self.userArr[indexPath.row].dateAndTime else { return }
+                var actions: [(String, UIAlertAction.Style)] = []
+                actions.append(("Ištrinti", UIAlertAction.Style.destructive))
+                actions.append(("Atšaukti", UIAlertAction.Style.cancel))
+                print(indexPath.row)
+                ActionSheet.showActionsheet(viewController: currentVC, title: "Rezervacija", message: "\(String(describing: name + ": " + purpose + "\n" + address + "\n" + time))", actions: actions) {
+                    (index) in
+                    switch index {
+                    case 0:
+                        self.userArr.remove(at: indexPath.row)
+                        self.tableView.beginUpdates()
+                        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                        self.tableView.endUpdates()
+                    default:
+                        return
+                    }
+                }
+            }
+        }
+    }
+}
+
 //MARK: UI configuratrion
 extension UserReservationView {
     private func configureMainView() {
@@ -63,7 +95,7 @@ extension UserReservationView: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ProfileReservationCustomTableViewCell else { fatalError("Unabel to create cell") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ReservationCustomTableViewCell else { fatalError("Unabel to create cell") }
         cell.userImage.image = self.userArr[indexPath.row].userImage
         cell.namelabel.text = self.userArr[indexPath.row].name
         cell.meetupPurposeLabel.text = self.userArr[indexPath.row].meetupPurpose
@@ -83,6 +115,8 @@ extension UserReservationView {
         let view = UIView()
         view.backgroundColor = .orange
 
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress))
+        self.tableView.addGestureRecognizer(longPress)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
@@ -105,7 +139,7 @@ extension UserReservationView {
         scrollView.addSubview(self.tableView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
 
-        self.tableView.register(ProfileReservationCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(ReservationCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
 
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "profileImage6"), name: "Daniel", meetupPurpose: "Pokalbiai apie viską", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
         self.userArr.append(UserModal(userImage: #imageLiteral(resourceName: "restaurant"), name: " ", meetupPurpose: " ", address: "Saltoniškių g. 9, Vilnius", dateAndTime: "2020-03-25 d. 8:00 val."))
@@ -133,8 +167,8 @@ extension UserReservationView {
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: self.mainView.topAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            self.tableView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 32),
+            self.tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32)
             ])
     }
 

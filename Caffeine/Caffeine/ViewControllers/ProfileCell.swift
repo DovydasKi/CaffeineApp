@@ -17,6 +17,7 @@ class ProfileCell: UICollectionViewCell {
     func addContent(content: UIView){
         self.addSubview(content)
         content.translatesAutoresizingMaskIntoConstraints = false
+        
         self.setContentConstraints(view: content)
     }
 
@@ -29,11 +30,14 @@ class ProfileCell: UICollectionViewCell {
 extension ProfileCell {
     private func setContentConstraints(view: UIView) {
         NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 64),
-            view.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            view.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            view.heightAnchor.constraint(equalToConstant: 411)
+            view.widthAnchor.constraint(equalToConstant: self.frame.width),
+            view.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            view.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            view.heightAnchor.constraint(equalToConstant: self.contentView.frame.height)
+//            view.widthAnchor.constraint(equalToConstant: self.frame.width),
+//            view.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+//            view.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            view.heightAnchor.constraint(equalToConstant: self.frame.height)
             ])
     }
-
 }

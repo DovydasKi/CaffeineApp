@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class UserMeetupTopicsView: UIView {
+
+    lazy var containerView: UIView = self.initContainerView()
     lazy var mainView: UIView = self.initMainView()
     lazy var tableViewScrollView: UIScrollView = self.initTableViewScrollView()
     lazy var tableView: UITableView = self.initTableView()
@@ -33,20 +35,28 @@ class UserMeetupTopicsView: UIView {
 
     private func setupView() {
         backgroundColor = .clear
+        self.configureContainerView()
         self.configureMainView()
         self.configureTableScrollView()
         self.configureTablewView()
         self.configureNewTopicView()
         self.configureTopicsAmountLabel()
-        self.configureKeyboardDynamicView()
+        //self.configureKeyboardDynamicView()
     }
 }
 
 //MARK: UI configuratrion
 extension UserMeetupTopicsView {
+    private func configureContainerView() {
+        self.addSubview(self.containerView)
+        self.setContainerViewConstraints()
+    }
+    
     private func configureMainView() {
-        self.addSubview(self.mainView)
-        self.setMainViewConstraintes()
+        self.containerView.addSubview(self.mainView)
+        self.setMainViewConstraints()
+//        self.addSubview(self.mainView)
+//        self.setMainViewConstraints()
     }
     
     private func configureTableScrollView() {
@@ -63,7 +73,7 @@ extension UserMeetupTopicsView {
     }
     
     private func configureNewTopicView() {
-        self.mainView.addSubview(self.newTopicView)
+        self.containerView.addSubview(self.newTopicView)
         self.setNewTopicViewConstraints()
         self.configureNewTopicField()
         self.configureAddNewTopicButton()
@@ -194,9 +204,16 @@ extension UserMeetupTopicsView {
 
 //MARK: UI elements extension
 extension UserMeetupTopicsView {
+    private func initContainerView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = .green
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
+    
     private func initMainView() -> UIView {
         let view = UIView()
-        view.backgroundColor = .clear
+        view.backgroundColor = .orange
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
@@ -282,12 +299,22 @@ extension UserMeetupTopicsView {
 
 //MARK: Constraints extension
 extension UserMeetupTopicsView {
-    private func setMainViewConstraintes() {
+    private func setContainerViewConstraints() {
+        NSLayoutConstraint.activate([
+            self.containerView.topAnchor.constraint(equalTo: self.topAnchor),
+            self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            ])
+    }
+    
+    private func setMainViewConstraints() {
         NSLayoutConstraint.activate([
             self.mainView.topAnchor.constraint(equalTo: self.topAnchor),
-            self.mainView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            //self.mainView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.mainView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.mainView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            self.mainView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.mainView.heightAnchor.constraint(equalToConstant: 318),
             ])
     }
 
@@ -295,8 +322,8 @@ extension UserMeetupTopicsView {
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: self.mainView.topAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            self.tableView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 32),
+            self.tableView.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: -32)
             ])
     }
 
@@ -311,11 +338,12 @@ extension UserMeetupTopicsView {
     
     private func setNewTopicViewConstraints () {
         NSLayoutConstraint.activate([
-            self.newTopicView.topAnchor.constraint(equalTo: self.tableViewScrollView.bottomAnchor, constant: 16),
+    
+            self.newTopicView.topAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: 32),
             self.newTopicView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.newTopicView.heightAnchor.constraint(equalToConstant: 45),
-            self.newTopicView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 32),
-            self.newTopicView.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: -32)
+            self.newTopicView.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor, constant: 64),
+            self.newTopicView.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor, constant: -64)
         ])
     }
     

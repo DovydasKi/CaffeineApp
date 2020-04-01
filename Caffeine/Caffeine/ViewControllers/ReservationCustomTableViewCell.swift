@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ProfileReservationCustomTableViewCell: UITableViewCell {
+class ReservationCustomTableViewCell: UITableViewCell {
     lazy var backView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -93,7 +93,7 @@ class ProfileReservationCustomTableViewCell: UITableViewCell {
     }
 }
 
-extension ProfileReservationCustomTableViewCell {
+extension ReservationCustomTableViewCell {
     private func setBackViewConstraints() {
         NSLayoutConstraint.activate([
             self.backView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
