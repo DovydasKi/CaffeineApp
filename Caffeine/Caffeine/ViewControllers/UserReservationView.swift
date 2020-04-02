@@ -10,13 +10,12 @@ import Foundation
 import UIKit
 
 class UserReservationView: UIView {
-    lazy var mainView: UIView = self.initMainView()
-    lazy var tableViewScrollView: UIScrollView = self.intiTableViewScrollView()
-    lazy var tableView: UITableView = self.initTableView()
+    private lazy var mainView: UIView = self.initMainView()
+    private lazy var tableViewScrollView: UIScrollView = self.intiTableViewScrollView()
+    private lazy var tableView: UITableView = self.initTableView()
     private lazy var userArr = [UserModal]()
+
     private var didSetupConstraints = false
-
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
@@ -32,14 +31,13 @@ class UserReservationView: UIView {
         self.configureMainView()
         self.configureTableScrollView()
         self.configureTablewView()
-        //self.setNeedsUpdateConstraints()
     }
 }
 
 //MARK: Button action
 extension UserReservationView {
     @objc func longPress(sender: UILongPressGestureRecognizer) {
-        guard let currentVC = UIApplication.shared.keyWindow?.rootViewController else {return}
+        guard let currentVC = UIApplication.shared.keyWindow?.rootViewController else { return }
         if sender.state == UIGestureRecognizer.State.began {
             let touchPoint = sender.location(in: tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
@@ -113,7 +111,7 @@ extension UserReservationView: UITableViewDelegate, UITableViewDataSource {
 extension UserReservationView {
     private func initMainView() -> UIView {
         let view = UIView()
-        view.backgroundColor = .orange
+        view.backgroundColor = .clear
 
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress))
         self.tableView.addGestureRecognizer(longPress)

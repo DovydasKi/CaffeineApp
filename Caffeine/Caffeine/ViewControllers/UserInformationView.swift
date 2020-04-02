@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class UserInformationView: UIView {
-   
     lazy var containerView: UIView = self.initContainerView()
     private lazy var emaillTitle: UILabel = self.initEmailTitle()
     private lazy var emailBody: UILabel = self.initEmailBody()
@@ -38,12 +37,8 @@ class UserInformationView: UIView {
         backgroundColor = .clear
         self.configureContainerView()
         self.configureInformationStackView()
+        self.configureLogoutButton()
     }
-}
-
-//MARK: Button action
-extension UserInformationView {
-
 }
 
 //MARK: UI configuratrion
@@ -57,14 +52,18 @@ extension UserInformationView {
         self.containerView.addSubview(self.informationStackView)
         self.setInformationStackViewConstraints()
     }
+    
+    private func configureLogoutButton(){
+        self.containerView.addSubview(self.logoutButton)
+        self.setLogoutButtonConstraints()
+    }
 }
-
 
 //MARK: UI elements extension
 extension UserInformationView {
     private func initContainerView() -> UIView {
         let view = UIView()
-        view.backgroundColor = .orange
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
@@ -79,6 +78,7 @@ extension UserInformationView {
         label.contentMode = .scaleAspectFit
         return label
     }
+    
     private func initEmailBody() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
@@ -89,6 +89,7 @@ extension UserInformationView {
         label.contentMode = .scaleAspectFit
         return label
     }
+    
     private func initEmailStackView() -> UIStackView {
         let stackView = UIStackView()
         stackView.addBackground(color: .white, cornerRadius: 12.5)
@@ -104,6 +105,7 @@ extension UserInformationView {
 
         return stackView
     }
+    
     private func initUserSinceTitle() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
@@ -114,6 +116,7 @@ extension UserInformationView {
         label.contentMode = .scaleAspectFit
         return label
     }
+    
     private func initUserSinceBody() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
@@ -124,6 +127,7 @@ extension UserInformationView {
         label.contentMode = .scaleAspectFit
         return label
     }
+    
     private func initUserSinceStackView() -> UIStackView {
         let stackView = UIStackView()
         stackView.addBackground(color: .white, cornerRadius: 12.5)
@@ -138,6 +142,7 @@ extension UserInformationView {
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }
+    
     private func initPasswordTitle() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
@@ -148,6 +153,7 @@ extension UserInformationView {
         label.contentMode = .scaleAspectFit
         return label
     }
+    
     private func initPasswordBody() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
@@ -158,6 +164,7 @@ extension UserInformationView {
         label.contentMode = .scaleAspectFit
         return label
     }
+    
     private func initPasswordStackView() -> UIStackView {
         let stackView = UIStackView()
         stackView.addBackground(color: .white, cornerRadius: 12.5)
@@ -172,6 +179,7 @@ extension UserInformationView {
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }
+    
     private func initInformationStackView() -> UIStackView {
         let stackView = UIStackView()
         stackView.axis = NSLayoutConstraint.Axis.vertical
@@ -185,6 +193,7 @@ extension UserInformationView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }
+    
     private func initLogoutButton() -> UIButton {
         let button: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 304, height: 42))
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -199,7 +208,6 @@ extension UserInformationView {
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [20, 22, 24]))
         return button
     }
-
 }
 
 //MARK: Constraints extension
@@ -216,15 +224,19 @@ extension UserInformationView {
     private func setInformationStackViewConstraints() {
         NSLayoutConstraint.activate([
             self.informationStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            //self.mainView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.informationStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
             self.informationStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
-            self.informationStackView.heightAnchor.constraint(equalToConstant: 318),
-            
             ])
     }
     
-    
+    private func setLogoutButtonConstraints() {
+        NSLayoutConstraint.activate([
+            self.logoutButton.topAnchor.constraint(equalTo: self.informationStackView.bottomAnchor, constant: 32),
+            self.logoutButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.logoutButton.widthAnchor.constraint(equalToConstant: 254),
+            self.logoutButton.heightAnchor.constraint(equalToConstant: 69)
+            ])
+    }
 }
 
 

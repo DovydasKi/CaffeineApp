@@ -61,7 +61,6 @@ extension MeetupTopicsCustomTableViewCell {
     }
 }
 
-
 extension MeetupTopicsCustomTableViewCell {
     private func setBackViewConstraints() {
         NSLayoutConstraint.activate([

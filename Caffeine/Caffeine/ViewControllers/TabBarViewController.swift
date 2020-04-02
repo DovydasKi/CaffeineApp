@@ -21,7 +21,6 @@ class TabBarViewController: UITabBarController {
         layout.scrollDirection = .horizontal
         let viewController = ProfileViewController(collectionViewLayout: layout)
         
-		//let viewController = ProfileViewController()
 		let title = "Profilis"
 		viewController.title = title
 		
@@ -31,7 +30,6 @@ class TabBarViewController: UITabBarController {
 			tag: TabView.myProfile.rawValue)
 		
 		viewController.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile")
-        
         
 		let navigationController = UINavigationController(rootViewController: viewController)
 		return navigationController

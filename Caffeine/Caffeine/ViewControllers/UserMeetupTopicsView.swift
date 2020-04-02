@@ -10,15 +10,14 @@ import Foundation
 import UIKit
 
 class UserMeetupTopicsView: UIView {
-
-    lazy var containerView: UIView = self.initContainerView()
-    lazy var mainView: UIView = self.initMainView()
-    lazy var tableViewScrollView: UIScrollView = self.initTableViewScrollView()
-    lazy var tableView: UITableView = self.initTableView()
-    lazy var newTopicView: UIView = self.initNewTopicView()
-    lazy var newTopicField: UITextField = self.initNewTopicFieldTextField()
-    lazy var addNewTopicButton: UILabel = self.initAddNewTopicButton()
-    lazy var topicsAmount: UILabel = self.initTopicsAmountLabel()
+    private lazy var containerView: UIView = self.initContainerView()
+    private lazy var mainView: UIView = self.initMainView()
+    private lazy var tableViewScrollView: UIScrollView = self.initTableViewScrollView()
+    private lazy var tableView: UITableView = self.initTableView()
+    private lazy var newTopicView: UIView = self.initNewTopicView()
+    private lazy var newTopicField: UITextField = self.initNewTopicFieldTextField()
+    private lazy var addNewTopicButton: UILabel = self.initAddNewTopicButton()
+    private lazy var topicsAmount: UILabel = self.initTopicsAmountLabel()
     
     private lazy var topicArr = [TopicModal]()
     private var userMeetupPurposeModel = MeetupPurposeModel()
@@ -41,7 +40,6 @@ class UserMeetupTopicsView: UIView {
         self.configureTablewView()
         self.configureNewTopicView()
         self.configureTopicsAmountLabel()
-        //self.configureKeyboardDynamicView()
     }
 }
 
@@ -55,8 +53,6 @@ extension UserMeetupTopicsView {
     private func configureMainView() {
         self.containerView.addSubview(self.mainView)
         self.setMainViewConstraints()
-//        self.addSubview(self.mainView)
-//        self.setMainViewConstraints()
     }
     
     private func configureTableScrollView() {
@@ -90,14 +86,9 @@ extension UserMeetupTopicsView {
     }
     
     private func configureTopicsAmountLabel() {
-        self.addSubview(self.topicsAmount)
+        self.containerView.addSubview(self.topicsAmount)
         self.setTopicsAmountLabelConstraints()
         self.updateTopicsAmount()
-    }
-
-    private func configureKeyboardDynamicView() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
@@ -164,22 +155,6 @@ extension UserMeetupTopicsView {
     }
 }
 
-//MARK: Dynamic view
-extension UserMeetupTopicsView {
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.frame.origin.y == 0 {
-                self.frame.origin.y -= keyboardSize.height - 94
-            }
-        }
-    }
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.frame.origin.y != 0 {
-            self.frame.origin.y = 0
-        }
-    }
-}
-
 //MARK: Button actions
 extension UserMeetupTopicsView {
     @objc private func addNewTopic() {
@@ -189,8 +164,8 @@ extension UserMeetupTopicsView {
             self.userMeetupPurposeModel.shakeIfInvalid(view: self.newTopicView)
             return
         }
-        self.topicArr.insert(TopicModal(meetupPurpose: newTopicText, isSelected: true), at: 0)
         
+        self.topicArr.insert(TopicModal(meetupPurpose: newTopicText, isSelected: true), at: 0)
         self.tableView.beginUpdates()
         self.tableView.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
         self.tableView.endUpdates()
@@ -206,14 +181,14 @@ extension UserMeetupTopicsView {
 extension UserMeetupTopicsView {
     private func initContainerView() -> UIView {
         let view = UIView()
-        view.backgroundColor = .green
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
     
     private func initMainView() -> UIView {
         let view = UIView()
-        view.backgroundColor = .orange
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
@@ -338,7 +313,6 @@ extension UserMeetupTopicsView {
     
     private func setNewTopicViewConstraints () {
         NSLayoutConstraint.activate([
-    
             self.newTopicView.topAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: 32),
             self.newTopicView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.newTopicView.heightAnchor.constraint(equalToConstant: 45),
@@ -364,7 +338,7 @@ extension UserMeetupTopicsView {
     
     private func setTopicsAmountLabelConstraints () {
         NSLayoutConstraint.activate([
-            self.topicsAmount.topAnchor.constraint(equalTo: self.newTopicView.bottomAnchor, constant: 16),
+            self.topicsAmount.topAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: 8),
             self.topicsAmount.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         ])
     }

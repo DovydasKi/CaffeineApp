@@ -15,17 +15,13 @@ private class MyTapGesture: UITapGestureRecognizer {
 }
 
 class ProfileViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
     private lazy var profilePicture: UIImageView = self.initProfilePicture()
     private lazy var fullNameLabel: UILabel = self.initFullNameLabel()
-    private var contentViewsArray = [Profile]()
-    private var menuBar = ProfileMenuBar()
-
     private lazy var firstButton: UIView = self.initFirstButton()
     private lazy var secondButton: UIView = self.initSecondButton()
     private lazy var thirdButton: UIView = self.initThirdButton()
     private lazy var menuView: UIView = self.initMenuView()
-
+    private var contentViewsArray = [Profile]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +33,7 @@ class ProfileViewController: UICollectionViewController, UICollectionViewDelegat
         self.configureProfilePicture()
         self.configureFullNameLabel()
         self.configureMenuView()
-        //self.confugureMenuBar()
         self.configureCollectionView()
-
-
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -149,6 +142,7 @@ extension ProfileViewController {
         self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         self.collectionView.heightAnchor.constraint(equalToConstant: 411).isActive = true
     }
+    
     private func configureProfilePicture() {
         self.view.addSubview(self.profilePicture)
         self.setProfilePictureConstraints()
@@ -166,7 +160,7 @@ extension ProfileViewController {
         self.configureSecondButton()
         self.configureThirdButton()
     }
-
+    
     private func configureFirstButton() {
         self.menuView.addSubview(self.firstButton)
         self.setFirstButtonConstraints()
@@ -181,15 +175,6 @@ extension ProfileViewController {
         self.menuView.addSubview(self.thirdButton)
         self.setThirdButtonConstraints()
     }
-
-    private func confugureMenuBar() {
-        self.view.addSubview(self.menuBar)
-        self.menuBar.reservationButton.backgroundColor = .green
-        self.menuBar.translatesAutoresizingMaskIntoConstraints = false
-        self.setMenuBarConstraints()
-    }
-
-
 }
 //MARK: UI elements extension
 extension ProfileViewController {
@@ -267,7 +252,6 @@ extension ProfileViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-
 
         let tap = MyTapGesture.init(target: self, action: #selector(secondButtonTap))
         view.isUserInteractionEnabled = true
@@ -354,16 +338,6 @@ extension ProfileViewController {
             self.thirdButton.widthAnchor.constraint(equalToConstant: 123),
             self.thirdButton.bottomAnchor.constraint(equalTo: self.menuView.bottomAnchor, constant: -4),
             self.thirdButton.trailingAnchor.constraint(equalTo: self.menuView.trailingAnchor, constant: -4)
-            ])
-    }
-
-    private func setMenuBarConstraints() {
-        NSLayoutConstraint.activate([
-            self.menuBar.heightAnchor.constraint(equalToConstant: 45),
-            self.menuBar.topAnchor.constraint(equalTo: self.fullNameLabel.bottomAnchor, constant: 16),
-            self.menuBar.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.menuBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            self.menuBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
             ])
     }
 }
