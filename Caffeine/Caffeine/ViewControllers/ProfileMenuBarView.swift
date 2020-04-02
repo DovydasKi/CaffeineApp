@@ -120,7 +120,8 @@ extension ProfileMenuBar {
         view.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-
+        
+        
 //        let tap = UITapGestureRecognizer(target: self, action: #selector(turnOnMeetupTopicsScreen))
 //        view.isUserInteractionEnabled = true
 //        view.addGestureRecognizer(tap)
