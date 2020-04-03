@@ -1,5 +1,5 @@
 //
-//  ReservationWithSelectionTableView.swift
+//  MeetupTopicsWithSelectionTableView.swift
 //  Caffeine
 //
 //  Created by Daniel Dluzhnevsky on 2020-04-03.
@@ -32,7 +32,7 @@ class MeetupTopicsWithSelectionTableView: NSObject, UITableViewDataSource, UITab
 
         // Register all of your cells
         if withMultipleSelection {
-            tableView.register(NewUserMeetupTopicsCustomTableViewCell.self, forCellReuseIdentifier: "MultipleCell")
+            tableView.register(MeetupTopicsWithSelectionCustomTableViewCell.self, forCellReuseIdentifier: "MultipleCell")
             self.cellType = "MultipleCell"
             tableView.allowsMultipleSelection = true
         } else {
@@ -54,7 +54,7 @@ class MeetupTopicsWithSelectionTableView: NSObject, UITableViewDataSource, UITab
             cell.meetupPurposeLabel.text = self.topicArr[indexPath.row].meetupPurpose
             return cell
         case "MultipleCell":
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MultipleCell", for: indexPath) as? NewUserMeetupTopicsCustomTableViewCell else { fatalError("Unable to create cell") }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MultipleCell", for: indexPath) as? MeetupTopicsWithSelectionCustomTableViewCell else { fatalError("Unable to create cell") }
             cell.meetupPurposeLabel.text = self.topicArr[indexPath.row].meetupPurpose
             cell.selectionStyle = .none
 

@@ -21,16 +21,16 @@ class ReservationTypeViewController: UIViewController {
 		self.navigationController?.navigationBar.isHidden = true
 		
 		self.view.addSubview(self.titleLabel)
-		self.titleLabelConstraints()
+		self.activateTitleLabelConstraints()
 		
 		self.view.addSubview(self.stackView)
-		self.stackViewConstraints()
+		self.activateStackViewConstraints()
 		
 		self.stackView.addArrangedSubview(UIView())
 		self.stackView.addArrangedSubview(self.reservationWithCompanion)
 		self.stackView.addArrangedSubview(self.reservationWihoutCompanion)
 		self.stackView.addArrangedSubview(self.companionSearch)
-		self.stackViewElementsConstraints()
+		self.activateStackViewElementsConstraints()
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -150,7 +150,7 @@ extension ReservationTypeViewController {
 }
 
 extension ReservationTypeViewController {
-	private func titleLabelConstraints() {
+	private func activateTitleLabelConstraints() {
 		NSLayoutConstraint.activate(
 			[
 				self.titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
@@ -160,7 +160,7 @@ extension ReservationTypeViewController {
 		])
 	}
 	
-	private func stackViewConstraints() {
+	private func activateStackViewConstraints() {
 		NSLayoutConstraint.activate([
 			self.stackView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
 			self.stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -168,7 +168,7 @@ extension ReservationTypeViewController {
 		])
 	}
 	
-	private func stackViewElementsConstraints() {
+	private func activateStackViewElementsConstraints() {
 		NSLayoutConstraint.activate([
 			self.reservationWithCompanion.topAnchor.constraint(equalTo: self.stackView.topAnchor, constant: 200),
 			self.reservationWithCompanion.leadingAnchor.constraint(equalTo: self.stackView.leadingAnchor, constant: 16.0),

@@ -25,7 +25,7 @@
 		052BE05D242A5F080005B822 /* DetailedCoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BE05C242A5F070005B822 /* DetailedCoffeeViewController.swift */; };
 		0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */; };
 		0549422A242E288200B520E7 /* NewUserMeetupTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05494229242E288200B520E7 /* NewUserMeetupTopicsViewController.swift */; };
-		0549422C242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0549422B242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift */; };
+		0549422C242E5EF600B520E7 /* MeetupTopicsWithSelectionCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0549422B242E5EF600B520E7 /* MeetupTopicsWithSelectionCustomTableViewCell.swift */; };
 		054BD2EB242BB77800A767EF /* DetailedCoffeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */; };
 		054BD2EE242D117900A767EF /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 054BD2EC242D105100A767EF /* Hero.framework */; };
 		054BD2EF242D117900A767EF /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 054BD2EC242D105100A767EF /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -106,7 +106,7 @@
 		053838282417AB130040FFDF /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		0538382A2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewController.swift; sourceTree = "<group>"; };
 		05494229242E288200B520E7 /* NewUserMeetupTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserMeetupTopicsViewController.swift; sourceTree = "<group>"; };
-		0549422B242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserMeetupTopicsCustomTableViewCell.swift; sourceTree = "<group>"; };
+		0549422B242E5EF600B520E7 /* MeetupTopicsWithSelectionCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupTopicsWithSelectionCustomTableViewCell.swift; sourceTree = "<group>"; };
 		054BD2EA242BB77800A767EF /* DetailedCoffeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCoffeeViewModel.swift; sourceTree = "<group>"; };
 		054BD2EC242D105100A767EF /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hero.framework; sourceTree = "<group>"; };
 		054BD2F0242D23D900A767EF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 				05E3BDFB24252810004C85C4 /* CafeDrinkMenuViewController.swift */,
 				052BE05C242A5F070005B822 /* DetailedCoffeeViewController.swift */,
 				05494229242E288200B520E7 /* NewUserMeetupTopicsViewController.swift */,
-				0549422B242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift */,
+				0549422B242E5EF600B520E7 /* MeetupTopicsWithSelectionCustomTableViewCell.swift */,
 				A6DCDCE1242F767200CEDEDE /* GuestAmmountViewController.swift */,
 				05BBB7DF2433795500487160 /* ProfileViewController.swift */,
 				05BBB7E124339A5200487160 /* ProfileCell.swift */,
@@ -475,7 +475,7 @@
 				05BBB7E224339A5200487160 /* ProfileCell.swift in Sources */,
 				0563FFA32434C62300131041 /* MeetupTopicsView.swift in Sources */,
 				055E823124327B7500B42BCC /* ActionSheet.swift in Sources */,
-				0549422C242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift in Sources */,
+				0549422C242E5EF600B520E7 /* MeetupTopicsWithSelectionCustomTableViewCell.swift in Sources */,
 				05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */,
 				A66FDD622411310300CFC5FB /* LoginViewController.swift in Sources */,
 				A6E152AD242BBB080069C79C /* ReservationDetailsViewModel.swift in Sources */,
