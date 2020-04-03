@@ -56,7 +56,8 @@ extension ReservationTopicSelectionViewController {
 //MARK: Button actions
 extension ReservationTopicSelectionViewController {
     @objc private func turnOnNextPage() {
-        //TODO: next page
+        let vc = CompanionFoundViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func backToPreviousScreen() {
