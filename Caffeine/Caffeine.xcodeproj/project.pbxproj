@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,12 +35,14 @@
 		055E82262431CFEF00B42BCC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E82252431CFEF00B42BCC /* User.swift */; };
 		055E82282431F22800B42BCC /* MeetupTopicsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E82272431F22800B42BCC /* MeetupTopicsCustomTableViewCell.swift */; };
 		055E823124327B7500B42BCC /* ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E823024327B7400B42BCC /* ActionSheet.swift */; };
-		0563FFA32434C62300131041 /* UserMeetupTopicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563FFA22434C62300131041 /* UserMeetupTopicsView.swift */; };
+		0563FFA32434C62300131041 /* MeetupTopicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563FFA22434C62300131041 /* MeetupTopicsView.swift */; };
 		0563FFA524351F5400131041 /* UserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563FFA424351F5400131041 /* UserInformationView.swift */; };
 		057023652413E8B90018A710 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023642413E8B90018A710 /* RegisterViewController.swift */; };
 		057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023662413F8300018A710 /* TextFieldConnectFields.swift */; };
 		057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023682413FA150018A710 /* RegisterVIewModel.swift */; };
 		058E4B49240D638700D4C20A /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058E4B48240D638700D4C20A /* SplashScreenViewController.swift */; };
+		05A7FF4D243725F700D26E01 /* MeetupTopicsWithSelectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7FF4C243725F700D26E01 /* MeetupTopicsWithSelectionTableView.swift */; };
+		05A7FF4F2437891A00D26E01 /* ReservationTopicSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7FF4E2437891A00D26E01 /* ReservationTopicSelectionViewController.swift */; };
 		05BBB7E02433795500487160 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BBB7DF2433795500487160 /* ProfileViewController.swift */; };
 		05BBB7E224339A5200487160 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BBB7E124339A5200487160 /* ProfileCell.swift */; };
 		05BBB7E42433A00F00487160 /* UserReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BBB7E32433A00F00487160 /* UserReservationView.swift */; };
@@ -64,7 +66,6 @@
 		A68C5244241EBFEF00B2AA53 /* RestaurantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C5243241EBFEF00B2AA53 /* RestaurantsViewModel.swift */; };
 		A68C52462422624100B2AA53 /* PropertyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C52452422624100B2AA53 /* PropertyCardViewController.swift */; };
 		A6A1CFFD2418E164002333CA /* RestaurantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A1CFFC2418E164002333CA /* RestaurantsViewController.swift */; };
-		A6A1D0002418E5F8002333CA /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A1CFFF2418E5F8002333CA /* NVActivityIndicatorView */; };
 		A6DCDCE2242F767200CEDEDE /* GuestAmmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DCDCE1242F767200CEDEDE /* GuestAmmountViewController.swift */; };
 		A6E152AB242BB8E60069C79C /* ReservationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E152AA242BB8E60069C79C /* ReservationDetailsViewController.swift */; };
 		A6E152AD242BBB080069C79C /* ReservationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E152AC242BBB080069C79C /* ReservationDetailsViewModel.swift */; };
@@ -114,12 +115,14 @@
 		055E82252431CFEF00B42BCC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		055E82272431F22800B42BCC /* MeetupTopicsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupTopicsCustomTableViewCell.swift; sourceTree = "<group>"; };
 		055E823024327B7400B42BCC /* ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheet.swift; sourceTree = "<group>"; };
-		0563FFA22434C62300131041 /* UserMeetupTopicsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMeetupTopicsView.swift; sourceTree = "<group>"; };
+		0563FFA22434C62300131041 /* MeetupTopicsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupTopicsView.swift; sourceTree = "<group>"; };
 		0563FFA424351F5400131041 /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
 		057023642413E8B90018A710 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		057023662413F8300018A710 /* TextFieldConnectFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldConnectFields.swift; sourceTree = "<group>"; };
 		057023682413FA150018A710 /* RegisterVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVIewModel.swift; sourceTree = "<group>"; };
 		058E4B48240D638700D4C20A /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		05A7FF4C243725F700D26E01 /* MeetupTopicsWithSelectionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupTopicsWithSelectionTableView.swift; sourceTree = "<group>"; };
+		05A7FF4E2437891A00D26E01 /* ReservationTopicSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationTopicSelectionViewController.swift; sourceTree = "<group>"; };
 		05BBB7DF2433795500487160 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		05BBB7E124339A5200487160 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		05BBB7E32433A00F00487160 /* UserReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReservationView.swift; sourceTree = "<group>"; };
@@ -173,7 +176,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6A1D0002418E5F8002333CA /* NVActivityIndicatorView in Frameworks */,
 				052B20472417B2CA00413048 /* NVActivityIndicatorView.framework in Frameworks */,
 				054BD2EE242D117900A767EF /* Hero.framework in Frameworks */,
 			);
@@ -213,10 +215,12 @@
 				05BBB7E124339A5200487160 /* ProfileCell.swift */,
 				05BBB7E32433A00F00487160 /* UserReservationView.swift */,
 				05C1C2182423878D00ED0AD0 /* ReservationCustomTableViewCell.swift */,
-				0563FFA22434C62300131041 /* UserMeetupTopicsView.swift */,
+				0563FFA22434C62300131041 /* MeetupTopicsView.swift */,
+				05A7FF4C243725F700D26E01 /* MeetupTopicsWithSelectionTableView.swift */,
 				055E82272431F22800B42BCC /* MeetupTopicsCustomTableViewCell.swift */,
 				0563FFA424351F5400131041 /* UserInformationView.swift */,
 				A6E3920F2434D28A0091CC2E /* CompanionFoundViewController.swift */,
+				05A7FF4E2437891A00D26E01 /* ReservationTopicSelectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -411,7 +415,7 @@
 				};
 			};
 			buildConfigurationList = A671E952240D4FBF00DF2577 /* Build configuration list for PBXProject "Caffeine" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -469,7 +473,7 @@
 				A68C52462422624100B2AA53 /* PropertyCardViewController.swift in Sources */,
 				055E82242431CFB200B42BCC /* Coffee.swift in Sources */,
 				05BBB7E224339A5200487160 /* ProfileCell.swift in Sources */,
-				0563FFA32434C62300131041 /* UserMeetupTopicsView.swift in Sources */,
+				0563FFA32434C62300131041 /* MeetupTopicsView.swift in Sources */,
 				055E823124327B7500B42BCC /* ActionSheet.swift in Sources */,
 				0549422C242E5EF600B520E7 /* NewUserMeetupTopicsCustomTableViewCell.swift in Sources */,
 				05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */,
@@ -479,6 +483,7 @@
 				052B204E24194FA800413048 /* RegistrationImageSelectionViewModel.swift in Sources */,
 				A6DCDCE2242F767200CEDEDE /* GuestAmmountViewController.swift in Sources */,
 				A656F3DC240FD84D0038AA7B /* MainScreenViewController.swift in Sources */,
+				05A7FF4D243725F700D26E01 /* MeetupTopicsWithSelectionTableView.swift in Sources */,
 				A671E95F240D4FBF00DF2577 /* ViewController.swift in Sources */,
 				054BD2EB242BB77800A767EF /* DetailedCoffeeViewModel.swift in Sources */,
 				054BD2F1242D23D900A767EF /* StringExtension.swift in Sources */,
@@ -501,6 +506,7 @@
 				05BBB7E42433A00F00487160 /* UserReservationView.swift in Sources */,
 				05C1C2192423878D00ED0AD0 /* ReservationCustomTableViewCell.swift in Sources */,
 				057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */,
+				05A7FF4F2437891A00D26E01 /* ReservationTopicSelectionViewController.swift in Sources */,
 				058E4B49240D638700D4C20A /* SplashScreenViewController.swift in Sources */,
 				057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */,
 				A6F4BF8B2416D18A005E55D9 /* TabBarViewController.swift in Sources */,

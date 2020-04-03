@@ -62,7 +62,6 @@ class ReservationCustomTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func layoutSubviews() {
@@ -74,27 +73,27 @@ class ReservationCustomTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         self.addSubview(self.backView)
-        self.setBackViewConstraints()
+        self.activateBackViewConstraints()
 
         self.backView.addSubview(self.userImage)
-        self.setUserImageConstraints()
+        self.activateUserImageConstraints()
 
         self.backView.addSubview(self.namelabel)
-        self.setNamelabelConstraints()
+        self.activateNamelabelConstraints()
 
         self.backView.addSubview(self.meetupPurposeLabel)
-        self.setMeetupPurposeLabelConstraints()
+        self.activateMeetupPurposeLabelConstraints()
 
         self.backView.addSubview(self.addressLabel)
-        self.setAddressLabelConstraints()
+        self.activateAddressLabelConstraints()
 
         self.backView.addSubview(self.dateAndTimeLabel)
-        self.setDateAndTimeLabelConstraints()
+        self.activateDateAndTimeLabelConstraints()
     }
 }
 
 extension ReservationCustomTableViewCell {
-    private func setBackViewConstraints() {
+    private func activateBackViewConstraints() {
         NSLayoutConstraint.activate([
             self.backView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
             self.backView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
@@ -102,7 +101,7 @@ extension ReservationCustomTableViewCell {
             ])
     }
 
-    private func setUserImageConstraints() {
+    private func activateUserImageConstraints() {
         NSLayoutConstraint.activate([
             self.userImage.topAnchor.constraint(equalTo: self.backView.topAnchor, constant: 22),
             self.userImage.centerYAnchor.constraint(equalTo: self.backView.centerYAnchor),
@@ -112,28 +111,28 @@ extension ReservationCustomTableViewCell {
             ])
     }
 
-    private func setNamelabelConstraints() {
+    private func activateNamelabelConstraints() {
         NSLayoutConstraint.activate([
             self.namelabel.topAnchor.constraint(equalTo: self.backView.topAnchor, constant: 22),
             self.namelabel.leadingAnchor.constraint(equalTo: self.userImage.trailingAnchor, constant: 16)
             ])
     }
 
-    private func setMeetupPurposeLabelConstraints() {
+    private func activateMeetupPurposeLabelConstraints() {
         NSLayoutConstraint.activate([
             self.meetupPurposeLabel.topAnchor.constraint(equalTo: self.backView.topAnchor, constant: 25),
             self.meetupPurposeLabel.leadingAnchor.constraint(equalTo: self.namelabel.trailingAnchor, constant: 8)
             ])
     }
 
-    private func setAddressLabelConstraints() {
+    private func activateAddressLabelConstraints() {
         NSLayoutConstraint.activate([
             self.addressLabel.leadingAnchor.constraint(equalTo: self.userImage.trailingAnchor, constant: 16),
             self.addressLabel.topAnchor.constraint(equalTo: self.namelabel.bottomAnchor, constant: 4)
             ])
     }
 
-    private func setDateAndTimeLabelConstraints() {
+    private func activateDateAndTimeLabelConstraints() {
         NSLayoutConstraint.activate([
             self.dateAndTimeLabel.leadingAnchor.constraint(equalTo: self.userImage.trailingAnchor, constant: 16),
             self.dateAndTimeLabel.topAnchor.constraint(equalTo: self.addressLabel.bottomAnchor, constant: 4)

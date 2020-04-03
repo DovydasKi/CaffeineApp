@@ -30,7 +30,7 @@ class UserReservationView: UIView {
         backgroundColor = .clear
         self.configureMainView()
         self.configureTableScrollView()
-        self.configureTablewView()
+        self.configureTableView()
     }
 }
 
@@ -70,19 +70,19 @@ extension UserReservationView {
 extension UserReservationView {
     private func configureMainView() {
         self.addSubview(self.mainView)
-        self.setMainViewConstraintes()
+        self.activateMainViewConstraintes()
     }
 
     private func configureTableScrollView() {
         self.mainView.addSubview(self.tableViewScrollView)
         self.tableViewScrollView.showsVerticalScrollIndicator = false
-        self.setTableViewScrollViewConstraints()
+        self.activateTableViewScrollViewConstraints()
     }
 
-    private func configureTablewView() {
+    private func configureTableView() {
         self.tableView.showsVerticalScrollIndicator = true
         self.tableView.flashScrollIndicators()
-        self.setTableViewConstraints()
+        self.activateTableViewConstraints()
     }
 }
 
@@ -152,7 +152,7 @@ extension UserReservationView {
 
 //MARK: Constraints extension
 extension UserReservationView {
-    private func setMainViewConstraintes() {
+    private func activateMainViewConstraintes() {
         NSLayoutConstraint.activate([
             self.mainView.topAnchor.constraint(equalTo: self.topAnchor),
             self.mainView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
@@ -161,7 +161,7 @@ extension UserReservationView {
             ])
     }
 
-    private func setTableViewConstraints() {
+    private func activateTableViewConstraints() {
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: self.mainView.topAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor),
@@ -170,7 +170,7 @@ extension UserReservationView {
             ])
     }
 
-    private func setTableViewScrollViewConstraints() {
+    private func activateTableViewScrollViewConstraints() {
         NSLayoutConstraint.activate([
             self.tableViewScrollView.topAnchor.constraint(equalTo: self.mainView.topAnchor),
             self.tableViewScrollView.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor),

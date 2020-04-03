@@ -17,7 +17,7 @@ class ProfileCell: UICollectionViewCell {
     func addContent(content: UIView) {
         self.addSubview(content)
         content.translatesAutoresizingMaskIntoConstraints = false
-        self.setContentConstraints(view: content)
+        self.activateContentConstraints(view: content)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -27,7 +27,7 @@ class ProfileCell: UICollectionViewCell {
 }
 
 extension ProfileCell {
-    private func setContentConstraints(view: UIView) {
+    private func activateContentConstraints(view: UIView) {
         NSLayoutConstraint.activate([
             view.widthAnchor.constraint(equalToConstant: self.frame.width),
             view.centerYAnchor.constraint(equalTo: self.centerYAnchor),

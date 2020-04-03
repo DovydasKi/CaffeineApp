@@ -32,7 +32,7 @@ class NewUserMeetupTopicsViewController: UIViewController {
         self.configureTopicTitle()
         self.configureMainView()
         self.configureTableScrollView()
-        self.configureTablewView()
+        self.configureTableView()
         self.configureNewTopicView()
         self.configureSelectOrSkipButton()
         self.configureKeyboardDynamicView()
@@ -67,7 +67,7 @@ extension NewUserMeetupTopicsViewController {
         self.setTableViewScrollViewConstraints()
     }
     
-    private func configureTablewView() {
+    private func configureTableView() {
         self.tableView.allowsMultipleSelection = true
         self.tableView.showsVerticalScrollIndicator = true
         self.tableView.flashScrollIndicators()
