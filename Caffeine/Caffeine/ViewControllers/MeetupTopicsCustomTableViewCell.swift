@@ -41,14 +41,11 @@ class MeetupTopicsCustomTableViewCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: true)
         self.addSubview(self.backView)
-        self.setBackViewConstraints()
-        //self.setColor()
+        self.activateBackViewConstraints()
 
         self.backView.addSubview(self.meetupPurposeLabel)
-        self.setMeetupPurposeLabelConstraints()
-
+        self.activateMeetupPurposeLabelConstraints()
     }
 }
 
@@ -62,7 +59,7 @@ extension MeetupTopicsCustomTableViewCell {
 }
 
 extension MeetupTopicsCustomTableViewCell {
-    private func setBackViewConstraints() {
+    private func activateBackViewConstraints() {
         NSLayoutConstraint.activate([
             self.backView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
             self.backView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8),
@@ -71,7 +68,7 @@ extension MeetupTopicsCustomTableViewCell {
             ])
     }
 
-    private func setMeetupPurposeLabelConstraints() {
+    private func activateMeetupPurposeLabelConstraints() {
         NSLayoutConstraint.activate([
             self.meetupPurposeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.meetupPurposeLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)

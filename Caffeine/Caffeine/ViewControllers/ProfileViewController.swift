@@ -26,10 +26,9 @@ class ProfileViewController: UICollectionViewController, UICollectionViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.contentViewsArray.append(Profile(contentView: UserReservationView()))
-        self.contentViewsArray.append(Profile(contentView: UserMeetupTopicsView()))
+        self.contentViewsArray.append(Profile(contentView: MeetupTopicsView(frame: .zero, multiple: false)))
         self.contentViewsArray.append(Profile(contentView: UserInformationView()))
         navigationController?.navigationBar.isHidden = true
-
         self.configureProfilePicture()
         self.configureFullNameLabel()
         self.configureMenuView()
@@ -145,17 +144,17 @@ extension ProfileViewController {
     
     private func configureProfilePicture() {
         self.view.addSubview(self.profilePicture)
-        self.setProfilePictureConstraints()
+        self.activateProfilePictureConstraints()
     }
 
     private func configureFullNameLabel() {
         self.view.addSubview(self.fullNameLabel)
-        self.setFullNameLabelConstraints()
+        self.activateFullNameLabelConstraints()
     }
 
     private func configureMenuView() {
         self.view.addSubview(self.menuView)
-        self.setMenuViewConstraints()
+        self.activateMenuViewConstraints()
         self.configureFirstButton()
         self.configureSecondButton()
         self.configureThirdButton()
@@ -163,17 +162,17 @@ extension ProfileViewController {
     
     private func configureFirstButton() {
         self.menuView.addSubview(self.firstButton)
-        self.setFirstButtonConstraints()
+        self.activateFirstButtonConstraints()
     }
 
     private func configureSecondButton() {
         self.menuView.addSubview(self.secondButton)
-        self.setSecondButtonConstraints()
+        self.activateSecondButtonConstraints()
     }
 
     private func configureThirdButton() {
         self.menuView.addSubview(self.thirdButton)
-        self.setThirdButtonConstraints()
+        self.activateThirdButtonConstraints()
     }
 }
 //MARK: UI elements extension
@@ -288,7 +287,7 @@ extension ProfileViewController {
 
 //MARK: Constraints extension
 extension ProfileViewController {
-    private func setProfilePictureConstraints() {
+    private func activateProfilePictureConstraints() {
         NSLayoutConstraint.activate([
             self.profilePicture.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
             self.profilePicture.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -297,14 +296,14 @@ extension ProfileViewController {
             ])
     }
 
-    private func setFullNameLabelConstraints() {
+    private func activateFullNameLabelConstraints() {
         NSLayoutConstraint.activate([
             self.fullNameLabel.topAnchor.constraint(equalTo: self.profilePicture.bottomAnchor, constant: 16),
             self.fullNameLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
             ])
     }
 
-    private func setMenuViewConstraints() {
+    private func activateMenuViewConstraints() {
         NSLayoutConstraint.activate([
             self.menuView.topAnchor.constraint(equalTo: self.fullNameLabel.bottomAnchor, constant: 32),
             self.menuView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -314,7 +313,7 @@ extension ProfileViewController {
             ])
     }
 
-    private func setFirstButtonConstraints() {
+    private func activateFirstButtonConstraints() {
         NSLayoutConstraint.activate([
             self.firstButton.topAnchor.constraint(equalTo: self.menuView.topAnchor, constant: 4),
             self.firstButton.widthAnchor.constraint(equalToConstant: 123),
@@ -323,7 +322,7 @@ extension ProfileViewController {
             ])
     }
 
-    private func setSecondButtonConstraints() {
+    private func activateSecondButtonConstraints() {
         NSLayoutConstraint.activate([
             self.secondButton.centerXAnchor.constraint(equalTo: self.menuView.centerXAnchor),
             self.secondButton.widthAnchor.constraint(equalToConstant: 123),
@@ -332,7 +331,7 @@ extension ProfileViewController {
             ])
     }
 
-    private func setThirdButtonConstraints() {
+    private func activateThirdButtonConstraints() {
         NSLayoutConstraint.activate([
             self.thirdButton.topAnchor.constraint(equalTo: self.menuView.topAnchor, constant: 4),
             self.thirdButton.widthAnchor.constraint(equalToConstant: 123),

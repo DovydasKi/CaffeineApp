@@ -21,16 +21,16 @@ class MainScreenViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
 
         self.view.addSubview(self.caffeineLogo)
-        self.setCaffeineLogoConstraints()
+        self.activateCaffeineLogoConstraints()
 
         self.view.addSubview(self.caffeineLabel)
-        self.setCaffeineLabelConstraints()
+        self.activateCaffeineLabelConstraints()
 
         self.view.addSubview(self.loginButton)
-        self.setLoginButtonConstraints()
+        self.activateLoginButtonConstraints()
 
         self.view.addSubview(self.getStartedButton)
-        self.setGetStartedButtonConstraints()
+        self.activateGetStartedButtonConstraints()
     }
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -113,7 +113,7 @@ extension MainScreenViewController {
 
 //MARK: Constraints extension
 extension MainScreenViewController {
-    private func setCaffeineLogoConstraints() {
+    private func activateCaffeineLogoConstraints() {
         NSLayoutConstraint.activate([
 				self.caffeineLogo.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
 				self.caffeineLogo.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [48.5, 72.75, 97.0])),
@@ -123,7 +123,7 @@ extension MainScreenViewController {
 		])
     }
 
-    private func setCaffeineLabelConstraints() {
+    private func activateCaffeineLabelConstraints() {
         NSLayoutConstraint.activate([
 			self.caffeineLabel.topAnchor.constraint(equalTo: self.caffeineLogo.bottomAnchor, constant: UIView.margin(of: [7.5, 13.25, 26.5])),
 			self.caffeineLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [14.5, 29.25, 58.5])),
@@ -132,7 +132,7 @@ extension MainScreenViewController {
 		])
     }
 
-    private func setLoginButtonConstraints() {
+    private func activateLoginButtonConstraints() {
         NSLayoutConstraint.activate([
 			self.loginButton.heightAnchor.constraint(equalToConstant: 69),
 			self.loginButton.widthAnchor.constraint(equalToConstant: UIView.margin(of: [16, 152.0, 304.0])),
@@ -142,7 +142,7 @@ extension MainScreenViewController {
 		])
     }
 
-    private func setGetStartedButtonConstraints() {
+    private func activateGetStartedButtonConstraints() {
         NSLayoutConstraint.activate([
 			self.getStartedButton.heightAnchor.constraint(equalToConstant: 69),
 			self.getStartedButton.widthAnchor.constraint(equalToConstant: UIView.margin(of: [16, 152.0, 304.0])),

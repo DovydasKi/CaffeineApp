@@ -41,7 +41,7 @@ class CafeDrinkMenuViewController: UIViewController {
         self.view.addSubview(self.secondColumnCoffeeStackView)
 
         self.view.addSubview(self.imageStackView)
-        self.setImageStackViewConstraints()
+        self.activateImageStackViewConstraints()
         self.setTapGesturesForCoffeeImageView(coffeeArray: self.coffeeArray)
     }
 
@@ -235,7 +235,7 @@ extension CafeDrinkMenuViewController {
             ])
     }
 
-    private func setImageStackViewConstraints() {
+    private func activateImageStackViewConstraints() {
         NSLayoutConstraint.activate([
             self.imageStackView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 32),
             self.imageStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),

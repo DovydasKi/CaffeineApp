@@ -45,17 +45,17 @@ class UserInformationView: UIView {
 extension UserInformationView {
     private func configureContainerView() {
         self.addSubview(self.containerView)
-        self.setContainerViewConstraints()
+        self.activateContainerViewConstraints()
     }
     
     private func configureInformationStackView(){
         self.containerView.addSubview(self.informationStackView)
-        self.setInformationStackViewConstraints()
+        self.activateInformationStackViewConstraints()
     }
     
     private func configureLogoutButton(){
         self.containerView.addSubview(self.logoutButton)
-        self.setLogoutButtonConstraints()
+        self.activateLogoutButtonConstraints()
     }
 }
 
@@ -212,7 +212,7 @@ extension UserInformationView {
 
 //MARK: Constraints extension
 extension UserInformationView {
-    private func setContainerViewConstraints() {
+    private func activateContainerViewConstraints() {
         NSLayoutConstraint.activate([
             self.containerView.topAnchor.constraint(equalTo: self.topAnchor),
             self.containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
@@ -221,7 +221,7 @@ extension UserInformationView {
             ])
     }
     
-    private func setInformationStackViewConstraints() {
+    private func activateInformationStackViewConstraints() {
         NSLayoutConstraint.activate([
             self.informationStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
             self.informationStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
@@ -229,7 +229,7 @@ extension UserInformationView {
             ])
     }
     
-    private func setLogoutButtonConstraints() {
+    private func activateLogoutButtonConstraints() {
         NSLayoutConstraint.activate([
             self.logoutButton.topAnchor.constraint(equalTo: self.informationStackView.bottomAnchor, constant: 32),
             self.logoutButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),

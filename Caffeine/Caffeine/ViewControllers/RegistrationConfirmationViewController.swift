@@ -21,16 +21,16 @@ class RegistrationConfirmationViewController: UIViewController, NVActivityIndica
         navigationController?.navigationBar.isHidden = true
 
         self.view.addSubview(self.caffeineLogo)
-        self.setCaffeineLogoConstraints(self.caffeineLogo)
+        self.activateCaffeineLogoConstraints()
 
         self.view.addSubview(self.caffeineLabel)
-        self.setCaffeineLabelConstraints(self.caffeineLabel)
+        self.activateCaffeineLabelConstraints()
 
         self.view.addSubview(self.confirmationLabel)
-        self.setConfirmationLabelConstraints(self.confirmationLabel)
+        self.activateConfirmationLabelConstraints()
 
         self.view.addSubview(self.activityIndicator)
-        self.setActivityIndicatorConstraints(self.activityIndicator)
+        self.activateActivityIndicatorConstraints()
         
         self.activityIndicator.startAnimating()
         
@@ -99,7 +99,7 @@ extension RegistrationConfirmationViewController {
 }
 //MARK: Constraints extension
 extension RegistrationConfirmationViewController {
-    private func setCaffeineLogoConstraints(_ caffeineLogo: UIImageView) {
+    private func activateCaffeineLogoConstraints() {
         NSLayoutConstraint.activate([
             self.caffeineLogo.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [48.5, 72.75, 97.0])),
             self.caffeineLogo.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -108,7 +108,7 @@ extension RegistrationConfirmationViewController {
         ])
     }
 
-    private func setCaffeineLabelConstraints(_ caffeineLabel: UILabel) {
+    private func activateCaffeineLabelConstraints() {
         NSLayoutConstraint.activate([
             self.caffeineLabel.topAnchor.constraint(equalTo: self.caffeineLogo.bottomAnchor, constant: UIView.margin(of: [7.5, 13.25, 26.5])),
             self.caffeineLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [14.5, 29.25, 58.5])),
@@ -117,7 +117,7 @@ extension RegistrationConfirmationViewController {
         ])
     }
 
-    private func setConfirmationLabelConstraints(_ confirmationLabel: UILabel) {
+    private func activateConfirmationLabelConstraints() {
         NSLayoutConstraint.activate([
             self.confirmationLabel.topAnchor.constraint(equalTo: self.caffeineLabel.bottomAnchor, constant: UIView.margin(of: [44.25, 60, 120])),
             self.confirmationLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIView.margin(of: [14.5, 29.25, 58.5])),
@@ -126,7 +126,7 @@ extension RegistrationConfirmationViewController {
         ])
     }
 
-    private func setActivityIndicatorConstraints(_ activityIndicator: NVActivityIndicatorView) {
+    private func activateActivityIndicatorConstraints() {
         NSLayoutConstraint.activate([
             self.activityIndicator.topAnchor.constraint(equalTo: self.confirmationLabel.bottomAnchor, constant: 32),
             self.activityIndicator.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -107),

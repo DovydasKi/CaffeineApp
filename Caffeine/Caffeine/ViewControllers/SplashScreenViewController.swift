@@ -18,10 +18,10 @@ class SplashScreenViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
 
         self.view.addSubview(self.caffeineLogo)
-        self.setCaffeineLogoConstraints()
+        self.activateCaffeineLogoConstraints()
 
         self.view.addSubview(self.caffeineLabel)
-        self.setCaffeineLabelConstraints()
+        self.activateCaffeineLabelConstraints()
         
         let viewController = MainScreenViewController()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -64,7 +64,7 @@ extension SplashScreenViewController {
 
 //MARK: Constraints extension
 extension SplashScreenViewController {
-    private func setCaffeineLogoConstraints() {
+    private func activateCaffeineLogoConstraints() {
         NSLayoutConstraint.activate([
             self.caffeineLogo.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             self.caffeineLogo.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [48.5, 72.75, 97.0])),
@@ -74,7 +74,7 @@ extension SplashScreenViewController {
         ])
     }
     
-    private func setCaffeineLabelConstraints() {
+    private func activateCaffeineLabelConstraints() {
         NSLayoutConstraint.activate([
             self.caffeineLabel.topAnchor.constraint(equalTo: self.caffeineLogo.bottomAnchor, constant: UIView.margin(of: [40.0, 60.0, 80.0])),
             self.caffeineLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),

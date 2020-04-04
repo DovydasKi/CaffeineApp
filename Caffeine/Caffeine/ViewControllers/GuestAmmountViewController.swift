@@ -63,14 +63,22 @@ class GuestAmmountViewController: UIViewController, UIPickerViewDelegate, UIPick
 		let selectedGuestsAmmount = self.viewModel.guestsAmmount[row] // selected item
 		self.guestsAmmountTextField.text = String(selectedGuestsAmmount)
 	}
-	
-	@objc func backToPreviousScreen() {
-		self.navigationController?.popViewController(animated: true)
-	}
-	
-	@objc func action() {
-		view.endEditing(true)
-	}
+}
+
+//MARK: Button actions
+extension GuestAmmountViewController {
+    @objc private func turnOnReservationTopicSelectionScreen() {
+        let vc = ReservationTopicSelectionViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func backToPreviousScreen() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func action() {
+        view.endEditing(true)
+    }
 }
 
 extension GuestAmmountViewController {
@@ -163,6 +171,7 @@ extension GuestAmmountViewController {
 		button.setTitle("Išsaugoti", for: .normal)
 		button.setTitleColor(.white, for: .normal)
 		button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [24, 28, 32]))
+        button.addTarget(self, action: #selector(self.turnOnReservationTopicSelectionScreen), for: .touchUpInside)
 		return button
 	}
 }

@@ -45,7 +45,7 @@ class DetailedCoffeeViewController: UIViewController {
         }
 
         self.view.addSubview(self.cupSizesStackView)
-        self.setCupSizesStackViewConstraints()
+        self.activateCupSizesStackViewConstraints()
 
         self.setTapGesturesForCoffeeSizesImageView(cupSizesArray: self.cupSizesArray)
 
@@ -55,10 +55,10 @@ class DetailedCoffeeViewController: UIViewController {
 
         self.view.addSubview(self.descriptionTextView)
 
-        self.setDescriptionTextViewConstraints()
+        self.activateDescriptionTextViewConstraints()
 
         self.view.addSubview(self.cancelButton)
-        self.setLogoutButtonConstraints()
+        self.activateLogoutButtonConstraints()
     }
 }
 
@@ -238,14 +238,14 @@ extension DetailedCoffeeViewController {
             ])
     }
 
-    private func setCupSizesStackViewConstraints() {
+    private func activateCupSizesStackViewConstraints() {
         NSLayoutConstraint.activate([
             self.cupSizesStackView.topAnchor.constraint(equalTo: self.coffeeLabel.bottomAnchor, constant: 16),
             self.cupSizesStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
             ])
     }
 
-    private func setDescriptionTextViewConstraints() {
+    private func activateDescriptionTextViewConstraints() {
         NSLayoutConstraint.activate([
             self.descriptionTextView.topAnchor.constraint(equalTo: self.cupSizesStackView.bottomAnchor, constant: 16),
             self.descriptionTextView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
@@ -253,7 +253,7 @@ extension DetailedCoffeeViewController {
             ])
     }
 
-    private func setLogoutButtonConstraints() {
+    private func activateLogoutButtonConstraints() {
         NSLayoutConstraint.activate([
             self.cancelButton.topAnchor.constraint(equalTo: self.descriptionTextView.bottomAnchor, constant: 64),
             self.cancelButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),

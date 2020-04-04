@@ -32,7 +32,7 @@ class NewUserMeetupTopicsViewController: UIViewController {
         self.configureTopicTitle()
         self.configureMainView()
         self.configureTableScrollView()
-        self.configureTablewView()
+        self.configureTableView()
         self.configureNewTopicView()
         self.configureSelectOrSkipButton()
         self.configureKeyboardDynamicView()
@@ -48,26 +48,26 @@ class NewUserMeetupTopicsViewController: UIViewController {
 extension NewUserMeetupTopicsViewController {
     private func configureCaffeineLogo() {
         self.view.addSubview(self.caffeineLogo)
-        self.setCaffeineLogoConstraints()
+        self.activateCaffeineLogoConstraints()
     }
     
     private func configureTopicTitle() {
         self.view.addSubview(self.topicTitle)
-        self.setTopicTitleConstraints()
+        self.activateTopicTitleConstraints()
     }
     
     private func configureMainView() {
         self.view.addSubview(self.mainView)
-        self.setMainViewConstraintes()
+        self.activateMainViewConstraintes()
     }
     
     private func configureTableScrollView() {
         self.mainView.addSubview(self.tableViewScrollView)
         self.tableViewScrollView.showsVerticalScrollIndicator = false
-        self.setTableViewScrollViewConstraints()
+        self.activateTableViewScrollViewConstraints()
     }
     
-    private func configureTablewView() {
+    private func configureTableView() {
         self.tableView.allowsMultipleSelection = true
         self.tableView.showsVerticalScrollIndicator = true
         self.tableView.flashScrollIndicators()
@@ -75,24 +75,24 @@ extension NewUserMeetupTopicsViewController {
     
     private func configureNewTopicView() {
         self.mainView.addSubview(self.newTopicView)
-        self.setNewTopicViewConstraints()
+        self.activateNewTopicViewConstraints()
         self.configureNewTopicField()
         self.configureAddNewTopicButton()
     }
     
     private func configureNewTopicField() {
         self.newTopicView.addSubview(self.newTopicField)
-        self.setNewTopicFieldConstraints()
+        self.activateNewTopicFieldConstraints()
     }
     
     private func configureAddNewTopicButton() {
         self.newTopicView.addSubview(self.addNewTopicButton)
-        self.setAddNewTopicButtonConstraints()
+        self.activateAddNewTopicButtonConstraints()
     }
     
     private func configureSelectOrSkipButton() {
         self.view.addSubview(self.selectOrSkipButton)
-        self.setSelectOrSkipButtonConstraints()
+        self.activateSelectOrSkipButtonConstraints()
     }
     
     private func configureKeyboardDynamicView() {
@@ -106,7 +106,7 @@ extension NewUserMeetupTopicsViewController: UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return self.topicArr.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? NewUserMeetupTopicsCustomTableViewCell else { fatalError("Unable to create cell") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? MeetupTopicsWithSelectionCustomTableViewCell else { fatalError("Unable to create cell") }
         cell.meetupPurposeLabel.text = self.topicArr[indexPath.row].meetupPurpose
         cell.selectionStyle = .none
         return cell
@@ -269,7 +269,7 @@ extension NewUserMeetupTopicsViewController {
         
         scrollView.addSubview(self.tableView)
         
-        self.tableView.register(NewUserMeetupTopicsCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(MeetupTopicsWithSelectionCustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie abc", isSelected: false))
         self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie cbd", isSelected: false))
         self.topicArr.append(TopicModal(meetupPurpose: "Pokalbiai apie qwe", isSelected: false))
@@ -342,7 +342,7 @@ extension NewUserMeetupTopicsViewController {
 
 //MARK: Constraints
 extension NewUserMeetupTopicsViewController {
-    private func setCaffeineLogoConstraints() {
+    private func activateCaffeineLogoConstraints() {
         NSLayoutConstraint.activate([
             self.caffeineLogo.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             self.caffeineLogo.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -352,7 +352,7 @@ extension NewUserMeetupTopicsViewController {
         ])
     }
     
-    private func setTopicTitleConstraints() {
+    private func activateTopicTitleConstraints() {
         NSLayoutConstraint.activate([
             self.topicTitle.topAnchor.constraint(equalTo: self.caffeineLogo.bottomAnchor, constant: UIView.margin(of: [5, 10, 20])),
             self.topicTitle.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
@@ -361,7 +361,7 @@ extension NewUserMeetupTopicsViewController {
         ])
     }
     
-    private func setMainViewConstraintes() {
+    private func activateMainViewConstraintes() {
         NSLayoutConstraint.activate([
             self.mainView.topAnchor.constraint(equalTo: self.topicTitle.bottomAnchor, constant: 32),
             self.mainView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -371,7 +371,7 @@ extension NewUserMeetupTopicsViewController {
         ])
     }
     
-    private func setTableViewScrollViewConstraints() {
+    private func activateTableViewScrollViewConstraints() {
         NSLayoutConstraint.activate([
             self.tableViewScrollView.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 16),
             self.tableViewScrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -381,7 +381,7 @@ extension NewUserMeetupTopicsViewController {
         ])
     }
     
-    private func setNewTopicViewConstraints () {
+    private func activateNewTopicViewConstraints () {
         NSLayoutConstraint.activate([
             self.newTopicView.topAnchor.constraint(equalTo: self.tableViewScrollView.bottomAnchor, constant: 16),
             self.newTopicView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -391,7 +391,7 @@ extension NewUserMeetupTopicsViewController {
         ])
     }
     
-    private func setNewTopicFieldConstraints () {
+    private func activateNewTopicFieldConstraints () {
         NSLayoutConstraint.activate([
             self.newTopicField.centerYAnchor.constraint(equalTo: self.newTopicView.centerYAnchor),
             self.newTopicField.leadingAnchor.constraint(equalTo: self.newTopicView.leadingAnchor, constant: 12),
@@ -399,14 +399,14 @@ extension NewUserMeetupTopicsViewController {
         ])
     }
     
-    private func setAddNewTopicButtonConstraints () {
+    private func activateAddNewTopicButtonConstraints () {
         NSLayoutConstraint.activate([
             self.addNewTopicButton.centerYAnchor.constraint(equalTo: self.newTopicView.centerYAnchor),
             self.addNewTopicButton.trailingAnchor.constraint(equalTo: self.newTopicView.trailingAnchor, constant: -21)
         ])
     }
     
-    private func setSelectOrSkipButtonConstraints () {
+    private func activateSelectOrSkipButtonConstraints () {
         NSLayoutConstraint.activate([
             self.selectOrSkipButton.topAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: 64),
             self.selectOrSkipButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),

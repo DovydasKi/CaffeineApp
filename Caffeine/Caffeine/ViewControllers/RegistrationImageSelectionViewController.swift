@@ -32,16 +32,16 @@ class RegistrationImageSelectionViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
 
         self.view.addSubview(self.caffeineLogo)
-        self.setCaffeineLogoConstraints(caffeineLogo)
+        self.activateCaffeineLogoConstraints()
 
         self.view.addSubview(self.infoLabel)
-        self.setInfoLabelConstraints(self.infoLabel)
+        self.activateInfoLabelConstraints()
 
         self.view.addSubview(self.profileImagesStackView)
-        self.setProfileImagesStackViewConstraints(self.profileImagesStackView)
+        self.activateProfileImagesStackViewConstraints()
 
         self.view.addSubview(self.skipOrSelectButton)
-        self.setSkipButtonConstraints(self.skipOrSelectButton)
+        self.activateSkipButtonConstraints()
     }
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -242,7 +242,7 @@ extension RegistrationImageSelectionViewController {
 
 //MARK: Constraints extension
 extension RegistrationImageSelectionViewController {
-    private func setCaffeineLogoConstraints(_ caffeineLogo: UIImageView) {
+    private func activateCaffeineLogoConstraints() {
         NSLayoutConstraint.activate([
             self.caffeineLogo.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: UIView.margin(of: [48.5, 72.75, 97.0])),
             self.caffeineLogo.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -251,7 +251,7 @@ extension RegistrationImageSelectionViewController {
         ])
     }
 
-    private func setInfoLabelConstraints(_ infoLabel: UILabel) {
+    private func activateInfoLabelConstraints() {
         NSLayoutConstraint.activate([
             self.infoLabel.topAnchor.constraint(equalTo: self.caffeineLogo.bottomAnchor, constant: UIView.margin(of: [32, 32, 64])),
             self.infoLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -260,14 +260,14 @@ extension RegistrationImageSelectionViewController {
         ])
     }
 
-    private func setProfileImagesStackViewConstraints(_ profileImagesStackView: UIStackView) {
+    private func activateProfileImagesStackViewConstraints() {
         NSLayoutConstraint.activate([
             self.profileImagesStackView.topAnchor.constraint(equalTo: self.infoLabel.bottomAnchor, constant: UIView.margin(of: [32, 32, 64])),
             self.profileImagesStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ])
     }
 
-    private func setSkipButtonConstraints(_ skipButton: UIButton) {
+    private func activateSkipButtonConstraints() {
         NSLayoutConstraint.activate([
             self.skipOrSelectButton.topAnchor.constraint(equalTo: self.profileImagesStackView.bottomAnchor, constant: UIView.margin(of: [32, 32, 64])),
             self.skipOrSelectButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
