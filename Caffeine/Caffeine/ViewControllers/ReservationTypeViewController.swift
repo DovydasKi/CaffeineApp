@@ -15,6 +15,7 @@ class ReservationTypeViewController: UIViewController {
 	private lazy var companionSearch: UIView = self.initCompanionSearchView()
 	private lazy var stackView: UIStackView = self.initStackView()
 	private lazy var titleLabel: UIView = self.initTitleLabel()
+	private let viewModel = ReservationDetailsViewModel(type: .withCompanion)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -72,7 +73,7 @@ extension ReservationTypeViewController {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		
-		let viewText = "Rezervacija su pašnekovu"
+		let viewText = self.viewModel.reservationWithCompanionTitle
 		let titleView = self.createCardTitle(text: viewText)
 		view.addSubview(titleView)
 		view.backgroundColor = UIColor(named: "orangeMain")
@@ -92,7 +93,7 @@ extension ReservationTypeViewController {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		
-		let viewText = "Rezervacija be pašnekovo"
+		let viewText = self.viewModel.reservationWithoutCompanionTitle
 		let titleView = self.createCardTitle(text: viewText)
 		view.addSubview(titleView)
 		view.backgroundColor = UIColor(named: "orangeMain")
@@ -110,7 +111,7 @@ extension ReservationTypeViewController {
 	
 	private func initTitleLabel() -> UILabel {
 		let titleLabel = UILabel()
-		titleLabel.text = "CAFFEINE"
+		titleLabel.text = self.viewModel.titleText
 		titleLabel.font = UIFont(name: "Rubik-Bold", size: 40)
 		titleLabel.textColor = UIColor(named: "orangeMain")
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -123,7 +124,7 @@ extension ReservationTypeViewController {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		
-		let viewText = "Pašnekovo paieška"
+		let viewText = self.viewModel.companionSearchText
 		let titleView = self.createCardTitle(text: viewText)
 		view.addSubview(titleView)
 		view.backgroundColor = UIColor(named: "orangeMain")

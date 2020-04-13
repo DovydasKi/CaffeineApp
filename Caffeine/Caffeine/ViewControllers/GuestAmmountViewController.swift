@@ -108,16 +108,7 @@ extension GuestAmmountViewController {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		
-		let text: String
-		if self.viewModel.reservationType == .withCompanion {
-			text = self.viewModel.reservationWithCompanionTitle
-		} else if self.viewModel.reservationType == .withoutCompanion {
-			text = self.viewModel.reservationWithoutCompanionTitle
-		} else {
-			text = "Pašnekovo paieška"
-		}
-		
-		label.text = text
+		label.text = self.viewModel.titleLabelText()
 		label.textColor = UIColor(named: "orangeMain")
 		label.font = UIFont(name: "Rubik-Black", size: 34.0)
 		label.numberOfLines = 2
@@ -137,7 +128,7 @@ extension GuestAmmountViewController {
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		textField.inputView = self.pickerView
 		textField.textAlignment = .center
-		textField.attributedPlaceholder = NSAttributedString(string: "Svečių kiekis", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "placeholderOrange") ?? .white])
+		textField.attributedPlaceholder = NSAttributedString(string: self.viewModel.guestsAmmountText, attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "placeholderOrange") ?? .white])
 		textField.font = UIFont(name: "Rubik-Medium", size: 24.0)
 		textField.textColor = UIColor(named: "textOrange")
 		
@@ -152,7 +143,7 @@ extension GuestAmmountViewController {
 		
 		let toolBar = UIToolbar()
 		toolBar.sizeToFit()
-		let button = UIBarButtonItem(title: "Pasirinkti", style: .plain, target: self, action: #selector(self.action))
+		let button = UIBarButtonItem(title: self.viewModel.chooseButtonText, style: .plain, target: self, action: #selector(self.action))
 		toolBar.setItems([button], animated: true)
 		toolBar.isUserInteractionEnabled = true
 		textField.inputAccessoryView = toolBar
@@ -168,7 +159,7 @@ extension GuestAmmountViewController {
 		button.layer.shadowRadius = 4
 		button.layer.shadowOpacity = 0.5
 		button.backgroundColor = UIColor(named: "orangeMain")
-		button.setTitle("Išsaugoti", for: .normal)
+		button.setTitle(self.viewModel.saveButtonText, for: .normal)
 		button.setTitleColor(.white, for: .normal)
 		button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [24, 28, 32]))
         button.addTarget(self, action: #selector(self.turnOnReservationTopicSelectionScreen), for: .touchUpInside)

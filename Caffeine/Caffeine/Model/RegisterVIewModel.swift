@@ -11,9 +11,21 @@ import UIKit
 
 
 class RegisterViewModel {
+	private static let signupTitleText = "Registracija"
+	private static let fullNameTextFieldPlaceholderText = "Vardas Pavardė"
+	private static let userNameTextFieldPlaceholderText = "Naudotojo vardas"
+	private static let emailTextFieldPlaceholderText = "El.paštas"
+	private static let passwordTextFieldPlaceholderText = "Slaptažodis"
+	private static let passwordRequirementText = "5 simboliai slaptažodyje"
+	private static let createAccountButtonTitleText = "Sukurti paskyrą"
+	private static let dislaimerText = "Sukurdami paskyrą sutinkate su mūsų paslaugų tiekimo ir privatumo politika"
+	private static let alertTitleText = "Klaida!"
+	private static let alertMessageText = "Neteisingas El.paštas"
+	
     var inputValidation = InputValidation()
 
-    public func checkForValidPassword(passwordInput: UITextField, passwordRequirementCheckMark: UIImageView) {
+    //MARK: UI changes shouldn't be done on ViewModel. In the future this method should be refactored
+	public func checkForValidPassword(passwordInput: UITextField, passwordRequirementCheckMark: UIImageView) {
         if inputValidation.checkForValidStringLenght(input: passwordInput, lenght: 5) {
             passwordRequirementCheckMark.backgroundColor = UIColor.green
         }
@@ -50,4 +62,46 @@ class RegisterViewModel {
         }
         return false
     }
+}
+
+extension RegisterViewModel {
+	public var signupTitleText: String {
+		type(of: self).signupTitleText
+	}
+	
+	public var fullNameTextFieldPlaceholderText: String {
+		type(of: self).fullNameTextFieldPlaceholderText
+	}
+	
+	public var userNameTextFieldPlaceholderText: String {
+		type(of: self).userNameTextFieldPlaceholderText
+	}
+	
+	public var emailTextFieldPlaceholderText: String {
+		type(of: self).emailTextFieldPlaceholderText
+	}
+	
+	public var passwordTextFieldPlaceholderText: String {
+		type(of: self).passwordTextFieldPlaceholderText
+	}
+	
+	public var passwordRequirementText: String {
+		type(of: self).passwordRequirementText
+	}
+	
+	public var createAccountButtonTitleText: String {
+		type(of: self).createAccountButtonTitleText
+	}
+	
+	public var dislaimerText: String {
+		type(of: self).dislaimerText
+	}
+	
+	public var alertTitleText: String {
+		type(of: self).alertTitleText
+	}
+	
+	public var alertMessageText: String {
+		type(of: self).alertMessageText
+	}
 }

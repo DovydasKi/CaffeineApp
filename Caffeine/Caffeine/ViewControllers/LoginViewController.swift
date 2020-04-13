@@ -108,7 +108,7 @@ extension LoginViewController {
 extension LoginViewController {
     private func initLoginTitleView() -> UILabel {
         let label = UILabel()
-        label.text = "Prisijungimas"
+		label.text = self.loginViewModel.loginTitle
         label.font = UIFont(name: "Rubik-Black", size: 40)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -119,7 +119,7 @@ extension LoginViewController {
     private func initLoginTextField() -> UITextField {
         let textField = UITextField()
         textField.backgroundColor = UIColor(named: "orangeMain")
-        textField.placeholder = "El.paštas"
+		textField.placeholder = self.loginViewModel.emailTitle
         textField.textColor = .white
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -139,7 +139,7 @@ extension LoginViewController {
     private func initPasswordTextField() -> UITextField {
         let textField = UITextField()
         textField.backgroundColor = UIColor(named: "orangeMain")
-        textField.placeholder = "Slaptažodis"
+		textField.placeholder = self.loginViewModel.passwordTitle
         textField.textColor = .white
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -160,7 +160,7 @@ extension LoginViewController {
 
     private func dontHaveAccountTextLabelView() -> UILabel {
         let label = UILabel()
-        label.text = "Neturite paskyros?\nUžsiregistruokite!"
+		label.text = self.loginViewModel.dontHaveAccountTitle
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [14, 16, 18]))
         label.textColor = .white
         label.numberOfLines = 2
@@ -175,7 +175,7 @@ extension LoginViewController {
 
     private func forgotPasswordTextLabelView() -> UILabel {
         let label = UILabel()
-        label.text = "Pamiršote slaptažodį?"
+		label.text = self.loginViewModel.forgotPasswordTitle
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [14, 16, 18]))
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -192,7 +192,7 @@ extension LoginViewController {
         button.layer.shadowRadius = 4
         button.layer.shadowOpacity = 0.5
         button.backgroundColor = .white
-        button.setTitle("Prisijungti", for: .normal)
+		button.setTitle(self.loginViewModel.loginButtonTitle, for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [24, 28, 32]))
         button.addTarget(self, action: #selector(self.turnOnHomeScreen), for: .touchUpInside)
@@ -210,7 +210,7 @@ extension LoginViewController {
 
     private func wrongInputPromtLabelView() -> UILabel {
         let label = UILabel()
-        label.text = "Neteisingas El.paštas arba slaptažodis"
+		label.text = self.loginViewModel.incorrectPasswordText
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [10, 12, 14]))
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false

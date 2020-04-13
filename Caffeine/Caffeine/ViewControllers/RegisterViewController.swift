@@ -104,7 +104,7 @@ extension RegisterScreenViewController {
         self.registerViewModel.checkForValidPassword(passwordInput: passwordInput, passwordRequirementCheckMark: self.passwordRequirementCheckMark)
     }
     private func showAlertButtonTapped(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Klaida!", message: "Neteisingas El.paštas", preferredStyle: UIAlertController.Style.alert)
+		let alert = UIAlertController(title: self.registerViewModel.alertTitleText, message: self.registerViewModel.alertMessageText, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -152,7 +152,7 @@ extension RegisterScreenViewController {
 
     private func initSignUpTitleView() -> UILabel {
         let label = UILabel()
-        label.text = "Registracija"
+		label.text = self.registerViewModel.signupTitleText
         label.font = UIFont(name: "Rubik-Black", size: 40)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -163,7 +163,7 @@ extension RegisterScreenViewController {
     private func initFullNameTextField() -> UITextField {
         let textField = UITextField()
         textField.backgroundColor = UIColor(named: "orangeMain")
-        textField.placeholder = "Vardas Pavardė"
+		textField.placeholder = self.registerViewModel.fullNameTextFieldPlaceholderText
         textField.textColor = .white
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -183,7 +183,7 @@ extension RegisterScreenViewController {
     private func initUserNameTextField() -> UITextField {
         let textField = UITextField()
         textField.backgroundColor = UIColor(named: "orangeMain")
-        textField.placeholder = "Naudotojo vardas"
+		textField.placeholder = self.registerViewModel.userNameTextFieldPlaceholderText
         textField.textColor = .white
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -203,7 +203,7 @@ extension RegisterScreenViewController {
     private func initEmailTextField() -> UITextField {
         let textField = UITextField()
         textField.backgroundColor = UIColor(named: "orangeMain")
-        textField.placeholder = "El.paštas"
+		textField.placeholder = self.registerViewModel.emailTextFieldPlaceholderText
         textField.textColor = .white
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -223,7 +223,7 @@ extension RegisterScreenViewController {
     private func initPasswordTextField() -> UITextField {
         let textField = UITextField()
         textField.backgroundColor = UIColor(named: "orangeMain")
-        textField.placeholder = "Slaptažodis"
+		textField.placeholder = self.registerViewModel.passwordTextFieldPlaceholderText
         textField.textColor = .white
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -244,7 +244,7 @@ extension RegisterScreenViewController {
 
     private func initPasswordRequirementLabelView() -> UILabel {
         let label = UILabel()
-        label.text = "5 simboliai slaptažodyje"
+		label.text = self.registerViewModel.passwordRequirementText
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [10, 12, 14]))
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -272,7 +272,7 @@ extension RegisterScreenViewController {
         button.layer.shadowRadius = 4 // blur
         button.layer.shadowOpacity = 0.5
         button.backgroundColor = .white
-        button.setTitle("Sukurti paskyrą", for: .normal)
+		button.setTitle(self.registerViewModel.createAccountButtonTitleText, for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [24, 28, 32]))
         button.addTarget(self, action: #selector(self.turnOnSecondRegisterScreen), for: .touchUpInside)
@@ -281,7 +281,7 @@ extension RegisterScreenViewController {
 
     private func initDisclaimerLabelView() -> UILabel {
         let label = UILabel()
-        label.text = "Sukurdami paskyrą sutinkate su mūsų paslaugų tiekimo ir privatumo politika"
+		label.text = self.registerViewModel.dislaimerText
         label.numberOfLines = 2
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [9, 10, 12]))
         label.textColor = .white

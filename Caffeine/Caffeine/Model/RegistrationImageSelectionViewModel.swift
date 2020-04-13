@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class RegistrationImageSelectionViewModel {
+	private static let skipButtonTitle = "Praleisti"
+	private static let chooseButtonTitle = "Pasirinkti"
+	private static let chooseAcountPhotoText = "Išsirinkite paskyros nuotrauką"
+	
     public func chooseImage(imageArray: inout [UIImageView: Bool], tapGestureRecognizer: UITapGestureRecognizer) -> [UIImageView: Bool] {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
         if imageArray.contains(where: { $0.value == false }) && tappedImage.layer.shadowColor == UIColor.black.cgColor {
@@ -48,4 +52,18 @@ class RegistrationImageSelectionViewModel {
         imageView.layer.shadowRadius = 16
         imageView.layer.shadowOpacity = 1
     }
+}
+
+extension RegistrationImageSelectionViewModel {
+	public var skipButtonTitle: String {
+		type(of: self).skipButtonTitle
+	}
+	
+	public var chooseButtonTitle: String {
+		type(of: self).chooseButtonTitle
+	}
+	
+	public var chooseAcountPhotoText: String {
+		type(of: self).chooseAcountPhotoText
+	}
 }

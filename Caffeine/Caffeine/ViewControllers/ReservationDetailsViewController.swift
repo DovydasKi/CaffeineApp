@@ -123,16 +123,7 @@ extension ReservationDetailsViewController {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		
-		let text: String
-		if self.viewModel.reservationType == .withCompanion {
-			text = self.viewModel.reservationWithCompanionTitle
-		} else if self.viewModel.reservationType == .withoutCompanion {
-			text = self.viewModel.reservationWithoutCompanionTitle
-		} else {
-			text = "Pašnekovo paieška"
-		}
-		
-		label.text = text
+		label.text = self.viewModel.titleLabelText()
 		label.textColor = UIColor(named: "orangeMain")
 		label.font = UIFont(name: "Rubik-Black", size: 34.0)
 		label.numberOfLines = 2
@@ -161,7 +152,7 @@ extension ReservationDetailsViewController {
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		textField.inputView = self.cafePickerView
 		textField.textAlignment = .center
-		textField.attributedPlaceholder = NSAttributedString(string: "Kavinė", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "placeholderOrange") ?? .white])
+		textField.attributedPlaceholder = NSAttributedString(string: self.viewModel.cafeText, attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "placeholderOrange") ?? .white])
 		textField.font = UIFont(name: "Rubik-Medium", size: 24.0)
 		textField.textColor = UIColor(named: "textOrange")
 		
@@ -176,7 +167,7 @@ extension ReservationDetailsViewController {
 		
 		let toolBar = UIToolbar()
 		toolBar.sizeToFit()
-		let button = UIBarButtonItem(title: "Pasirinkti", style: .plain, target: self, action: #selector(self.action))
+		let button = UIBarButtonItem(title: self.viewModel.chooseButtonText, style: .plain, target: self, action: #selector(self.action))
 		toolBar.setItems([button], animated: true)
 		toolBar.isUserInteractionEnabled = true
 		textField.inputAccessoryView = toolBar
@@ -188,7 +179,7 @@ extension ReservationDetailsViewController {
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		textField.inputView = self.datePicker
 		textField.textAlignment = .center
-		textField.attributedPlaceholder = NSAttributedString(string: "Laikas", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "placeholderOrange") ?? .white])
+		textField.attributedPlaceholder = NSAttributedString(string: self.viewModel.datePlaceholderText, attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "placeholderOrange") ?? .white])
 		textField.font = UIFont(name: "Rubik-Medium", size: 24.0)
 		textField.textColor = UIColor(named: "textOrange")
 		
@@ -203,7 +194,7 @@ extension ReservationDetailsViewController {
 		
 		let toolBar = UIToolbar()
 		toolBar.sizeToFit()
-		let button = UIBarButtonItem(title: "Pasirinkti", style: .plain, target: self, action: #selector(self.action))
+		let button = UIBarButtonItem(title: self.viewModel.chooseButtonText, style: .plain, target: self, action: #selector(self.action))
 		toolBar.setItems([button], animated: true)
 		toolBar.isUserInteractionEnabled = true
 		textField.inputAccessoryView = toolBar
@@ -214,7 +205,7 @@ extension ReservationDetailsViewController {
 		let textField = UITextField()
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		textField.textAlignment = .center
-		textField.attributedPlaceholder = NSAttributedString(string: "Pokalbio tema", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "placeholderOrange") ?? .white])
+		textField.attributedPlaceholder = NSAttributedString(string: self.viewModel.conversationThemeText, attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "placeholderOrange") ?? .white])
 		textField.font = UIFont(name: "Rubik-Medium", size: 24.0)
 		textField.textColor = UIColor(named: "textOrange")
 		
@@ -239,7 +230,7 @@ extension ReservationDetailsViewController {
 		button.layer.shadowRadius = 4
 		button.layer.shadowOpacity = 0.5
 		button.backgroundColor = UIColor(named: "orangeMain")
-		button.setTitle("Išsaugoti", for: .normal)
+		button.setTitle(self.viewModel.saveButtonText, for: .normal)
 		button.setTitleColor(.white, for: .normal)
 		button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [24, 28, 32]))
 		button.addTarget(self, action: #selector(self.openGuestsAmmountScreen), for: .touchUpInside)

@@ -59,7 +59,7 @@ class RegistrationImageSelectionViewController: UIViewController {
 extension RegistrationImageSelectionViewController {
     @objc private func turnOnHomeScreen() {
         let newUserMeetupTopicsVC = NewUserMeetupTopicsViewController()
-        if self.skipOrSelectButton.currentTitle == "Praleisti" {
+		if self.skipOrSelectButton.currentTitle == self.registrationImageSelectionViewModel.skipButtonTitle {
             self.navigationController?.pushViewController(newUserMeetupTopicsVC, animated: true)
             //self.navigationController?.setViewControllers([homeScreenVC], animated: true)
         }
@@ -77,10 +77,10 @@ extension RegistrationImageSelectionViewController {
 extension RegistrationImageSelectionViewController {
     private func changeSkipButtonTittle() {
         if self.imageDictionary.contains(where: { $0.value == true }) {
-            self.skipOrSelectButton.setTitle("Pasirinkti", for: .normal)
+			self.skipOrSelectButton.setTitle(self.registrationImageSelectionViewModel.chooseButtonTitle, for: .normal)
         }
         else {
-            self.skipOrSelectButton.setTitle("Praleisti", for: .normal)
+			self.skipOrSelectButton.setTitle(self.registrationImageSelectionViewModel.skipButtonTitle, for: .normal)
         }
     }
 }
@@ -98,7 +98,7 @@ extension RegistrationImageSelectionViewController {
     private func initInfoLabel() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [18, 22, 32]))
-        label.text = "Išsirinkite paskyros nuotrauką"
+		label.text = self.registrationImageSelectionViewModel.chooseAcountPhotoText
         label.numberOfLines = 2
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -232,7 +232,7 @@ extension RegistrationImageSelectionViewController {
         button.layer.shadowRadius = 4
         button.layer.shadowOpacity = 0.5
         button.backgroundColor = .white
-        button.setTitle("Praleisti", for: .normal)
+		button.setTitle(self.registrationImageSelectionViewModel.skipButtonTitle, for: .normal)
         button.setTitleColor(UIColor(named: "orangeMain"), for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [24, 28, 32]))
         button.addTarget(self, action: #selector(self.turnOnHomeScreen), for: .touchUpInside)
