@@ -37,6 +37,24 @@
 		055E823124327B7500B42BCC /* ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E823024327B7400B42BCC /* ActionSheet.swift */; };
 		0563FFA32434C62300131041 /* MeetupTopicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563FFA22434C62300131041 /* MeetupTopicsView.swift */; };
 		0563FFA524351F5400131041 /* UserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563FFA424351F5400131041 /* UserInformationView.swift */; };
+		056EB20E2445D1CD005CEBA6 /* TopicModalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB20D2445D1CD005CEBA6 /* TopicModalTests.swift */; };
+		056EB2102445D3DE005CEBA6 /* CoffeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB20F2445D3DE005CEBA6 /* CoffeeTests.swift */; };
+		056EB2122445D669005CEBA6 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB2112445D669005CEBA6 /* ProfileTests.swift */; };
+		056EB2142445F002005CEBA6 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB2132445F002005CEBA6 /* MainScreenViewModel.swift */; };
+		056EB2162445F14D005CEBA6 /* MainScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB2152445F14D005CEBA6 /* MainScreenViewModelTests.swift */; };
+		056EB2182445F31A005CEBA6 /* SplashScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB2172445F31A005CEBA6 /* SplashScreenViewModel.swift */; };
+		056EB21A2445F3C3005CEBA6 /* SplashScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB2192445F3C3005CEBA6 /* SplashScreenViewModelTests.swift */; };
+		056EB21C2445F462005CEBA6 /* RegistrationConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB21B2445F462005CEBA6 /* RegistrationConfirmationViewModel.swift */; };
+		056EB21E2445F509005CEBA6 /* RegistrationConfirmationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB21D2445F509005CEBA6 /* RegistrationConfirmationViewModelTests.swift */; };
+		056EB2202445F667005CEBA6 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB21F2445F667005CEBA6 /* TabBarViewModel.swift */; };
+		056EB2222445F6FC005CEBA6 /* TabBarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB2212445F6FC005CEBA6 /* TabBarViewModelTests.swift */; };
+		056EB2242445F82B005CEBA6 /* PropertyCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB2232445F82B005CEBA6 /* PropertyCardViewModel.swift */; };
+		056EB2262445FD62005CEBA6 /* RestaurantsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB2252445FD62005CEBA6 /* RestaurantsViewModelTests.swift */; };
+		056EB228244603D4005CEBA6 /* PropertyCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB227244603D4005CEBA6 /* PropertyCardViewModelTests.swift */; };
+		056EB22A24460A77005CEBA6 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB22924460A77005CEBA6 /* UIStackViewExtension.swift */; };
+		056EB22C24460C3C005CEBA6 /* DetailedCoffeeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB22B24460C3C005CEBA6 /* DetailedCoffeeViewModelTests.swift */; };
+		056EB22E24462074005CEBA6 /* UserInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB22D24462074005CEBA6 /* UserInformationViewModel.swift */; };
+		056EB230244623A2005CEBA6 /* UserInformationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB22F244623A2005CEBA6 /* UserInformationViewModelTests.swift */; };
 		057023652413E8B90018A710 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023642413E8B90018A710 /* RegisterViewController.swift */; };
 		057023672413F8300018A710 /* TextFieldConnectFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023662413F8300018A710 /* TextFieldConnectFields.swift */; };
 		057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057023682413FA150018A710 /* RegisterVIewModel.swift */; };
@@ -124,6 +142,24 @@
 		055E823024327B7400B42BCC /* ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheet.swift; sourceTree = "<group>"; };
 		0563FFA22434C62300131041 /* MeetupTopicsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupTopicsView.swift; sourceTree = "<group>"; };
 		0563FFA424351F5400131041 /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
+		056EB20D2445D1CD005CEBA6 /* TopicModalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicModalTests.swift; sourceTree = "<group>"; };
+		056EB20F2445D3DE005CEBA6 /* CoffeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeTests.swift; sourceTree = "<group>"; };
+		056EB2112445D669005CEBA6 /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
+		056EB2132445F002005CEBA6 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
+		056EB2152445F14D005CEBA6 /* MainScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModelTests.swift; sourceTree = "<group>"; };
+		056EB2172445F31A005CEBA6 /* SplashScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewModel.swift; sourceTree = "<group>"; };
+		056EB2192445F3C3005CEBA6 /* SplashScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewModelTests.swift; sourceTree = "<group>"; };
+		056EB21B2445F462005CEBA6 /* RegistrationConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewModel.swift; sourceTree = "<group>"; };
+		056EB21D2445F509005CEBA6 /* RegistrationConfirmationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewModelTests.swift; sourceTree = "<group>"; };
+		056EB21F2445F667005CEBA6 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
+		056EB2212445F6FC005CEBA6 /* TabBarViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModelTests.swift; sourceTree = "<group>"; };
+		056EB2232445F82B005CEBA6 /* PropertyCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCardViewModel.swift; sourceTree = "<group>"; };
+		056EB2252445FD62005CEBA6 /* RestaurantsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewModelTests.swift; sourceTree = "<group>"; };
+		056EB227244603D4005CEBA6 /* PropertyCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCardViewModelTests.swift; sourceTree = "<group>"; };
+		056EB22924460A77005CEBA6 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
+		056EB22B24460C3C005CEBA6 /* DetailedCoffeeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCoffeeViewModelTests.swift; sourceTree = "<group>"; };
+		056EB22D24462074005CEBA6 /* UserInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationViewModel.swift; sourceTree = "<group>"; };
+		056EB22F244623A2005CEBA6 /* UserInformationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationViewModelTests.swift; sourceTree = "<group>"; };
 		057023642413E8B90018A710 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		057023662413F8300018A710 /* TextFieldConnectFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldConnectFields.swift; sourceTree = "<group>"; };
 		057023682413FA150018A710 /* RegisterVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVIewModel.swift; sourceTree = "<group>"; };
@@ -272,6 +308,7 @@
 			children = (
 				A6347E7424168A3100B1FC05 /* Margin.swift */,
 				054BD2F0242D23D900A767EF /* StringExtension.swift */,
+				056EB22924460A77005CEBA6 /* UIStackViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -294,6 +331,12 @@
 				055E82252431CFEF00B42BCC /* User.swift */,
 				055E823024327B7400B42BCC /* ActionSheet.swift */,
 				05BBB7E52433DC2100487160 /* Profile.swift */,
+				056EB2132445F002005CEBA6 /* MainScreenViewModel.swift */,
+				056EB2172445F31A005CEBA6 /* SplashScreenViewModel.swift */,
+				056EB21B2445F462005CEBA6 /* RegistrationConfirmationViewModel.swift */,
+				056EB21F2445F667005CEBA6 /* TabBarViewModel.swift */,
+				056EB2232445F82B005CEBA6 /* PropertyCardViewModel.swift */,
+				056EB22D24462074005CEBA6 /* UserInformationViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -336,13 +379,24 @@
 		A671E970240D4FC200DF2577 /* CaffeineTests */ = {
 			isa = PBXGroup;
 			children = (
-				A671E971240D4FC200DF2577 /* CaffeineTests.swift */,
 				A671E973240D4FC200DF2577 /* Info.plist */,
+				A671E971240D4FC200DF2577 /* CaffeineTests.swift */,
 				A62313292442304400E3BDD8 /* LoginViewModelTests.swift */,
 				A623132D2443C93A00E3BDD8 /* RegisterViewModelTests.swift */,
 				A623132F24447DFF00E3BDD8 /* ReservationDetailsViewModelTests.swift */,
 				A62313312444828700E3BDD8 /* UserModalTests.swift */,
 				A62313332444848300E3BDD8 /* RegistrationImageSelectionViewModelTests.swift */,
+				056EB20D2445D1CD005CEBA6 /* TopicModalTests.swift */,
+				056EB20F2445D3DE005CEBA6 /* CoffeeTests.swift */,
+				056EB2112445D669005CEBA6 /* ProfileTests.swift */,
+				056EB2152445F14D005CEBA6 /* MainScreenViewModelTests.swift */,
+				056EB2192445F3C3005CEBA6 /* SplashScreenViewModelTests.swift */,
+				056EB21D2445F509005CEBA6 /* RegistrationConfirmationViewModelTests.swift */,
+				056EB2212445F6FC005CEBA6 /* TabBarViewModelTests.swift */,
+				056EB2252445FD62005CEBA6 /* RestaurantsViewModelTests.swift */,
+				056EB227244603D4005CEBA6 /* PropertyCardViewModelTests.swift */,
+				056EB22B24460C3C005CEBA6 /* DetailedCoffeeViewModelTests.swift */,
+				056EB22F244623A2005CEBA6 /* UserInformationViewModelTests.swift */,
 			);
 			path = CaffeineTests;
 			sourceTree = "<group>";
@@ -495,12 +549,15 @@
 				055E82242431CFB200B42BCC /* Coffee.swift in Sources */,
 				05BBB7E224339A5200487160 /* ProfileCell.swift in Sources */,
 				0563FFA32434C62300131041 /* MeetupTopicsView.swift in Sources */,
+				056EB21C2445F462005CEBA6 /* RegistrationConfirmationViewModel.swift in Sources */,
 				055E823124327B7500B42BCC /* ActionSheet.swift in Sources */,
+				056EB2142445F002005CEBA6 /* MainScreenViewModel.swift in Sources */,
 				0549422C242E5EF600B520E7 /* MeetupTopicsWithSelectionCustomTableViewCell.swift in Sources */,
 				05CF83DE2414FBBD0031E356 /* InputValidation.swift in Sources */,
 				A66FDD622411310300CFC5FB /* LoginViewController.swift in Sources */,
 				A6E152AD242BBB080069C79C /* ReservationDetailsViewModel.swift in Sources */,
 				052BE05D242A5F080005B822 /* DetailedCoffeeViewController.swift in Sources */,
+				056EB2182445F31A005CEBA6 /* SplashScreenViewModel.swift in Sources */,
 				052B204E24194FA800413048 /* RegistrationImageSelectionViewModel.swift in Sources */,
 				A6DCDCE2242F767200CEDEDE /* GuestAmmountViewController.swift in Sources */,
 				A656F3DC240FD84D0038AA7B /* MainScreenViewController.swift in Sources */,
@@ -510,22 +567,26 @@
 				054BD2F1242D23D900A767EF /* StringExtension.swift in Sources */,
 				05C1C2172422A3F500ED0AD0 /* ProfileViewModel.swift in Sources */,
 				05BBB7E62433DC2100487160 /* Profile.swift in Sources */,
+				056EB2202445F667005CEBA6 /* TabBarViewModel.swift in Sources */,
 				05EB9D8D242FDE700039D181 /* MeetupPurposeModel.swift in Sources */,
 				057023652413E8B90018A710 /* RegisterViewController.swift in Sources */,
 				0549422A242E288200B520E7 /* NewUserMeetupTopicsViewController.swift in Sources */,
 				055E82222431CF6F00B42BCC /* Topic.swift in Sources */,
 				A6A1CFFD2418E164002333CA /* RestaurantsViewController.swift in Sources */,
 				A6347E7524168A3100B1FC05 /* Margin.swift in Sources */,
+				056EB2242445F82B005CEBA6 /* PropertyCardViewModel.swift in Sources */,
 				0563FFA524351F5400131041 /* UserInformationView.swift in Sources */,
 				A68C5244241EBFEF00B2AA53 /* RestaurantsViewModel.swift in Sources */,
 				0538382B2417AB3A0040FFDF /* RegistrationConfirmationViewController.swift in Sources */,
 				A6E152AB242BB8E60069C79C /* ReservationDetailsViewController.swift in Sources */,
 				A671E95B240D4FBF00DF2577 /* AppDelegate.swift in Sources */,
 				055E82282431F22800B42BCC /* MeetupTopicsCustomTableViewCell.swift in Sources */,
+				056EB22E24462074005CEBA6 /* UserInformationViewModel.swift in Sources */,
 				A6316BD4242A7B2000EB5EF6 /* ReservationTypeViewController.swift in Sources */,
 				055E82262431CFEF00B42BCC /* User.swift in Sources */,
 				05BBB7E42433A00F00487160 /* UserReservationView.swift in Sources */,
 				05C1C2192423878D00ED0AD0 /* ReservationCustomTableViewCell.swift in Sources */,
+				056EB22A24460A77005CEBA6 /* UIStackViewExtension.swift in Sources */,
 				057023692413FA150018A710 /* RegisterVIewModel.swift in Sources */,
 				05A7FF4F2437891A00D26E01 /* ReservationTopicSelectionViewController.swift in Sources */,
 				058E4B49240D638700D4C20A /* SplashScreenViewController.swift in Sources */,
@@ -545,12 +606,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				056EB22C24460C3C005CEBA6 /* DetailedCoffeeViewModelTests.swift in Sources */,
+				056EB20E2445D1CD005CEBA6 /* TopicModalTests.swift in Sources */,
+				056EB230244623A2005CEBA6 /* UserInformationViewModelTests.swift in Sources */,
 				A623133024447DFF00E3BDD8 /* ReservationDetailsViewModelTests.swift in Sources */,
+				056EB228244603D4005CEBA6 /* PropertyCardViewModelTests.swift in Sources */,
 				A623132E2443C93A00E3BDD8 /* RegisterViewModelTests.swift in Sources */,
+				056EB2222445F6FC005CEBA6 /* TabBarViewModelTests.swift in Sources */,
+				056EB2162445F14D005CEBA6 /* MainScreenViewModelTests.swift in Sources */,
 				A62313342444848300E3BDD8 /* RegistrationImageSelectionViewModelTests.swift in Sources */,
 				A623132A2442304400E3BDD8 /* LoginViewModelTests.swift in Sources */,
+				056EB21E2445F509005CEBA6 /* RegistrationConfirmationViewModelTests.swift in Sources */,
+				056EB21A2445F3C3005CEBA6 /* SplashScreenViewModelTests.swift in Sources */,
 				A62313322444828700E3BDD8 /* UserModalTests.swift in Sources */,
+				056EB2122445D669005CEBA6 /* ProfileTests.swift in Sources */,
+				056EB2262445FD62005CEBA6 /* RestaurantsViewModelTests.swift in Sources */,
 				A671E972240D4FC200DF2577 /* CaffeineTests.swift in Sources */,
+				056EB2102445D3DE005CEBA6 /* CoffeeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

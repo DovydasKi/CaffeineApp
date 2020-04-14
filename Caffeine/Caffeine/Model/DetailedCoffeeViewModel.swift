@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class DetailedCoffeeViewModel {
+    private static let descriptionTextViewText = "Etiopijos ūkininkų užauginama šalies kava buvo griežtai registruojama ir eksportuojama keletu pavadinimu – Yirgacheffe, Sidamo, Harar regionų vardais. \nTokie išskirtiniai derliai buvo atsekami pagal tikslius vietovardžius ir ūkininkų pavardes"
+    
+    private static let cancelButtonText = "Atšaukti"
+    
     public func setPriceForSelectedCoffee(imageView: UIImageView, cupSizesArray: inout [UIImageView], cupSizesDict: inout [UIImageView:Bool], imageName: String, priceTagLabel: inout UILabel) {
     
         guard let selectedImage = cupSizesDict.first(where: { $0.value == true })?.key else {return}
@@ -121,5 +125,15 @@ class DetailedCoffeeViewModel {
     
     private func convertDoubleToString(number: Double) -> String {
         return String(format: "%.1f", number)
+    }
+}
+
+extension DetailedCoffeeViewModel {
+    public var descriptionTextViewText: String {
+        type(of: self).descriptionTextViewText
+    }
+    
+    public var cancelButtonText: String {
+        type(of: self).cancelButtonText
     }
 }

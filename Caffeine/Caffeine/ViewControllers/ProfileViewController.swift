@@ -22,6 +22,7 @@ class ProfileViewController: UICollectionViewController, UICollectionViewDelegat
     private lazy var thirdButton: UIView = self.initThirdButton()
     private lazy var menuView: UIView = self.initMenuView()
     private var contentViewsArray = [Profile]()
+    private var profileViewModel = ProfileViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -191,7 +192,7 @@ extension ProfileViewController {
     private func initFullNameLabel() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [20, 24, 28]))
-        label.text = "Vardenis Pavardenis"
+        label.text = self.profileViewModel.fullNameTitle
         label.textColor = UIColor(named: "orangeMain")
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -216,7 +217,7 @@ extension ProfileViewController {
         view.layer.cornerRadius = 12.5
 
         label.font = UIFont(name: "Rubik-Bold", size: 14)
-        label.text = "Rezervacijos"
+        label.text = self.profileViewModel.firstButtonTitle
         label.textColor = .black
         label.textAlignment = .center
 
@@ -242,7 +243,7 @@ extension ProfileViewController {
         view.layer.cornerRadius = 12.5
 
         label.font = UIFont(name: "Rubik-Bold", size: 14)
-        label.text = "Pokalbio temos"
+        label.text = self.profileViewModel.secondButtonTitle
         label.textColor = .black
         label.textAlignment = .center
         view.addSubview(label)
@@ -267,7 +268,7 @@ extension ProfileViewController {
         view.layer.cornerRadius = 12.5
 
         label.font = UIFont(name: "Rubik-Bold", size: 14)
-        label.text = "Informacija"
+        label.text = self.profileViewModel.thirdButtonTitle
         label.textColor = .black
         label.textAlignment = .center
         view.addSubview(label)

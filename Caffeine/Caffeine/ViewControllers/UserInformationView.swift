@@ -22,6 +22,7 @@ class UserInformationView: UIView {
     private lazy var passwordStackView: UIStackView = self.initPasswordStackView()
     private lazy var informationStackView: UIStackView = self.initInformationStackView()
     private lazy var logoutButton: UIButton = self.initLogoutButton()
+    private var userInformationViewModel = UserInformationViewModel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,7 +72,7 @@ extension UserInformationView {
     private func initEmailTitle() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
-        label.text = "El. pašto adresas:"
+        label.text = self.userInformationViewModel.emailTitleText
         label.textColor = UIColor(named: "orangeMain")
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -82,7 +83,7 @@ extension UserInformationView {
     private func initEmailBody() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
-        label.text = "vardas.pavardenis@stud.vgtu.lt"
+        label.text = self.userInformationViewModel.emailBodyText
         label.textColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -109,7 +110,7 @@ extension UserInformationView {
     private func initUserSinceTitle() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
-        label.text = "Akyvus nuo:"
+        label.text = self.userInformationViewModel.userSinceTitleText
         label.textColor = UIColor(named: "orangeMain")
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -120,7 +121,7 @@ extension UserInformationView {
     private func initUserSinceBody() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
-        label.text = "2020-02-25"
+        label.text = self.userInformationViewModel.userSinceBodyText
         label.textColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -146,7 +147,7 @@ extension UserInformationView {
     private func initPasswordTitle() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
-        label.text = "Slpatažodis:"
+        label.text = self.userInformationViewModel.passwordTitleText
         label.textColor = UIColor(named: "orangeMain")
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -157,7 +158,7 @@ extension UserInformationView {
     private func initPasswordBody() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Medium", size: UIView.margin(of: [16, 17, 18]))
-        label.text = "*************"
+        label.text = self.userInformationViewModel.passwordBodyText
         label.textColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -203,7 +204,7 @@ extension UserInformationView {
         button.layer.shadowRadius = 4
         button.layer.shadowOpacity = 0.5
         button.backgroundColor = UIColor(named: "orangeMain")
-        button.setTitle("Atsijungti", for: .normal)
+        button.setTitle(self.userInformationViewModel.logoutButtonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [20, 22, 24]))
         return button
