@@ -9,18 +9,24 @@
 import Foundation
 import UIKit
 
-class ProfileViewModel {}
+class ProfileViewModel {
+    private static let fullNameTitle = "Vardenis Pavardenis"
+    private static let firstButtonTitle = "Rezervacijos"
+    private static let secondButtonTitle = "Pokalbio temos"
+    private static let thirdButtonTitle = "Informacija"
+}
 
-extension UIStackView {
-    func addBackground(color: UIColor, cornerRadius: CGFloat) {
-        let subView = UIView(frame: bounds)
-        subView.backgroundColor = color
-        subView.layer.cornerRadius = cornerRadius
-        subView.layer.shadowColor = UIColor.black.cgColor
-        subView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        subView.layer.shadowRadius = 4
-        subView.layer.shadowOpacity = 0.5
-        subView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        insertSubview(subView, at: 0)
+extension ProfileViewModel {
+    public var fullNameTitle: String {
+        type(of: self).fullNameTitle
+    }
+    public var firstButtonTitle: String {
+        type(of: self).firstButtonTitle
+    }
+    public var secondButtonTitle: String {
+        type(of: self).secondButtonTitle
+    }
+    public var thirdButtonTitle: String {
+        type(of: self).thirdButtonTitle
     }
 }

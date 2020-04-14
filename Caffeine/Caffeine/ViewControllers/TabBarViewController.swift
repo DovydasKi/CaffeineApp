@@ -15,13 +15,14 @@ class TabBarViewController: UITabBarController {
 	}
 	
 	private var contentViewControllers: [UIViewController] = []
+    private var tabBarViewModel = TabBarViewModel()
 	
 	private lazy var profileViewController: UIViewController = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let viewController = ProfileViewController(collectionViewLayout: layout)
         
-		let title = "Profilis"
+        let title = self.tabBarViewModel.profileViewControllerTitle
 		viewController.title = title
 		
 		viewController.tabBarItem = UITabBarItem(
@@ -37,7 +38,7 @@ class TabBarViewController: UITabBarController {
 	
 	private lazy var restaurantMapViewController: UIViewController = {
 		let viewController = RestaurantsViewController()
-		let title = "Kavinės"
+		let title = self.tabBarViewModel.restaurantMapViewControllerTitle
 		viewController.title = title
 		
 		viewController.tabBarItem = UITabBarItem(
@@ -52,7 +53,7 @@ class TabBarViewController: UITabBarController {
 	
 	private lazy var reservationViewController: UIViewController = {
 		let viewController = ReservationTypeViewController()
-		let title = "Rezervacija"
+		let title = self.tabBarViewModel.reservationViewControllerTitle
 		viewController.title = title
 		
 		viewController.tabBarItem = UITabBarItem(

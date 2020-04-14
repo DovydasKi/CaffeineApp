@@ -14,6 +14,7 @@ class RegistrationConfirmationViewController: UIViewController, NVActivityIndica
     private lazy var caffeineLabel: UILabel = self.initCaffeineLabel()
     private lazy var confirmationLabel: UILabel = self.initConfirmationLabel()
     private lazy var activityIndicator: NVActivityIndicatorView = self.initActivityIndicator()
+    private var registrationConfirmationViewModel = RegistrationConfirmationViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +64,7 @@ extension RegistrationConfirmationViewController {
     private func initCaffeineLabel() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Bold", size: 54)
-        label.text = "Caffeine"
+        label.text = self.registrationConfirmationViewModel.caffeineLabelTitle
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -74,7 +75,7 @@ extension RegistrationConfirmationViewController {
     private func initConfirmationLabel() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [20, 24, 34]))
-        label.text = "Patvirtinkite el.pašto adresą"
+        label.text = self.registrationConfirmationViewModel.confirmationLabelTitle
         label.numberOfLines = 2
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false

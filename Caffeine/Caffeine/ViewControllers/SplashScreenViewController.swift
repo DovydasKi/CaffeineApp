@@ -11,6 +11,7 @@ import UIKit
 class SplashScreenViewController: UIViewController {
     private lazy var caffeineLabel: UILabel = self.initCaffeineLabel()
     private lazy var caffeineLogo: UIImageView = self.initCaffeineLogo()
+    private var splashScreenViewModel = SplashScreenViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,7 @@ class SplashScreenViewController: UIViewController {
 extension SplashScreenViewController {
     private func initCaffeineLabel() -> UILabel {
         let label = UILabel()
-        label.text = "Caffeine"
+        label.text = self.splashScreenViewModel.caffeineLabelTitle
         label.font = UIFont(name: "Rubik-Bold", size: 68)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false

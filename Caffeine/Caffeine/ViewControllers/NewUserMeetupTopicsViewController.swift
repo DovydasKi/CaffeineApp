@@ -20,7 +20,6 @@ class NewUserMeetupTopicsViewController: UIViewController {
     private lazy var addNewTopicButton: UILabel = self.initAddNewTopicButton()
     private lazy var newTopicView: UIView = self.initNewTopicView()
     private lazy var selectOrSkipButton: UIButton = self.initSelectOrSkipButton()
-    //private var selectedTopics: Int?
     private var newUserMeetupPurposeModel = MeetupPurposeModel()
     
     override func viewDidLoad() {

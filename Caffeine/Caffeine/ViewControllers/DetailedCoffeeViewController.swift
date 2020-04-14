@@ -188,7 +188,7 @@ extension DetailedCoffeeViewController {
 
     private func initDescriptionTextView () -> UITextView {
         let textView = UITextView()
-        textView.text = "Etiopijos ūkininkų užauginama šalies kava buvo griežtai registruojama ir eksportuojama keletu pavadinimu – Yirgacheffe, Sidamo, Harar regionų vardais. \nTokie išskirtiniai derliai buvo atsekami pagal tikslius vietovardžius ir ūkininkų pavardes"
+        textView.text = self.detailedCoffeeViewModel.descriptionTextViewText
         textView.font = UIFont(name: "Rubik-Medium", size: 16)
         textView.textAlignment = .justified
         textView.textColor = UIColor(named: "orangeMain")
@@ -212,7 +212,7 @@ extension DetailedCoffeeViewController {
         button.layer.shadowRadius = 4
         button.layer.shadowOpacity = 0.5
         button.backgroundColor = UIColor(named: "orangeMain")
-        button.setTitle("Atšaukti", for: .normal)
+        button.setTitle(self.detailedCoffeeViewModel.cancelButtonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Rubik-Bold", size: UIView.margin(of: [20, 22, 24]))
         button.addTarget(self, action: #selector(self.backToPreviousScreen), for: .touchUpInside)
